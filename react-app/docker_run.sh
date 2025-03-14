@@ -1,0 +1,1 @@
+docker run -p 80:80 -d --add-host=host.docker.internal:host-gateway $(docker build -f Dockerfile.dev -q .)

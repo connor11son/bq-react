@@ -1,0 +1,4643 @@
+.
+├── boot
+│   └── B10-fullconfig.sh
+├── bq-admin-setup.sh
+├── bq-tree.csv
+├── builder
+│   └── 20-build-bisque.sh
+├── Dockerfile
+├── Dockerfile.base.xenial
+├── Dockerfile-engine
+├── docs
+│   ├── bqapi.html
+│   ├── cellprofiler-module.html
+│   ├── dockerfile.html
+│   ├── docker-installation.html
+│   ├── download-an-array.html
+│   ├── how-to-add-annotations.html
+│   ├── how-to-login-or-create-a-new-user.html
+│   ├── how-to-run-a-module.html
+│   ├── how-to-run-modules-locally.html
+│   ├── how-to-upload-data.html
+│   ├── imagej-module.html
+│   ├── images
+│   │   ├── analyze-nph.png
+│   │   ├── annotations.svg
+│   │   ├── bisque_front.png
+│   │   ├── bisque_logo.svg
+│   │   ├── bisqueviewer.gif
+│   │   ├── bq-github-banner2.svg
+│   │   ├── bq-github-banner.svg
+│   │   ├── CellECT.png
+│   │   ├── cpmanual_analyze.jpg
+│   │   ├── cpmanual_browse.png
+│   │   ├── cpmanual_examples.png
+│   │   ├── cpmanual_gobjects.jpg
+│   │   ├── cpmanual_module1.jpg
+│   │   ├── cpmanual_module2.jpg
+│   │   ├── existingdataset.png
+│   │   ├── folderupload.png
+│   │   ├── homepage-nphprediction.png
+│   │   ├── homepage.png
+│   │   ├── imagej_module.2.png
+│   │   ├── imagej_results.png
+│   │   ├── login-highlighted.png
+│   │   ├── login.png
+│   │   ├── moduleexplanation.svg
+│   │   ├── modulelist.svg
+│   │   ├── modules.svg
+│   │   ├── newdataset.png
+│   │   ├── nph-output.png
+│   │   ├── orig_pipeline.png
+│   │   ├── permissions.png
+│   │   ├── progressfolder.png
+│   │   ├── storage.svg
+│   │   ├── tiff_images.svg
+│   │   ├── tom_moduleflow.svg
+│   │   ├── tom_workflow.svg
+│   │   ├── upload-dicom.png
+│   │   └── upload.png
+│   ├── img
+│   │   └── module_metadata
+│   │       ├── ModuleMetadataResults.png
+│   │       ├── ModuleSelection.png
+│   │       └── OpenMetadataModule.png
+│   ├── index.html
+│   ├── intro.html
+│   ├── libs
+│   │   ├── anchor-sections-1.0.1
+│   │   │   ├── anchor-sections.css
+│   │   │   └── anchor-sections.js
+│   │   ├── gitbook-2.6.7
+│   │   │   ├── css
+│   │   │   │   ├── fontawesome
+│   │   │   │   │   └── fontawesome-webfont.ttf
+│   │   │   │   ├── plugin-bookdown.css
+│   │   │   │   ├── plugin-clipboard.css
+│   │   │   │   ├── plugin-fontsettings.css
+│   │   │   │   ├── plugin-highlight.css
+│   │   │   │   ├── plugin-search.css
+│   │   │   │   ├── plugin-table.css
+│   │   │   │   └── style.css
+│   │   │   └── js
+│   │   │       ├── app.min.js
+│   │   │       ├── clipboard.min.js
+│   │   │       ├── jquery.highlight.js
+│   │   │       ├── lunr.js
+│   │   │       ├── plugin-bookdown.js
+│   │   │       ├── plugin-clipboard.js
+│   │   │       ├── plugin-fontsettings.js
+│   │   │       ├── plugin-search.js
+│   │   │       └── plugin-sharing.js
+│   │   ├── header-attrs-2.8
+│   │   │   └── header-attrs.js
+│   │   └── jquery-2.2.3
+│   │       └── jquery.min.js
+│   ├── module-development.html
+│   ├── module-xml.html
+│   ├── nph-prediction.html
+│   ├── plant-cell-segmentation.html
+│   ├── python-script-wrapper.html
+│   ├── python-setup.html
+│   ├── reference-keys.txt
+│   ├── runtime-module-configuration.html
+│   ├── search_index.json
+│   ├── source-code.html
+│   ├── style.css
+│   └── upload-an-image.html
+├── entry.sh
+├── etc
+│   ├── condor
+│   │   └── condor_config.local
+│   ├── confd
+│   │   ├── conf.d
+│   │   │   ├── condor.toml
+│   │   │   ├── nginx.toml
+│   │   │   └── supervisor-bisque.toml
+│   │   └── templates
+│   │       ├── condor_config.local.tmpl
+│   │       ├── nginx.tmpl
+│   │       └── supervisor-bisque.tmpl
+│   ├── nginx
+│   │   └── sites-enabled
+│   │       └── bisque.conf
+│   └── supervisor
+│       ├── conf.d
+│       │   ├── bisque.conf
+│       │   ├── cachecleaner.conf
+│       │   └── condor.conf
+│       └── supervisord.conf
+├── LICENSE
+├── Makefile
+├── modules
+│   ├── AnnotationAdd
+│   │   ├── AnnotationAdd.py
+│   │   ├── AnnotationAdd.xml
+│   │   ├── public
+│   │   │   ├── help.html
+│   │   │   └── thumbnail.png
+│   │   ├── runtime-module.cfg
+│   │   └── setup.py
+│   ├── AnnotationDelete
+│   │   ├── AnnotationDelete.py
+│   │   ├── AnnotationDelete.xml
+│   │   ├── public
+│   │   │   ├── help.html
+│   │   │   └── thumbnail.png
+│   │   ├── runtime-module.cfg
+│   │   └── setup.py
+│   ├── AnnotationExportGeo
+│   │   ├── AnnotationExportGeo.py
+│   │   ├── AnnotationExportGeo.xml
+│   │   ├── public
+│   │   │   ├── help.html
+│   │   │   └── thumbnail.png
+│   │   ├── runtime-module.cfg
+│   │   └── setup.py
+│   ├── AnnotationFromSpreadsheet
+│   │   ├── AnnotationFromSpreadsheet.py
+│   │   ├── AnnotationFromSpreadsheet.xml
+│   │   ├── public
+│   │   │   ├── arrow.svg
+│   │   │   ├── help.html
+│   │   │   ├── thumbnail.png
+│   │   │   ├── webapp.css
+│   │   │   └── webapp.js
+│   │   ├── runtime-module.cfg
+│   │   └── setup.py
+│   ├── AnnotationHistograms
+│   │   ├── AnnotationHistograms.py
+│   │   ├── AnnotationHistograms.xml
+│   │   ├── public
+│   │   │   ├── help.html
+│   │   │   └── thumbnail.png
+│   │   ├── runtime-module.cfg
+│   │   └── setup.py
+│   ├── AnnotationPhysicalDimensions
+│   │   ├── AnnotationPhysicalDimensions.py
+│   │   ├── AnnotationPhysicalDimensions.xml
+│   │   ├── gobjects.py
+│   │   ├── public
+│   │   │   ├── help.html
+│   │   │   └── thumbnail.png
+│   │   ├── runtime-module.cfg
+│   │   └── setup.py
+│   ├── AnnotationRename
+│   │   ├── AnnotationRename.py
+│   │   ├── AnnotationRename.xml
+│   │   ├── public
+│   │   │   ├── help.html
+│   │   │   └── thumbnail.png
+│   │   ├── runtime-module.cfg
+│   │   └── setup.py
+│   ├── Botanicam
+│   │   ├── Botanicam.py
+│   │   ├── Botanicam.xml
+│   │   ├── public
+│   │   │   ├── help.html
+│   │   │   ├── images
+│   │   │   │   ├── background_bottom.jpg
+│   │   │   │   ├── background_bottom.png
+│   │   │   │   ├── background_cloud.png
+│   │   │   │   ├── background_grass.jpg
+│   │   │   │   ├── background_grass.png
+│   │   │   │   ├── background_sun.png
+│   │   │   │   ├── example.png
+│   │   │   │   └── gobject selection.jpg
+│   │   │   ├── thumbnail.png
+│   │   │   ├── webapp.css
+│   │   │   └── webapp.js
+│   │   ├── ReadMe.txt
+│   │   ├── runtime-module.cfg
+│   │   └── setup.py
+│   ├── BotanicamTrainer
+│   │   ├── BotanicamTrainer.py
+│   │   ├── BotanicamTrainer.xml
+│   │   ├── public
+│   │   │   ├── help.html
+│   │   │   ├── images
+│   │   │   │   ├── Addbutton.jpg
+│   │   │   │   ├── background_bottom.jpg
+│   │   │   │   ├── background_bottom.png
+│   │   │   │   ├── background_cloud.png
+│   │   │   │   ├── background_grass.jpg
+│   │   │   │   ├── background_grass.png
+│   │   │   │   ├── background_sun.png
+│   │   │   │   ├── example.png
+│   │   │   │   ├── ResourceBrowser.jpg
+│   │   │   │   ├── Selectbutton.jpg
+│   │   │   │   ├── SelectQuery.jpg
+│   │   │   │   ├── SelectQuery.png
+│   │   │   │   └── TagSelect.jpg
+│   │   │   ├── thumbnail.png
+│   │   │   ├── webapp.css
+│   │   │   └── webapp.js
+│   │   ├── ReadMe.txt
+│   │   ├── runtime-module.cfg
+│   │   └── setup.py
+│   ├── CalcMaxMisorientation
+│   │   ├── CalcMaxMisorientation.xml
+│   │   ├── public
+│   │   │   ├── help.html
+│   │   │   └── thumbnail.png
+│   │   ├── PythonScriptWrapper
+│   │   ├── PythonScriptWrapper.py
+│   │   ├── PythonScriptWrapper.spec
+│   │   ├── runtime-module.cfg
+│   │   ├── script.py
+│   │   └── setup.py
+│   ├── CellProfiler
+│   │   ├── CellProfiler
+│   │   ├── CellProfiler.py
+│   │   ├── CellProfiler.xml
+│   │   ├── Dockerfile
+│   │   ├── pipelines
+│   │   │   ├── human cells.cp
+│   │   │   ├── tissue neighbors.cp
+│   │   │   └── wound healing.cp
+│   │   ├── public
+│   │   │   ├── help.html
+│   │   │   ├── HumanNuclei.jpg
+│   │   │   ├── thumbnail.png
+│   │   │   ├── TissueNeighbors.jpg
+│   │   │   └── WOUND-IMG.gif
+│   │   ├── runtime-module.cfg
+│   │   └── setup.py
+│   ├── CellSegment3DUnet
+│   │   ├── CellSegment3DUnet.xml
+│   │   ├── Dockerfile
+│   │   ├── Dockerfile.py2n3torch
+│   │   ├── Dockerfile.py2torch
+│   │   ├── Dockerfile.py3torch
+│   │   ├── public
+│   │   │   ├── help.html
+│   │   │   ├── thumbnail.svg
+│   │   │   ├── webapp.css
+│   │   │   ├── webapp.js
+│   │   │   └── workflow.png
+│   │   ├── PythonScriptWrapper
+│   │   ├── PythonScriptWrapper.py
+│   │   ├── PythonScriptWrapper.spec
+│   │   ├── README.md
+│   │   ├── runtime-module.cfg
+│   │   ├── setup.py
+│   │   └── source
+│   │       ├── celldataset.py
+│   │       ├── Display-Bold.otf
+│   │       ├── experiments
+│   │       │   ├── cell.yaml
+│   │       │   └── settings.yaml
+│   │       ├── feature.py
+│   │       ├── hist_match.py
+│   │       ├── __init__.py
+│   │       ├── losses.py
+│   │       ├── model
+│   │       │   └── regression
+│   │       │       └── cfg.txt
+│   │       ├── model.py
+│   │       ├── postprocessing.py
+│   │       ├── predict2.py
+│   │       ├── predictFAILTOM.py
+│   │       ├── predict.py
+│   │       ├── README.md
+│   │       └── utils
+│   │           ├── criterions.py
+│   │           ├── __init__.py
+│   │           └── parser.py
+│   ├── CellSegmentation2D
+│   │   ├── CellSegmentation2D.xml
+│   │   ├── Dockerfile
+│   │   ├── getSegmentation.py
+│   │   ├── getSegmentation.pyc
+│   │   ├── module.log
+│   │   ├── public
+│   │   │   ├── help.html
+│   │   │   ├── thumbnail.png
+│   │   │   ├── webapp.css
+│   │   │   └── webapp.js
+│   │   ├── __pycache__
+│   │   │   ├── getSegmentation.cpython-35.pyc
+│   │   │   └── getSegmentation.cpython-36.pyc
+│   │   ├── PythonScript.log
+│   │   ├── PythonScriptWrapper
+│   │   ├── PythonScriptWrapper.py
+│   │   ├── PythonScriptWrapper.spec
+│   │   ├── runtime-module.cfg
+│   │   ├── setup.py
+│   │   └── source
+│   │       ├── getSegmentation_dir.py
+│   │       ├── getSegmentation.py
+│   │       ├── getSegmentation.pyc
+│   │       ├── __init__.py
+│   │       └── __init__.pyc
+│   ├── COVIDPredictor
+│   │   ├── Dockerfile
+│   │   ├── model2.pt
+│   │   ├── public
+│   │   │   └── thumbnail.png
+│   │   ├── PythonScriptWrapper
+│   │   ├── PythonScriptWrapper.py
+│   │   ├── runtime-module.cfg
+│   │   └── setup.py
+│   ├── CovidResnet
+│   │   ├── bqapi
+│   │   │   ├── blockable_module.py
+│   │   │   ├── bqclass.py
+│   │   │   ├── bqclass.py.bak
+│   │   │   ├── bqfeature.py
+│   │   │   ├── bqfeature.py.bak
+│   │   │   ├── bqnode.py
+│   │   │   ├── bqnode.py.bak
+│   │   │   ├── casauth.py
+│   │   │   ├── casauth.py.bak
+│   │   │   ├── comm.py
+│   │   │   ├── comm.py.bak
+│   │   │   ├── exception.py
+│   │   │   ├── __init__.py
+│   │   │   ├── __pycache__
+│   │   │   │   ├── bqclass.cpython-38.pyc
+│   │   │   │   ├── casauth.cpython-38.pyc
+│   │   │   │   ├── comm.cpython-38.pyc
+│   │   │   │   ├── exception.cpython-38.pyc
+│   │   │   │   ├── __init__.cpython-38.pyc
+│   │   │   │   ├── services.cpython-38.pyc
+│   │   │   │   ├── types.cpython-38.pyc
+│   │   │   │   ├── util.cpython-38.pyc
+│   │   │   │   └── xmldict.cpython-38.pyc
+│   │   │   ├── RequestsMonkeyPatch
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── monkeypatch.py
+│   │   │   │   ├── __pycache__
+│   │   │   │   │   ├── __init__.cpython-38.pyc
+│   │   │   │   │   ├── monkeypatch.cpython-38.pyc
+│   │   │   │   │   └── requests_patch.cpython-38.pyc
+│   │   │   │   └── requests_patch.py
+│   │   │   ├── services.py
+│   │   │   ├── services.py.bak
+│   │   │   ├── tests
+│   │   │   │   ├── conftest.py
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── setup.cfg.sample
+│   │   │   │   ├── test_bqapi.py
+│   │   │   │   ├── test_bqclass.py
+│   │   │   │   ├── test_bqfeature.py
+│   │   │   │   ├── test_comm.py
+│   │   │   │   ├── test_util.py
+│   │   │   │   └── util.py
+│   │   │   ├── types.py
+│   │   │   ├── util.py
+│   │   │   ├── util.py.bak
+│   │   │   ├── xmldict.py
+│   │   │   └── xmldict.py.bak
+│   │   ├── covidresnet.xml
+│   │   ├── CovidResnet.xml
+│   │   ├── Dockerfile
+│   │   ├── predict.py
+│   │   ├── public
+│   │   │   └── thumbnail.png
+│   │   ├── PythonScriptWrapper
+│   │   ├── PythonScriptWrapper.py
+│   │   ├── requirement.txt
+│   │   ├── runtime-module.cfg
+│   │   ├── setup.py
+│   │   └── source
+│   ├── Dream3D
+│   │   ├── Dockerfile
+│   │   ├── Dream3D
+│   │   ├── Dream3D.py
+│   │   ├── Dream3D.xml
+│   │   ├── public
+│   │   │   ├── help.html
+│   │   │   ├── thumbnail.png
+│   │   │   ├── webapp.css
+│   │   │   └── webapp.js
+│   │   ├── runtime-module.cfg
+│   │   └── setup.py
+│   ├── Dream3D_6.5.10
+│   │   ├── Dockerfile
+│   │   ├── Dream3D
+│   │   ├── Dream3D_6.5.10.xml
+│   │   ├── Dream3D.py
+│   │   ├── public
+│   │   │   ├── help.html
+│   │   │   ├── thumbnail.png
+│   │   │   ├── webapp.css
+│   │   │   └── webapp.js
+│   │   ├── runtime-module.cfg
+│   │   └── setup.py
+│   ├── Dream3D_UCSB
+│   │   ├── Dockerfile
+│   │   ├── Dream3D
+│   │   ├── Dream3D.py
+│   │   ├── Dream3D_UCSB.xml
+│   │   ├── public
+│   │   │   ├── help.html
+│   │   │   ├── thumbnail.png
+│   │   │   ├── webapp.css
+│   │   │   └── webapp.js
+│   │   ├── runtime-module.cfg
+│   │   └── setup.py
+│   ├── EnhancedReconstruction
+│   │   ├── bqapi
+│   │   │   ├── blockable_module.py
+│   │   │   ├── bqclass.py
+│   │   │   ├── bqclass.py.bak
+│   │   │   ├── bqfeature.py
+│   │   │   ├── bqfeature.py.bak
+│   │   │   ├── bqnode.py
+│   │   │   ├── bqnode.py.bak
+│   │   │   ├── casauth.py
+│   │   │   ├── casauth.py.bak
+│   │   │   ├── comm.py
+│   │   │   ├── comm.py.bak
+│   │   │   ├── exception.py
+│   │   │   ├── __init__.py
+│   │   │   ├── RequestsMonkeyPatch
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── monkeypatch.py
+│   │   │   │   └── requests_patch.py
+│   │   │   ├── services.py
+│   │   │   ├── services.py.bak
+│   │   │   ├── tests
+│   │   │   │   ├── conftest.py
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── setup.cfg.sample
+│   │   │   │   ├── test_bqapi.py
+│   │   │   │   ├── test_bqclass.py
+│   │   │   │   ├── test_bqfeature.py
+│   │   │   │   ├── test_comm.py
+│   │   │   │   ├── test_util.py
+│   │   │   │   └── util.py
+│   │   │   ├── types.py
+│   │   │   ├── util.py
+│   │   │   ├── util.py.bak
+│   │   │   ├── xmldict.py
+│   │   │   └── xmldict.py.bak
+│   │   ├── checkpoints
+│   │   │   ├── model_5.pt
+│   │   │   └── model.pt
+│   │   ├── Dockerfile
+│   │   ├── EnhancedReconstruction.xml
+│   │   ├── model.py
+│   │   ├── predict.py
+│   │   ├── public
+│   │   │   ├── help.html
+│   │   │   ├── thumbnail.png
+│   │   │   ├── webapp.css
+│   │   │   ├── webapp.js
+│   │   │   └── workflow.png
+│   │   ├── PythonScriptWrapper
+│   │   ├── PythonScriptWrapper.py
+│   │   ├── PythonScriptWrapper.spec
+│   │   ├── runtime-module.cfg
+│   │   ├── setup.py
+│   │   └── source
+│   │       ├── checkpoints
+│   │       │   ├── model_5.pt
+│   │       │   └── model.pt
+│   │       ├── data
+│   │       │   └── plant15
+│   │       │       └── 0hrs_plant15_trim-acylYFP
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_030.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_031.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_032.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_033.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_034.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_035.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_036.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_037.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_038.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_039.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_040.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_041.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_042.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_043.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_044.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_045.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_046.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_047.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_048.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_049.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_050.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_051.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_052.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_053.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_054.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_055.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_056.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_057.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_058.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_059.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_060.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_061.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_062.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_063.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_064.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_065.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_066.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_067.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_068.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_069.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_070.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_071.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_072.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_073.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_074.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_075.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_076.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_077.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_078.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_079.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_080.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_081.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_082.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_083.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_084.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_085.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_086.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_087.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_088.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_089.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_090.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_091.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_092.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_093.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_094.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_095.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_096.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_097.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_098.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_099.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_100.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_101.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_102.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_103.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_104.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_105.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_106.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_107.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_108.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_109.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_110.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_111.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_112.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_113.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_114.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_115.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_116.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_117.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_118.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_119.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_120.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_121.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_122.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_123.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_124.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_125.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_126.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_127.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_128.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_129.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_130.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_131.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_132.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_133.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_134.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_135.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_136.tif
+│   │       │           ├── 0hrs_plant15_trim-acylYFP_137.tif
+│   │       │           └── 0hrs_plant15_trim-acylYFP_138.tif
+│   │       ├── dataloader.py
+│   │       ├── __init__.py
+│   │       ├── model.py
+│   │       ├── predict.py
+│   │       ├── __pycache__
+│   │       │   ├── __init__.cpython-36.pyc
+│   │       │   └── model.cpython-36.pyc
+│   │       ├── sequential_dataloader.py
+│   │       └── train.py
+│   ├── FluorescentCavities
+│   │   ├── +bim
+│   │   │   ├── LICENCE.txt
+│   │   │   └── write_ome_tiff.m
+│   │   ├── +bq
+│   │   │   ├── cacerts
+│   │   │   │   ├── cacerts
+│   │   │   │   ├── cacerts_letsencrypt
+│   │   │   │   ├── isrgrootx1.der
+│   │   │   │   ├── letsencryptauthorityx3.der
+│   │   │   │   ├── lets-encrypt-x3-cross-signed.der
+│   │   │   │   └── lets-encrypt-x4-cross-signed.der
+│   │   │   ├── connect.m
+│   │   │   ├── @Dataset
+│   │   │   │   └── Dataset.m
+│   │   │   ├── delete.m
+│   │   │   ├── @Factory
+│   │   │   │   └── Factory.m
+│   │   │   ├── @Feature
+│   │   │   │   └── Feature.m
+│   │   │   ├── @File
+│   │   │   │   └── File.m
+│   │   │   ├── get.m
+│   │   │   ├── get_xml.m
+│   │   │   ├── @Gobject
+│   │   │   │   └── Gobject.m
+│   │   │   ├── @Image
+│   │   │   │   └── Image.m
+│   │   │   ├── iminfo.m
+│   │   │   ├── imread.m
+│   │   │   ├── imreadND.m
+│   │   │   ├── @Node
+│   │   │   │   └── Node.m
+│   │   │   ├── parsetags.m
+│   │   │   ├── path2url.m
+│   │   │   ├── post.m
+│   │   │   ├── post_mpform.m
+│   │   │   ├── put.m
+│   │   │   ├── @Session
+│   │   │   │   └── Session.m
+│   │   │   ├── str2xml.m
+│   │   │   ├── @Url
+│   │   │   │   └── Url.m
+│   │   │   ├── url2path.m
+│   │   │   ├── urlread.m
+│   │   │   ├── urlwrite.m
+│   │   │   └── xml2str.m
+│   │   ├── cacerts_letsencrypt
+│   │   ├── cavity_segmentation.m
+│   │   ├── FluorescentCavities.m
+│   │   ├── FluorescentCavities.xml
+│   │   ├── java.opts
+│   │   ├── public
+│   │   │   ├── help.html
+│   │   │   ├── images
+│   │   │   │   ├── nuclei_2ch.png
+│   │   │   │   ├── nuclei.png
+│   │   │   │   ├── nucleur_3d.png
+│   │   │   │   ├── nucleur_plain.png
+│   │   │   │   └── thumbnail.png
+│   │   │   ├── thumbnail.png
+│   │   │   ├── webapp.css
+│   │   │   └── webapp.js
+│   │   ├── reduce_poly.m
+│   │   ├── runtime-module.cfg
+│   │   └── setup.py
+│   ├── GraphcutSegmentation
+│   │   ├── +bim
+│   │   │   ├── LICENCE.txt
+│   │   │   └── write_ome_tiff.m
+│   │   ├── +bq
+│   │   │   ├── cacerts
+│   │   │   │   ├── cacerts
+│   │   │   │   ├── cacerts_letsencrypt
+│   │   │   │   ├── isrgrootx1.der
+│   │   │   │   ├── letsencryptauthorityx3.der
+│   │   │   │   ├── lets-encrypt-x3-cross-signed.der
+│   │   │   │   └── lets-encrypt-x4-cross-signed.der
+│   │   │   ├── connect.m
+│   │   │   ├── @Dataset
+│   │   │   │   └── Dataset.m
+│   │   │   ├── delete.m
+│   │   │   ├── @Factory
+│   │   │   │   └── Factory.m
+│   │   │   ├── @Feature
+│   │   │   │   └── Feature.m
+│   │   │   ├── @File
+│   │   │   │   └── File.m
+│   │   │   ├── get.m
+│   │   │   ├── get_xml.m
+│   │   │   ├── @Gobject
+│   │   │   │   └── Gobject.m
+│   │   │   ├── @Image
+│   │   │   │   └── Image.m
+│   │   │   ├── iminfo.m
+│   │   │   ├── imread.m
+│   │   │   ├── imreadND.m
+│   │   │   ├── @Node
+│   │   │   │   └── Node.m
+│   │   │   ├── parsetags.m
+│   │   │   ├── path2url.m
+│   │   │   ├── post.m
+│   │   │   ├── post_mpform.m
+│   │   │   ├── put.m
+│   │   │   ├── @Session
+│   │   │   │   └── Session.m
+│   │   │   ├── str2xml.m
+│   │   │   ├── @Url
+│   │   │   │   └── Url.m
+│   │   │   ├── url2path.m
+│   │   │   ├── urlread.m
+│   │   │   ├── urlwrite.m
+│   │   │   └── xml2str.m
+│   │   ├── cacerts_letsencrypt
+│   │   ├── GraphcutSegmentation.m
+│   │   ├── GraphcutSegmentation.xml
+│   │   ├── java.opts
+│   │   ├── public
+│   │   │   ├── help.html
+│   │   │   ├── images
+│   │   │   │   ├── nuclei_2ch.png
+│   │   │   │   ├── nuclei.png
+│   │   │   │   ├── nucleur_3d.png
+│   │   │   │   ├── nucleur_plain.png
+│   │   │   │   └── thumbnail.png
+│   │   │   ├── thumbnail.png
+│   │   │   ├── webapp.css
+│   │   │   └── webapp.js
+│   │   ├── runtime-module.cfg
+│   │   ├── segGC.m
+│   │   ├── setup.py
+│   │   └── +utils
+│   │       ├── +gc
+│   │       │   ├── block.h
+│   │       │   ├── graph.hpp
+│   │       │   ├── maxflow_kolmogorov
+│   │       │   │   ├── block.h
+│   │       │   │   ├── CHANGES.TXT
+│   │       │   │   ├── graph.cpp
+│   │       │   │   ├── graph.h
+│   │       │   │   ├── instances.inc
+│   │       │   │   ├── maxflow.cpp
+│   │       │   │   ├── README.TXT
+│   │       │   │   └── vrl_gc.cpp
+│   │       │   └── vrl_gc.cpp
+│   │       ├── +imrender
+│   │       │   ├── LICENSE.TXT
+│   │       │   ├── +ojw
+│   │       │   │   ├── codeFlow.m
+│   │       │   │   ├── cones
+│   │       │   │   │   ├── data.mat
+│   │       │   │   │   ├── disp2.pgm
+│   │       │   │   │   ├── disp6.pgm
+│   │       │   │   │   ├── input.000.png
+│   │       │   │   │   ├── input.001.png
+│   │       │   │   │   ├── input.002.png
+│   │       │   │   │   ├── input.003.png
+│   │       │   │   │   ├── input.004.png
+│   │       │   │   │   ├── input.005.png
+│   │       │   │   │   ├── input.006.png
+│   │       │   │   │   ├── input.007.png
+│   │       │   │   │   └── input.008.png
+│   │       │   │   ├── download_stereo.m
+│   │       │   │   ├── find_interactions.cxx
+│   │       │   │   ├── find_interactions.m
+│   │       │   │   ├── ibr_edgemodes.m
+│   │       │   │   ├── ibr_fuse_depths.m
+│   │       │   │   ├── ibr_gen_cliques.cxx
+│   │       │   │   ├── ibr_gen_cliques.m
+│   │       │   │   ├── ibr_occlrender.m
+│   │       │   │   ├── ibr_render.m
+│   │       │   │   ├── occluding_pixels.m
+│   │       │   │   ├── ojw_bsxfun.m
+│   │       │   │   ├── ojw_default_options.m
+│   │       │   │   ├── ojw_genview.m
+│   │       │   │   ├── ojw_script.m
+│   │       │   │   ├── ojw_segpln.m
+│   │       │   │   ├── ojw_setup.m
+│   │       │   │   ├── ojw_stereo.m
+│   │       │   │   ├── ojw_stereo_optim.m
+│   │       │   │   ├── P2stereoP.m
+│   │       │   │   ├── P_interp.m
+│   │       │   │   ├── P_r2j.m
+│   │       │   │   ├── save_progress.m
+│   │       │   │   ├── sc.m
+│   │       │   │   ├── slice_cell_image.m
+│   │       │   │   ├── slice_cube.m
+│   │       │   │   ├── truncquad_edges.cxx
+│   │       │   │   ├── truncquad_edges.m
+│   │       │   │   ├── truncquad_modes.cxx
+│   │       │   │   └── truncquad_modes.m
+│   │       │   ├── README.TXT
+│   │       │   ├── startup.m
+│   │       │   └── +vgg
+│   │       │       ├── qpbo
+│   │       │       │   ├── block.h
+│   │       │       │   ├── CHANGES.TXT
+│   │       │       │   ├── instances.inc
+│   │       │       │   ├── QPBO.cpp
+│   │       │       │   ├── QPBO_extra.cpp
+│   │       │       │   ├── QPBO.h
+│   │       │       │   ├── QPBO_maxflow.cpp
+│   │       │       │   └── QPBO_postprocessing.cpp
+│   │       │       ├── seg_gb
+│   │       │       │   ├── convolve.h
+│   │       │       │   ├── COPYING
+│   │       │       │   ├── disjoint-set.h
+│   │       │       │   ├── filter.h
+│   │       │       │   ├── image.h
+│   │       │       │   ├── imconv.h
+│   │       │       │   ├── imutil.h
+│   │       │       │   ├── misc.h
+│   │       │       │   ├── pnmfile.h
+│   │       │       │   ├── README
+│   │       │       │   ├── segment-graph.h
+│   │       │       │   └── segment-image.h
+│   │       │       ├── seg_ms
+│   │       │       │   ├── ms.cpp
+│   │       │       │   ├── ms.h
+│   │       │       │   ├── msImageProcessor.cpp
+│   │       │       │   ├── msImageProcessor.h
+│   │       │       │   ├── MSReadme.txt
+│   │       │       │   ├── msSys.cpp
+│   │       │       │   ├── msSys.h
+│   │       │       │   ├── RAList.cpp
+│   │       │       │   ├── RAList.h
+│   │       │       │   ├── rlist.cpp
+│   │       │       │   ├── rlist.h
+│   │       │       │   └── tdef.h
+│   │       │       ├── trw-s
+│   │       │       │   ├── CHANGES.TXT
+│   │       │       │   ├── instances.h
+│   │       │       │   ├── instances.inc
+│   │       │       │   ├── LICENSE.TXT
+│   │       │       │   ├── minimize.cpp
+│   │       │       │   ├── MRFEnergy.cpp
+│   │       │       │   ├── MRFEnergy.h
+│   │       │       │   ├── ordering.cpp
+│   │       │       │   ├── README.TXT
+│   │       │       │   ├── treeProbabilities.cpp
+│   │       │       │   ├── typeBinaryFast.h
+│   │       │       │   ├── typeBinary.h
+│   │       │       │   ├── typeGeneral.h
+│   │       │       │   ├── typePotts.h
+│   │       │       │   ├── typeTruncatedLinear2D.h
+│   │       │       │   ├── typeTruncatedLinear.h
+│   │       │       │   ├── typeTruncatedQuadratic2D.h
+│   │       │       │   └── typeTruncatedQuadratic.h
+│   │       │       ├── vgg_argparse.m
+│   │       │       ├── vgg_interp2.cxx
+│   │       │       ├── vgg_interp2.m
+│   │       │       ├── vgg_mexcompile.m
+│   │       │       ├── vgg_mexcompile_script.m
+│   │       │       ├── vgg_progressbar.m
+│   │       │       ├── vgg_qpbo.cxx
+│   │       │       ├── vgg_qpbo.m
+│   │       │       ├── vgg_segment_gb.cxx
+│   │       │       ├── vgg_segment_gb.m
+│   │       │       ├── vgg_segment_gb.mexmaci64
+│   │       │       ├── vgg_segment_ms.cxx
+│   │       │       ├── vgg_segment_ms.m
+│   │       │       ├── vgg_trw_bp.cxx
+│   │       │       ├── vgg_trw_bp.m
+│   │       │       └── vgg_vis_sup.m
+│   │       ├── +vgg_segment
+│   │       │   ├── vgg_segment_gb.m
+│   │       │   └── vgg_segment_gb.mexmaci64
+│   │       ├── vrl_colorhistbp.m
+│   │       ├── vrl_colorhist.m
+│   │       ├── vrl_Construct2DLattice.m
+│   │       └── vrl_edgeweight.m
+│   ├── ImageJ
+│   │   ├── Dockerfile
+│   │   ├── ImageJ
+│   │   ├── ImageJ.py
+│   │   ├── ImageJ.xml
+│   │   ├── public
+│   │   │   ├── help.html
+│   │   │   └── thumbnail.png
+│   │   ├── runtime-module.cfg
+│   │   └── setup.py
+│   ├── ImageMatting
+│   │   ├── +bim
+│   │   │   ├── LICENCE.txt
+│   │   │   └── write_ome_tiff.m
+│   │   ├── +bq
+│   │   │   ├── cacerts
+│   │   │   │   ├── cacerts
+│   │   │   │   ├── cacerts_letsencrypt
+│   │   │   │   ├── isrgrootx1.der
+│   │   │   │   ├── letsencryptauthorityx3.der
+│   │   │   │   ├── lets-encrypt-x3-cross-signed.der
+│   │   │   │   └── lets-encrypt-x4-cross-signed.der
+│   │   │   ├── connect.m
+│   │   │   ├── @Dataset
+│   │   │   │   └── Dataset.m
+│   │   │   ├── delete.m
+│   │   │   ├── @Factory
+│   │   │   │   └── Factory.m
+│   │   │   ├── @Feature
+│   │   │   │   └── Feature.m
+│   │   │   ├── @File
+│   │   │   │   └── File.m
+│   │   │   ├── get.m
+│   │   │   ├── get_xml.m
+│   │   │   ├── @Gobject
+│   │   │   │   └── Gobject.m
+│   │   │   ├── @Image
+│   │   │   │   └── Image.m
+│   │   │   ├── iminfo.m
+│   │   │   ├── imread.m
+│   │   │   ├── imreadND.m
+│   │   │   ├── @Node
+│   │   │   │   └── Node.m
+│   │   │   ├── parsetags.m
+│   │   │   ├── path2url.m
+│   │   │   ├── post.m
+│   │   │   ├── post_mpform.m
+│   │   │   ├── put.m
+│   │   │   ├── @Session
+│   │   │   │   └── Session.m
+│   │   │   ├── str2xml.m
+│   │   │   ├── @Url
+│   │   │   │   └── Url.m
+│   │   │   ├── url2path.m
+│   │   │   ├── urlread.m
+│   │   │   ├── urlwrite.m
+│   │   │   └── xml2str.m
+│   │   ├── bqGrabCut.m
+│   │   ├── cacerts_letsencrypt
+│   │   ├── ImageMatting.m
+│   │   ├── ImageMatting.xml
+│   │   ├── java.opts
+│   │   ├── public
+│   │   │   ├── 1.png
+│   │   │   ├── 2.png
+│   │   │   ├── 3.png
+│   │   │   ├── help.html
+│   │   │   └── thumbnail.png
+│   │   ├── runtime-module.cfg
+│   │   ├── setup.py
+│   │   ├── vrl_ssTracer.m
+│   │   └── vrl_tools
+│   │       ├── ~$l_toolbox.rtf
+│   │       ├── adjustRange.m
+│   │       ├── anisodiff.m
+│   │       ├── compute_signed_dist.m
+│   │       ├── f_GennerateSigDist.m
+│   │       ├── get_contours.m
+│   │       ├── kovesi_anisodiff.m
+│   │       ├── linux_gc
+│   │       │   ├── block.h
+│   │       │   ├── graph.hpp
+│   │       │   └── vrl_gc_linux.cpp
+│   │       ├── maxflow_kolmogorov
+│   │       │   ├── block.h
+│   │       │   ├── CHANGES.TXT
+│   │       │   ├── graph.cpp
+│   │       │   ├── graph.h
+│   │       │   ├── instances.inc
+│   │       │   ├── maxflow.cpp
+│   │       │   ├── README.TXT
+│   │       │   └── vrl_gc.cpp
+│   │       ├── videoConv.m
+│   │       ├── vrl_colorhistbp.m
+│   │       ├── vrl_colorhist.m
+│   │       ├── vrlConstrastPotentials.m
+│   │       ├── vrl_Construct2DLattice.m
+│   │       ├── vrl_Construct3DLattice.m
+│   │       ├── vrlConstructGraph.m
+│   │       ├── vrlContour.m
+│   │       ├── vrl_edgeweight.m
+│   │       ├── vrl_feathistbp.m
+│   │       ├── vrl_feathist.m
+│   │       ├── vrl_freehand_draw.m
+│   │       ├── vrl_gensigneddist.m
+│   │       ├── vrl_get_search_path.m
+│   │       ├── vrl_grayhistbp.m
+│   │       ├── vrl_grayhist.m
+│   │       ├── vrl_hog.m
+│   │       ├── vrl_imgrad.m
+│   │       ├── vrl_improcess.m
+│   │       ├── vrl_imsmooth.m
+│   │       ├── vrl_interp2_wrapper.m
+│   │       ├── vrl_msPatchHistbp.m
+│   │       ├── vrl_msPatchHist.m
+│   │       ├── vrl_robPatchHist.m
+│   │       ├── vrl_shapeMoments.m
+│   │       ├── vrl_show_interaction.m
+│   │       ├── vrl_symkldiv.m
+│   │       ├── vrl_user_interaction.m
+│   │       ├── vrl_visgcinp.m
+│   │       └── vrl_visualize_interaction_map.m
+│   ├── JavaAppletEx
+│   │   ├── JavaAppletEx.py
+│   │   ├── JavaAppletEx.sh
+│   │   ├── JavaAppletEx.xml
+│   │   ├── public
+│   │   │   ├── help.html
+│   │   │   ├── my_renderes.js
+│   │   │   ├── Sample.jar
+│   │   │   ├── Sample.jar.pack.gz
+│   │   │   ├── Sample.java
+│   │   │   ├── thumbnail.png
+│   │   │   └── webapp.css
+│   │   ├── run.bat
+│   │   ├── runtime-module.cfg
+│   │   └── setup.py
+│   ├── MaskRCNN
+│   │   ├── bqapi
+│   │   │   ├── blockable_module.py
+│   │   │   ├── bqclass.py
+│   │   │   ├── bqclass.py.bak
+│   │   │   ├── bqfeature.py
+│   │   │   ├── bqfeature.py.bak
+│   │   │   ├── bqnode.py
+│   │   │   ├── bqnode.py.bak
+│   │   │   ├── casauth.py
+│   │   │   ├── casauth.py.bak
+│   │   │   ├── comm.py
+│   │   │   ├── comm.py.bak
+│   │   │   ├── exception.py
+│   │   │   ├── __init__.py
+│   │   │   ├── RequestsMonkeyPatch
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── monkeypatch.py
+│   │   │   │   └── requests_patch.py
+│   │   │   ├── services.py
+│   │   │   ├── services.py.bak
+│   │   │   ├── tests
+│   │   │   │   ├── conftest.py
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── setup.cfg.sample
+│   │   │   │   ├── test_bqapi.py
+│   │   │   │   ├── test_bqclass.py
+│   │   │   │   ├── test_bqfeature.py
+│   │   │   │   ├── test_comm.py
+│   │   │   │   ├── test_util.py
+│   │   │   │   └── util.py
+│   │   │   ├── types.py
+│   │   │   ├── util.py
+│   │   │   ├── util.py.bak
+│   │   │   ├── xmldict.py
+│   │   │   └── xmldict.py.bak
+│   │   ├── Dockerfile
+│   │   ├── masker.py
+│   │   ├── MaskRCNN.xml
+│   │   ├── public
+│   │   │   ├── help.html
+│   │   │   ├── themask.png
+│   │   │   ├── thumbnail.jpg
+│   │   │   ├── webapp.css
+│   │   │   └── webapp.js
+│   │   ├── PythonScriptWrapper
+│   │   ├── PythonScriptWrapper.py
+│   │   ├── PythonScriptWrapper.spec
+│   │   ├── README.md
+│   │   ├── runtime-module.cfg
+│   │   ├── setup.py
+│   │   └── source
+│   │       ├── datasets
+│   │       │   ├── augment.py
+│   │       │   ├── preprocessing.py
+│   │       │   ├── rename.py
+│   │       │   └── VIA-AnnotationTool.jpg
+│   │       ├── __init__.py
+│   │       ├── LICENSE
+│   │       ├── log.py
+│   │       ├── MANIFEST.in
+│   │       ├── mrcnn
+│   │       │   ├── config.py
+│   │       │   ├── __init__.py
+│   │       │   ├── model.py
+│   │       │   ├── parallel_model.py
+│   │       │   ├── utils.py
+│   │       │   └── visualize.py
+│   │       ├── README.md
+│   │       ├── requirements.txt
+│   │       ├── samples
+│   │       │   ├── coco
+│   │       │   │   ├── coco.py
+│   │       │   │   ├── inspect_data.ipynb
+│   │       │   │   ├── inspect_model.ipynb
+│   │       │   │   ├── inspect_weights.ipynb
+│   │       │   │   └── pycocotools
+│   │       │   │       ├── cocoeval.py
+│   │       │   │       ├── coco.py
+│   │       │   │       ├── __init__.py
+│   │       │   │       ├── _mask.c
+│   │       │   │       ├── _mask.cpython-35m-x86_64-linux-gnu.so
+│   │       │   │       ├── _mask.cpython-36m-x86_64-linux-gnu.so
+│   │       │   │       ├── mask.py
+│   │       │   │       └── _mask.pyx
+│   │       │   └── demo.ipynb
+│   │       ├── setup.cfg
+│   │       └── setup.py
+│   ├── MetaData
+│   │   ├── MetaData.py
+│   │   ├── MetaData.sh
+│   │   ├── MetaData.xml
+│   │   ├── public
+│   │   │   ├── help.html
+│   │   │   └── thumbnail.png
+│   │   ├── README
+│   │   ├── runtime-module.cfg
+│   │   └── setup.py
+│   ├── MicrotubuleTracker
+│   │   ├── +bim
+│   │   │   ├── LICENCE.txt
+│   │   │   └── write_ome_tiff.m
+│   │   ├── +bq
+│   │   │   ├── cacerts
+│   │   │   │   ├── cacerts
+│   │   │   │   ├── cacerts_letsencrypt
+│   │   │   │   ├── isrgrootx1.der
+│   │   │   │   ├── letsencryptauthorityx3.der
+│   │   │   │   ├── lets-encrypt-x3-cross-signed.der
+│   │   │   │   └── lets-encrypt-x4-cross-signed.der
+│   │   │   ├── connect.m
+│   │   │   ├── @Dataset
+│   │   │   │   └── Dataset.m
+│   │   │   ├── delete.m
+│   │   │   ├── @Factory
+│   │   │   │   └── Factory.m
+│   │   │   ├── @Feature
+│   │   │   │   └── Feature.m
+│   │   │   ├── @File
+│   │   │   │   └── File.m
+│   │   │   ├── get.m
+│   │   │   ├── get_xml.m
+│   │   │   ├── @Gobject
+│   │   │   │   └── Gobject.m
+│   │   │   ├── @Image
+│   │   │   │   └── Image.m
+│   │   │   ├── iminfo.m
+│   │   │   ├── imread.m
+│   │   │   ├── imreadND.m
+│   │   │   ├── @Node
+│   │   │   │   └── Node.m
+│   │   │   ├── parsetags.m
+│   │   │   ├── path2url.m
+│   │   │   ├── post.m
+│   │   │   ├── post_mpform.m
+│   │   │   ├── put.m
+│   │   │   ├── @Session
+│   │   │   │   └── Session.m
+│   │   │   ├── str2xml.m
+│   │   │   ├── @Url
+│   │   │   │   └── Url.m
+│   │   │   ├── url2path.m
+│   │   │   ├── urlread.m
+│   │   │   ├── urlwrite.m
+│   │   │   └── xml2str.m
+│   │   ├── cacerts_letsencrypt
+│   │   ├── calculate_obs.m
+│   │   ├── calculate_obs_prob2.m
+│   │   ├── calculate_obs_prob_ext.m
+│   │   ├── calculate_obss.m
+│   │   ├── co_ord_file.txt
+│   │   ├── create_funnel.m
+│   │   ├── extract_best_path.m
+│   │   ├── extract_graph_distance.m
+│   │   ├── generate_text_file.m
+│   │   ├── generate_text_fileOUTPUT.m
+│   │   ├── generate_tr.m
+│   │   ├── get_fg_bg_model.m
+│   │   ├── get_fg_bg_model_train.m
+│   │   ├── get_pos_from_funnel.m
+│   │   ├── get_trace_for_training.m
+│   │   ├── gradient_computation_module.m
+│   │   ├── grValidation.m
+│   │   ├── image_data3.mat
+│   │   ├── image_data.mat
+│   │   ├── im_da_2.mat
+│   │   ├── java.opts
+│   │   ├── main_module_2.m
+│   │   ├── main_module.m
+│   │   ├── MainModuleNew.m
+│   │   ├── micro_tracing.m
+│   │   ├── MicrotubuleTracker.m
+│   │   ├── MicrotubuleTracker.xml
+│   │   ├── mk_stochastic.m
+│   │   ├── mmppder.m
+│   │   ├── mt_funnel.m
+│   │   ├── mt_track_config.xml
+│   │   ├── my_filter2.m
+│   │   ├── my_gradient.m
+│   │   ├── my_interp2.m
+│   │   ├── my_normpdf.m
+│   │   ├── my_vec_p_n.m
+│   │   ├── my_viterbi_path.m
+│   │   ├── normalise.m
+│   │   ├── path_conv.m
+│   │   ├── Phase_Videos
+│   │   │   └── example.avi
+│   │   ├── public
+│   │   │   ├── 1.png
+│   │   │   ├── 2.png
+│   │   │   ├── help.html
+│   │   │   └── thumbnail.png
+│   │   ├── runtime-module.cfg
+│   │   ├── setup.py
+│   │   ├── smooth_path.m
+│   │   ├── tempp.txt
+│   │   ├── tracing_module.m
+│   │   ├── tracking_module.m
+│   │   ├── trellis.m
+│   │   ├── unblank.p
+│   │   ├── xml_format.p
+│   │   ├── xml_load.p
+│   │   ├── xml_parse.p
+│   │   ├── xml_save.p
+│   │   └── xml_toolbox_version.p
+│   ├── MyData
+│   │   ├── MyData.py
+│   │   ├── MyData.sh
+│   │   ├── MyData.xml
+│   │   ├── public
+│   │   │   ├── help.html
+│   │   │   └── thumbnail.png
+│   │   ├── runtime-module.cfg
+│   │   └── setup.py
+│   ├── nphprediction
+│   │   ├── Dockerfile
+│   │   ├── nphprediction.xml
+│   │   ├── public
+│   │   │   ├── help.html
+│   │   │   ├── thumbnail.svg
+│   │   │   ├── webapp.css
+│   │   │   ├── webapp.js
+│   │   │   └── workflow.png
+│   │   ├── PythonScriptWrapper
+│   │   ├── PythonScriptWrapper.py
+│   │   ├── README.md
+│   │   ├── runtime-module.cfg
+│   │   ├── setup.py
+│   │   └── source
+│   │       ├── convUtils.py
+│   │       ├── COPYRIGHT
+│   │       ├── imUtils.py
+│   │       ├── imUtils.pyc
+│   │       ├── __init__.py
+│   │       ├── models
+│   │       │   ├── criterions.py
+│   │       │   ├── criterions.pyc
+│   │       │   ├── deepmedic.py
+│   │       │   ├── deepmedic.pyc
+│   │       │   ├── __init__.py
+│   │       │   ├── __init__.pyc
+│   │       │   ├── munet.py
+│   │       │   ├── munet.pyc
+│   │       │   ├── __pycache__
+│   │       │   │   ├── criterions.cpython-36.pyc
+│   │       │   │   ├── deepmedic.cpython-36.pyc
+│   │       │   │   ├── __init__.cpython-36.pyc
+│   │       │   │   ├── munet.cpython-36.pyc
+│   │       │   │   └── unet.cpython-36.pyc
+│   │       │   ├── unet.py
+│   │       │   └── unet.pyc
+│   │       ├── nph_prediction.py
+│   │       ├── postUtils.py
+│   │       ├── __pycache__
+│   │       │   ├── convUtils.cpython-37.pyc
+│   │       │   ├── imUtils.cpython-37.pyc
+│   │       │   ├── postUtils.cpython-37.pyc
+│   │       │   ├── segUtils.cpython-37.pyc
+│   │       │   └── unetSeg.cpython-37.pyc
+│   │       ├── segUtils.py
+│   │       ├── segUtils.pyc
+│   │       ├── TissueClassifier.pkl
+│   │       ├── unet_ce_hard_per_im_s8841_all
+│   │       │   └── cfg.yaml
+│   │       └── unetSeg.py
+│   ├── NuclearDetector3D
+│   │   ├── analyze_matches.m
+│   │   ├── analyze_match.m
+│   │   ├── +bim
+│   │   │   ├── LICENCE.txt
+│   │   │   └── write_ome_tiff.m
+│   │   ├── BOBlobDetector3D.m
+│   │   ├── BOLoGFilterS1D.m
+│   │   ├── BONuclearDetector3D.m
+│   │   ├── BOSeedSearch3D.m
+│   │   ├── +bq
+│   │   │   ├── cacerts
+│   │   │   │   ├── cacerts
+│   │   │   │   ├── cacerts_letsencrypt
+│   │   │   │   ├── isrgrootx1.der
+│   │   │   │   ├── letsencryptauthorityx3.der
+│   │   │   │   ├── lets-encrypt-x3-cross-signed.der
+│   │   │   │   └── lets-encrypt-x4-cross-signed.der
+│   │   │   ├── connect.m
+│   │   │   ├── @Dataset
+│   │   │   │   └── Dataset.m
+│   │   │   ├── delete.m
+│   │   │   ├── @Factory
+│   │   │   │   └── Factory.m
+│   │   │   ├── @Feature
+│   │   │   │   └── Feature.m
+│   │   │   ├── @File
+│   │   │   │   └── File.m
+│   │   │   ├── get.m
+│   │   │   ├── get_xml.m
+│   │   │   ├── @Gobject
+│   │   │   │   └── Gobject.m
+│   │   │   ├── @Image
+│   │   │   │   └── Image.m
+│   │   │   ├── iminfo.m
+│   │   │   ├── imread.m
+│   │   │   ├── imreadND.m
+│   │   │   ├── @Node
+│   │   │   │   └── Node.m
+│   │   │   ├── parsetags.m
+│   │   │   ├── path2url.m
+│   │   │   ├── post.m
+│   │   │   ├── post_mpform.m
+│   │   │   ├── put.m
+│   │   │   ├── @Session
+│   │   │   │   └── Session.m
+│   │   │   ├── str2xml.m
+│   │   │   ├── @Url
+│   │   │   │   └── Url.m
+│   │   │   ├── url2path.m
+│   │   │   ├── urlread.m
+│   │   │   ├── urlwrite.m
+│   │   │   └── xml2str.m
+│   │   ├── cacerts_letsencrypt
+│   │   ├── condor_matlab
+│   │   ├── Filter3DPointsByDescriptor.m
+│   │   ├── find_pointcloud_centroids.m
+│   │   ├── GetCentroidDescriptors3D.m
+│   │   ├── gobjects2points.m
+│   │   ├── imdiff.m
+│   │   ├── imresize3d.m
+│   │   ├── java.opts
+│   │   ├── matches2gobjects.m
+│   │   ├── match_points.m
+│   │   ├── MedAD.m
+│   │   ├── MergeThresholds.m
+│   │   ├── NuclearDetector3D.m
+│   │   ├── NuclearDetector3D.xml
+│   │   ├── points2gobjects.m
+│   │   ├── public
+│   │   │   ├── help.html
+│   │   │   ├── images
+│   │   │   │   ├── nuclei_2ch.png
+│   │   │   │   ├── nuclei.png
+│   │   │   │   ├── nucleur_3d.png
+│   │   │   │   ├── nucleur_plain.png
+│   │   │   │   └── thumbnail.png
+│   │   │   ├── thumbnail.png
+│   │   │   ├── webapp.css
+│   │   │   └── webapp.js
+│   │   ├── run_local.m
+│   │   ├── run.m
+│   │   ├── runtime-module.cfg
+│   │   ├── scalev.m
+│   │   ├── setup.py
+│   │   └── tests
+│   │       ├── config.cfg
+│   │       ├── __init__.py
+│   │       ├── run_tests.py
+│   │       ├── tests_base.py
+│   │       └── times.txt
+│   ├── NuclearFilter
+│   │   ├── +bim
+│   │   │   ├── LICENCE.txt
+│   │   │   └── write_ome_tiff.m
+│   │   ├── +bq
+│   │   │   ├── cacerts
+│   │   │   │   ├── cacerts
+│   │   │   │   ├── cacerts_letsencrypt
+│   │   │   │   ├── isrgrootx1.der
+│   │   │   │   ├── letsencryptauthorityx3.der
+│   │   │   │   ├── lets-encrypt-x3-cross-signed.der
+│   │   │   │   └── lets-encrypt-x4-cross-signed.der
+│   │   │   ├── connect.m
+│   │   │   ├── @Dataset
+│   │   │   │   └── Dataset.m
+│   │   │   ├── delete.m
+│   │   │   ├── @Factory
+│   │   │   │   └── Factory.m
+│   │   │   ├── @Feature
+│   │   │   │   └── Feature.m
+│   │   │   ├── @File
+│   │   │   │   └── File.m
+│   │   │   ├── get.m
+│   │   │   ├── get_xml.m
+│   │   │   ├── @Gobject
+│   │   │   │   └── Gobject.m
+│   │   │   ├── @Image
+│   │   │   │   └── Image.m
+│   │   │   ├── iminfo.m
+│   │   │   ├── imread.m
+│   │   │   ├── imreadND.m
+│   │   │   ├── @Node
+│   │   │   │   └── Node.m
+│   │   │   ├── parsetags.m
+│   │   │   ├── path2url.m
+│   │   │   ├── post.m
+│   │   │   ├── post_mpform.m
+│   │   │   ├── put.m
+│   │   │   ├── @Session
+│   │   │   │   └── Session.m
+│   │   │   ├── str2xml.m
+│   │   │   ├── @Url
+│   │   │   │   └── Url.m
+│   │   │   ├── url2path.m
+│   │   │   ├── urlread.m
+│   │   │   ├── urlwrite.m
+│   │   │   └── xml2str.m
+│   │   ├── cacerts_letsencrypt
+│   │   ├── enhance3d.m
+│   │   ├── java.opts
+│   │   ├── NuclearFilter.m
+│   │   ├── NuclearFilter.xml
+│   │   ├── public
+│   │   │   ├── help.html
+│   │   │   ├── images
+│   │   │   │   ├── filtered.jpg
+│   │   │   │   ├── nuclei_2ch.png
+│   │   │   │   ├── nuclei.png
+│   │   │   │   ├── original.jpg
+│   │   │   │   └── result.png
+│   │   │   ├── thumbnail.png
+│   │   │   ├── webapp.css
+│   │   │   └── webapp.js
+│   │   ├── run_local.m
+│   │   ├── run.m
+│   │   ├── runtime-module.cfg
+│   │   └── setup.py
+│   ├── NuclearTracker
+│   │   ├── +bim
+│   │   │   ├── LICENCE.txt
+│   │   │   └── write_ome_tiff.m
+│   │   ├── +bq
+│   │   │   ├── cacerts
+│   │   │   │   ├── cacerts
+│   │   │   │   ├── cacerts_letsencrypt
+│   │   │   │   ├── isrgrootx1.der
+│   │   │   │   ├── letsencryptauthorityx3.der
+│   │   │   │   ├── lets-encrypt-x3-cross-signed.der
+│   │   │   │   └── lets-encrypt-x4-cross-signed.der
+│   │   │   ├── connect.m
+│   │   │   ├── @Dataset
+│   │   │   │   └── Dataset.m
+│   │   │   ├── delete.m
+│   │   │   ├── @Factory
+│   │   │   │   └── Factory.m
+│   │   │   ├── @Feature
+│   │   │   │   └── Feature.m
+│   │   │   ├── @File
+│   │   │   │   └── File.m
+│   │   │   ├── get.m
+│   │   │   ├── get_xml.m
+│   │   │   ├── @Gobject
+│   │   │   │   └── Gobject.m
+│   │   │   ├── @Image
+│   │   │   │   └── Image.m
+│   │   │   ├── iminfo.m
+│   │   │   ├── imread.m
+│   │   │   ├── imreadND.m
+│   │   │   ├── @Node
+│   │   │   │   └── Node.m
+│   │   │   ├── parsetags.m
+│   │   │   ├── path2url.m
+│   │   │   ├── post.m
+│   │   │   ├── post_mpform.m
+│   │   │   ├── put.m
+│   │   │   ├── @Session
+│   │   │   │   └── Session.m
+│   │   │   ├── str2xml.m
+│   │   │   ├── @Url
+│   │   │   │   └── Url.m
+│   │   │   ├── url2path.m
+│   │   │   ├── urlread.m
+│   │   │   ├── urlwrite.m
+│   │   │   └── xml2str.m
+│   │   ├── cacerts_letsencrypt
+│   │   ├── geometricmatch.m
+│   │   ├── java.opts
+│   │   ├── NuclearTracker.m
+│   │   ├── NuclearTracker.xml
+│   │   ├── public
+│   │   │   ├── help.html
+│   │   │   ├── images
+│   │   │   │   ├── nuclei.png
+│   │   │   │   └── result.png
+│   │   │   ├── thumbnail.png
+│   │   │   ├── webapp.css
+│   │   │   └── webapp.js
+│   │   ├── runtime-module.cfg
+│   │   └── setup.py
+│   ├── PHFDetector
+│   │   ├── analyse.m
+│   │   ├── +bim
+│   │   │   ├── LICENCE.txt
+│   │   │   └── write_ome_tiff.m
+│   │   ├── +bq
+│   │   │   ├── cacerts
+│   │   │   │   ├── cacerts
+│   │   │   │   ├── cacerts_letsencrypt
+│   │   │   │   ├── isrgrootx1.der
+│   │   │   │   ├── letsencryptauthorityx3.der
+│   │   │   │   ├── lets-encrypt-x3-cross-signed.der
+│   │   │   │   └── lets-encrypt-x4-cross-signed.der
+│   │   │   ├── connect.m
+│   │   │   ├── @Dataset
+│   │   │   │   └── Dataset.m
+│   │   │   ├── delete.m
+│   │   │   ├── @Factory
+│   │   │   │   └── Factory.m
+│   │   │   ├── @Feature
+│   │   │   │   └── Feature.m
+│   │   │   ├── @File
+│   │   │   │   └── File.m
+│   │   │   ├── get.m
+│   │   │   ├── get_xml.m
+│   │   │   ├── @Gobject
+│   │   │   │   └── Gobject.m
+│   │   │   ├── @Image
+│   │   │   │   └── Image.m
+│   │   │   ├── iminfo.m
+│   │   │   ├── imread.m
+│   │   │   ├── imreadND.m
+│   │   │   ├── @Node
+│   │   │   │   └── Node.m
+│   │   │   ├── parsetags.m
+│   │   │   ├── path2url.m
+│   │   │   ├── post.m
+│   │   │   ├── post_mpform.m
+│   │   │   ├── put.m
+│   │   │   ├── @Session
+│   │   │   │   └── Session.m
+│   │   │   ├── str2xml.m
+│   │   │   ├── @Url
+│   │   │   │   └── Url.m
+│   │   │   ├── url2path.m
+│   │   │   ├── urlread.m
+│   │   │   ├── urlwrite.m
+│   │   │   └── xml2str.m
+│   │   ├── cacerts_letsencrypt
+│   │   ├── classify.m
+│   │   ├── getVolume.m
+│   │   ├── java.opts
+│   │   ├── MedAD.m
+│   │   ├── PHFDetector.m
+│   │   ├── PHFDetector.xml
+│   │   ├── public
+│   │   │   ├── help.html
+│   │   │   ├── images
+│   │   │   │   ├── nuclei.png
+│   │   │   │   └── result.png
+│   │   │   ├── thumbnail.png
+│   │   │   ├── webapp.css
+│   │   │   └── webapp.js
+│   │   ├── runtime-module.cfg
+│   │   └── setup.py
+│   ├── PlantcellSegment
+│   │   ├── analyticsGathering.m
+│   │   ├── +bim
+│   │   │   └── write_ome_tiff.m
+│   │   ├── +bq
+│   │   │   ├── connect.m
+│   │   │   ├── delete.m
+│   │   │   ├── @Factory
+│   │   │   │   └── Factory.m
+│   │   │   ├── @File
+│   │   │   │   └── File.m
+│   │   │   ├── get.m
+│   │   │   ├── get_xml.m
+│   │   │   ├── @Gobject
+│   │   │   │   └── Gobject.m
+│   │   │   ├── @Image
+│   │   │   │   └── Image.m
+│   │   │   ├── iminfo.m
+│   │   │   ├── imread.m
+│   │   │   ├── imreadND.m
+│   │   │   ├── @Node
+│   │   │   │   └── Node.m
+│   │   │   ├── parsetags.m
+│   │   │   ├── post.m
+│   │   │   ├── post_mpform.m
+│   │   │   ├── put.m
+│   │   │   ├── @Session
+│   │   │   │   └── Session.m
+│   │   │   ├── str2xml.m
+│   │   │   ├── @Url
+│   │   │   │   └── Url.m
+│   │   │   ├── urlread.m
+│   │   │   ├── urlwrite.m
+│   │   │   └── xml2str.m
+│   │   ├── ContourSample.m
+│   │   ├── findCellInfo.m
+│   │   ├── getImageFromCell.m
+│   │   ├── getPhi.m
+│   │   ├── ImProc.m
+│   │   ├── java.opts
+│   │   ├── normalize.m
+│   │   ├── PlantcellSegment.m
+│   │   ├── PlantcellSegment.xml
+│   │   ├── public
+│   │   │   ├── 1.tif
+│   │   │   ├── help.html
+│   │   │   ├── images
+│   │   │   │   ├── output.jpg
+│   │   │   │   └── roi.jpg
+│   │   │   ├── index.html
+│   │   │   ├── thumbnail.png
+│   │   │   ├── webapp.css
+│   │   │   └── webapp.js
+│   │   ├── runtime-module.cfg
+│   │   ├── setup.py
+│   │   ├── subSegmentation.m
+│   │   ├── test_segment
+│   │   │   ├── data1
+│   │   │   │   ├── img_t2_z1.tif
+│   │   │   │   ├── img_t2_z2.tif
+│   │   │   │   ├── img_t2_z3.tif
+│   │   │   │   ├── img_t3_z1.tif
+│   │   │   │   ├── img_t3_z2.tif
+│   │   │   │   ├── img_t3_z3.tif
+│   │   │   │   ├── img_t4_z1.tif
+│   │   │   │   ├── img_t4_z2.tif
+│   │   │   │   ├── img_t4_z3.tif
+│   │   │   │   └── test_segment.zip
+│   │   │   ├── data1.tif
+│   │   │   ├── data2
+│   │   │   │   ├── 0000.tif
+│   │   │   │   ├── 0001.tif
+│   │   │   │   ├── 0002.tif
+│   │   │   │   ├── 0003.tif
+│   │   │   │   ├── 0004.tif
+│   │   │   │   ├── 0005.tif
+│   │   │   │   ├── 0006.tif
+│   │   │   │   ├── 0007.tif
+│   │   │   │   └── data2.zip
+│   │   │   ├── data2.tif
+│   │   │   ├── data3
+│   │   │   │   ├── data3.zip
+│   │   │   │   ├── img_t01_z1.tif
+│   │   │   │   ├── img_t01_z2.tif
+│   │   │   │   ├── img_t01_z3.tif
+│   │   │   │   ├── img_t02_z1.tif
+│   │   │   │   ├── img_t02_z2.tif
+│   │   │   │   ├── img_t02_z3.tif
+│   │   │   │   ├── img_t03_z1.tif
+│   │   │   │   ├── img_t03_z2.tif
+│   │   │   │   ├── img_t03_z3.tif
+│   │   │   │   ├── img_t04_z1.tif
+│   │   │   │   ├── img_t04_z2.tif
+│   │   │   │   ├── img_t04_z3.tif
+│   │   │   │   ├── img_t05_z1.tif
+│   │   │   │   ├── img_t05_z2.tif
+│   │   │   │   ├── img_t05_z3.tif
+│   │   │   │   ├── img_t06_z1.tif
+│   │   │   │   ├── img_t06_z2.tif
+│   │   │   │   ├── img_t06_z3.tif
+│   │   │   │   ├── img_t07_z1.tif
+│   │   │   │   ├── img_t07_z2.tif
+│   │   │   │   ├── img_t07_z3.tif
+│   │   │   │   ├── img_t08_z1.tif
+│   │   │   │   ├── img_t08_z2.tif
+│   │   │   │   ├── img_t08_z3.tif
+│   │   │   │   ├── img_t09_z1.tif
+│   │   │   │   ├── img_t09_z2.tif
+│   │   │   │   ├── img_t09_z3.tif
+│   │   │   │   ├── img_t10_z1.tif
+│   │   │   │   ├── img_t10_z2.tif
+│   │   │   │   ├── img_t10_z3.tif
+│   │   │   │   ├── img_t11_z1.tif
+│   │   │   │   ├── img_t11_z2.tif
+│   │   │   │   └── img_t11_z3.tif
+│   │   │   ├── data3.tif
+│   │   │   ├── stack1-24_segmentation.tif
+│   │   │   ├── time1-4,slice1-3.tif
+│   │   │   └── time1-9, slice1-3.tif
+│   │   ├── threshStudy.m
+│   │   └── watershed_seg.m
+│   ├── PlantcellTracking
+│   │   ├── adjacentcell_tracking.m
+│   │   ├── analyticsGathering.m
+│   │   ├── +bim
+│   │   │   └── write_ome_tiff.m
+│   │   ├── bounda.m
+│   │   ├── +bq
+│   │   │   ├── connect.m
+│   │   │   ├── delete.m
+│   │   │   ├── @Factory
+│   │   │   │   └── Factory.m
+│   │   │   ├── @File
+│   │   │   │   └── File.m
+│   │   │   ├── get.m
+│   │   │   ├── get_xml.m
+│   │   │   ├── @Gobject
+│   │   │   │   └── Gobject.m
+│   │   │   ├── @Image
+│   │   │   │   └── Image.m
+│   │   │   ├── iminfo.m
+│   │   │   ├── imread.m
+│   │   │   ├── imreadND.m
+│   │   │   ├── @Node
+│   │   │   │   └── Node.m
+│   │   │   ├── parsetags.m
+│   │   │   ├── post.m
+│   │   │   ├── post_mpform.m
+│   │   │   ├── put.m
+│   │   │   ├── @Session
+│   │   │   │   └── Session.m
+│   │   │   ├── str2xml.m
+│   │   │   ├── @Url
+│   │   │   │   └── Url.m
+│   │   │   ├── urlread.m
+│   │   │   ├── urlwrite.m
+│   │   │   └── xml2str.m
+│   │   ├── cell_neighbor.m
+│   │   ├── cell_sequence_old.m
+│   │   ├── cell_tracking2.m
+│   │   ├── centralcell_trackingn_s.m
+│   │   ├── centralcell_trackingn_un.m
+│   │   ├── findCellInfo.m
+│   │   ├── full_tracking2.m
+│   │   ├── full_tracking2_s.m
+│   │   ├── getcentroid_f.m
+│   │   ├── getcentroid.m
+│   │   ├── getImageFromCell.m
+│   │   ├── getPhi.m
+│   │   ├── graph_distance.m
+│   │   ├── graphmatrix.m
+│   │   ├── ImProc.m
+│   │   ├── java.opts
+│   │   ├── lineage_structure.m
+│   │   ├── normalize.m
+│   │   ├── PlantcellTracking.m
+│   │   ├── PlantcellTracking.xml
+│   │   ├── public
+│   │   │   ├── 1.tif
+│   │   │   ├── help.html
+│   │   │   ├── images
+│   │   │   │   ├── nuclei_2ch.png
+│   │   │   │   ├── nuclei.png
+│   │   │   │   ├── nucleur_3d.png
+│   │   │   │   ├── nucleur_plain.png
+│   │   │   │   ├── segmented_image.jpg
+│   │   │   │   ├── single_slice.png
+│   │   │   │   ├── single_slice.tif
+│   │   │   │   └── thumbnail.png
+│   │   │   ├── index.html
+│   │   │   ├── thumbnail.png
+│   │   │   ├── webapp.css
+│   │   │   └── webapp.js
+│   │   ├── runtime-module.cfg
+│   │   ├── setup.py
+│   │   ├── spatial_sequence.m
+│   │   ├── subSegmentation.m
+│   │   ├── temporal_sequence.m
+│   │   ├── threshStudy.m
+│   │   └── watershed_seg.m
+│   ├── README.txt
+│   ├── RootTip
+│   │   ├── BQPhytomorph.pm
+│   │   ├── launchMatlab.pl
+│   │   ├── matlab
+│   │   │   ├── araGT.m
+│   │   │   ├── AUTO1.m
+│   │   │   ├── AUTO2.m
+│   │   │   ├── cornerstrength.m
+│   │   │   ├── DC.m
+│   │   │   ├── diffmethod.m
+│   │   │   ├── findFileSequences.m
+│   │   │   ├── getFileList.m
+│   │   │   ├── getMidlines.m
+│   │   │   ├── handleFLIP.m
+│   │   │   ├── loader.m
+│   │   │   ├── low_res2.m
+│   │   │   ├── low_res.m
+│   │   │   ├── my_corner.m
+│   │   │   ├── myMID.m
+│   │   │   ├── nonmaxsuppts.m
+│   │   │   ├── PCA_FIT.m
+│   │   │   ├── PCA_REPROJ.m
+│   │   │   ├── singleLoop.m
+│   │   │   ├── spec_getFileList.m
+│   │   │   ├── SPEC_getMidlines.m
+│   │   │   ├── structureTensor.m
+│   │   │   └── Wdig.m
+│   │   ├── public
+│   │   │   ├── help.html
+│   │   │   ├── my_renderes.js
+│   │   │   └── thumbnail.png
+│   │   ├── README
+│   │   ├── RootTip.pl
+│   │   ├── RootTip.py
+│   │   ├── RootTip.xml
+│   │   ├── runtime-module.cfg
+│   │   ├── setup.py
+│   │   ├── sourceme
+│   │   └── xml.pl
+│   ├── RootTipMulti
+│   │   ├── matlab
+│   │   │   ├── ba_interp2.m
+│   │   │   ├── cornerMap.m
+│   │   │   ├── cornerstrength.m
+│   │   │   ├── diffmethod.m
+│   │   │   ├── findFileSequences.m
+│   │   │   ├── getFileList.m
+│   │   │   ├── getInitPoints.m
+│   │   │   ├── Ldig.m
+│   │   │   ├── loader_compare.m
+│   │   │   ├── loader.m
+│   │   │   ├── main_func.m
+│   │   │   ├── maizeG.m
+│   │   │   ├── my_corner.m
+│   │   │   ├── my_corner_TRACK.m
+│   │   │   ├── nonmaxsuppts.m
+│   │   │   ├── PCA_FIT.m
+│   │   │   ├── PCA_REPROJ.m
+│   │   │   ├── PCA_RESIM.m
+│   │   │   ├── QCS.m
+│   │   │   ├── roll_main.m
+│   │   │   ├── roll_samp.m
+│   │   │   ├── spec_evolveNB_ver1.m
+│   │   │   ├── spec_getFileList_ver1.m
+│   │   │   ├── spec_getInitPoints_ver1.m
+│   │   │   ├── spec_main_ver1.m
+│   │   │   ├── spec_my_corner_TRACK.m
+│   │   │   ├── spec_QCS_ver1.m
+│   │   │   ├── spec_roll_main_ver1.m
+│   │   │   ├── spec_use_seed_counter_ver1.m
+│   │   │   ├── spec_use_tip_finder_ver1.m
+│   │   │   ├── structureTensor.m
+│   │   │   ├── train_corner.m
+│   │   │   ├── train_num_Seeds.m
+│   │   │   ├── use_seed_counter.m
+│   │   │   ├── use_tip_finder.m
+│   │   │   ├── view_tip_finder.m
+│   │   │   └── Wdig.m
+│   │   ├── public
+│   │   │   ├── help.html
+│   │   │   ├── images
+│   │   │   │   ├── IBM229s4.ome.tif.display.png
+│   │   │   │   ├── IBM229s4.ome.tif.display_zoom.png
+│   │   │   │   ├── initial_tips.png
+│   │   │   │   └── tips.png
+│   │   │   ├── my_renderes.js
+│   │   │   ├── thumbnail.png
+│   │   │   └── webapp.css
+│   │   ├── RootTipMulti.pl
+│   │   ├── RootTipMulti.py
+│   │   ├── RootTipMulti.xml
+│   │   ├── runtime-module.cfg
+│   │   └── setup.py
+│   ├── SeamCarvingDetection
+│   │   ├── bqconfig.json
+│   │   ├── Dockerfile
+│   │   ├── LICENSE
+│   │   ├── models
+│   │   │   └── README.md
+│   │   ├── public
+│   │   │   ├── help.html
+│   │   │   ├── help.md
+│   │   │   ├── sc_figure.png
+│   │   │   ├── sc_image.png
+│   │   │   └── thumbnail.jpg
+│   │   ├── PythonScriptWrapper.py
+│   │   ├── README.md
+│   │   ├── runtime-module.cfg
+│   │   ├── SeamCarvingDetection.xml
+│   │   ├── src
+│   │   │   ├── BQ_run_module.py
+│   │   │   └── helper_modules
+│   │   │       ├── detectors.py
+│   │   │       ├── img_loader.py
+│   │   │       ├── img_transforms.py
+│   │   │       ├── unet_models.py
+│   │   │       ├── upsample.py
+│   │   │       └── validations.py
+│   │   ├── test_PythonScriptWrapper.py
+│   │   └── xml_template
+│   ├── SeedSize
+│   │   ├── launch.py
+│   │   ├── matlab
+│   │   │   ├── dig.m
+│   │   │   ├── measure.m
+│   │   │   └── seedSize.m
+│   │   ├── public
+│   │   │   ├── help.html
+│   │   │   ├── images
+│   │   │   │   ├── img003_100.png
+│   │   │   │   ├── img003.png
+│   │   │   │   ├── plot.png
+│   │   │   │   ├── results.png
+│   │   │   │   └── thumbnail.png
+│   │   │   ├── my_renderes.js
+│   │   │   └── webapp.css
+│   │   ├── runtime-module.cfg
+│   │   ├── SeedSize.py
+│   │   ├── SeedSize.xml
+│   │   └── setup.py
+│   ├── ShExample
+│   │   ├── list_arguments
+│   │   ├── public
+│   │   │   └── module_thumbnail.png
+│   │   ├── README
+│   │   ├── runtime-module.cfg
+│   │   └── ShExample.xml
+│   ├── TwoPhasePrediction
+│   │   ├── Dockerfile
+│   │   ├── predict_strength
+│   │   ├── predict_strength.py
+│   │   ├── predict_strength.spec
+│   │   ├── public
+│   │   │   ├── help.html
+│   │   │   ├── marat_workflow.png
+│   │   │   ├── thumbnail.png
+│   │   │   ├── webapp.css
+│   │   │   └── webapp.js
+│   │   ├── PythonScriptWrapper
+│   │   ├── PythonScriptWrapper.py
+│   │   ├── runtime-module.cfg
+│   │   ├── setup.py
+│   │   └── TwoPhasePrediction.xml
+│   ├── UNPORTED
+│   │   ├── Botanicam_old
+│   │   │   ├── +bim
+│   │   │   │   └── write_ome_tiff.m
+│   │   │   ├── Botanicam.m
+│   │   │   ├── Botanicam.xml
+│   │   │   ├── +bq
+│   │   │   │   ├── connect.m
+│   │   │   │   ├── delete.m
+│   │   │   │   ├── @Factory
+│   │   │   │   │   └── Factory.m
+│   │   │   │   ├── @File
+│   │   │   │   │   └── File.m
+│   │   │   │   ├── get.m
+│   │   │   │   ├── get_xml.m
+│   │   │   │   ├── @Gobject
+│   │   │   │   │   └── Gobject.m
+│   │   │   │   ├── @Image
+│   │   │   │   │   └── Image.m
+│   │   │   │   ├── iminfo.m
+│   │   │   │   ├── imread.m
+│   │   │   │   ├── imreadND.m
+│   │   │   │   ├── @Node
+│   │   │   │   │   └── Node.m
+│   │   │   │   ├── parsetags.m
+│   │   │   │   ├── post.m
+│   │   │   │   ├── post_mpform.m
+│   │   │   │   ├── put.m
+│   │   │   │   ├── @Session
+│   │   │   │   │   └── Session.m
+│   │   │   │   ├── str2xml.m
+│   │   │   │   ├── @Url
+│   │   │   │   │   └── Url.m
+│   │   │   │   ├── urlread.m
+│   │   │   │   ├── urlwrite.m
+│   │   │   │   └── xml2str.m
+│   │   │   ├── Fea_Gabor_brodatz.m
+│   │   │   ├── FFTSD.m
+│   │   │   ├── gabor_filter_gen.m
+│   │   │   ├── gabor.m
+│   │   │   ├── generate_SVM_feature.m
+│   │   │   ├── get_feature_vector_SeparateMB.m
+│   │   │   ├── get_specie.m
+│   │   │   ├── htseg.m
+│   │   │   ├── ModelFiles
+│   │   │   │   ├── BotanicamModelBush.xml
+│   │   │   │   ├── BotanicamModelBush.zip
+│   │   │   │   ├── BotanicamModelLeaf.xml
+│   │   │   │   ├── BotanicamModelLeaf.zip
+│   │   │   │   └── model_upload.txt
+│   │   │   ├── public
+│   │   │   │   ├── help.html
+│   │   │   │   ├── images
+│   │   │   │   │   ├── background_bottom.jpg
+│   │   │   │   │   ├── background_bottom.png
+│   │   │   │   │   ├── background_cloud.png
+│   │   │   │   │   ├── background_grass.jpg
+│   │   │   │   │   ├── background_grass.png
+│   │   │   │   │   ├── background_sun.png
+│   │   │   │   │   ├── example.png
+│   │   │   │   │   └── gobject selection.jpg
+│   │   │   │   ├── thumbnail.png
+│   │   │   │   ├── webapp.css
+│   │   │   │   └── webapp.js
+│   │   │   ├── run_gplant_recognizer.m
+│   │   │   ├── run_lplant_recognizer.m
+│   │   │   ├── runtime-module.cfg
+│   │   │   ├── setup.py
+│   │   │   └── Sobelhist.m
+│   │   ├── BotanicamTrainer_old
+│   │   │   ├── +bim
+│   │   │   │   └── write_ome_tiff.m
+│   │   │   ├── BotanicamTrainer.m
+│   │   │   ├── BotanicamTrainer.xml
+│   │   │   ├── +bq
+│   │   │   │   ├── connect.m
+│   │   │   │   ├── delete.m
+│   │   │   │   ├── @Factory
+│   │   │   │   │   └── Factory.m
+│   │   │   │   ├── @File
+│   │   │   │   │   └── File.m
+│   │   │   │   ├── get.m
+│   │   │   │   ├── get_xml.m
+│   │   │   │   ├── @Gobject
+│   │   │   │   │   └── Gobject.m
+│   │   │   │   ├── @Image
+│   │   │   │   │   └── Image.m
+│   │   │   │   ├── iminfo.m
+│   │   │   │   ├── imread.m
+│   │   │   │   ├── imreadND.m
+│   │   │   │   ├── @Node
+│   │   │   │   │   └── Node.m
+│   │   │   │   ├── parsetags.m
+│   │   │   │   ├── post.m
+│   │   │   │   ├── post_mpform.m
+│   │   │   │   ├── put.m
+│   │   │   │   ├── @Session
+│   │   │   │   │   └── Session.m
+│   │   │   │   ├── str2xml.m
+│   │   │   │   ├── @Url
+│   │   │   │   │   └── Url.m
+│   │   │   │   ├── urlread.m
+│   │   │   │   ├── urlwrite.m
+│   │   │   │   └── xml2str.m
+│   │   │   ├── CalculateDescriptors.m
+│   │   │   ├── CreateDictionary.m
+│   │   │   ├── Fea_Gabor_brodatz.m
+│   │   │   ├── FFTSD.m
+│   │   │   ├── gabor_filter_gen.m
+│   │   │   ├── gabor.m
+│   │   │   ├── generate_SVM_feature.m
+│   │   │   ├── get_feature_vector_SeparateMB.m
+│   │   │   ├── htseg.m
+│   │   │   ├── public
+│   │   │   │   ├── help.html
+│   │   │   │   ├── images
+│   │   │   │   │   ├── Addbutton.jpg
+│   │   │   │   │   ├── background_bottom.jpg
+│   │   │   │   │   ├── background_bottom.png
+│   │   │   │   │   ├── background_cloud.png
+│   │   │   │   │   ├── background_grass.jpg
+│   │   │   │   │   ├── background_grass.png
+│   │   │   │   │   ├── background_sun.png
+│   │   │   │   │   ├── example.png
+│   │   │   │   │   ├── ResourceBrowser.jpg
+│   │   │   │   │   ├── Selectbutton.jpg
+│   │   │   │   │   ├── SelectQuery.jpg
+│   │   │   │   │   ├── SelectQuery.png
+│   │   │   │   │   └── TagSelect.jpg
+│   │   │   │   ├── thumbnail.png
+│   │   │   │   ├── webapp.css
+│   │   │   │   └── webapp.js
+│   │   │   ├── runtime-module.cfg
+│   │   │   ├── setup.py
+│   │   │   ├── Sobelhist.m
+│   │   │   └── train_svm.m
+│   │   ├── CellCountingEvaluation
+│   │   │   ├── CellCountingEvaluation.m
+│   │   │   ├── CellCountingEvaluation.xml
+│   │   │   └── eval_countingcell.m
+│   │   ├── EvalRetinalLayerSeg
+│   │   │   ├── Compute_PR.m
+│   │   │   ├── eval_segmentingretina.m
+│   │   │   ├── RetinalImageEvaluation.m
+│   │   │   ├── RetinalImageEvaluation.xml
+│   │   │   └── seg2bmap.m
+│   │   ├── ImageBasedToolForCountingNuclei
+│   │   │   ├── blobdetector.m
+│   │   │   ├── calculateArea.m
+│   │   │   ├── find_local_max_2D.m
+│   │   │   ├── ImageBasedToolForCountingNuclei.m
+│   │   │   ├── ImageBasedToolForCountingNuclei.xml
+│   │   │   ├── lapofgau.m
+│   │   │   ├── replaceStr.m
+│   │   │   ├── tempimg.jpeg
+│   │   │   └── tempimg.tiff
+│   │   ├── itkFastMarchingSegmentationPY
+│   │   │   ├── FastMarchingSegmentation_cmd.py
+│   │   │   ├── FastMarchingSegmentation.py
+│   │   │   ├── itkFastMarchingSegmentationPY.py
+│   │   │   ├── itkFastMarchingSegmentationPY.xml
+│   │   │   └── test_FastMarchingSegmentation.py
+│   │   ├── itkGeodesicSegmentationPY
+│   │   │   ├── GeodesicSegmentation_cmd.py
+│   │   │   ├── GeodesicSegmentation.py
+│   │   │   ├── itkGeodesicSegmentationPY.py
+│   │   │   ├── itkGeodesicSegmentationPY.xml
+│   │   │   └── test_GeodesicSegmentation.py
+│   │   ├── itkModulePY
+│   │   │   ├── itkModulePY.py
+│   │   │   ├── itkModulePY.xml
+│   │   │   ├── test_itkModule.py
+│   │   │   └── test.py
+│   │   ├── Kmeans
+│   │   │   ├── Kmeans.m
+│   │   │   └── Kmeans.xml
+│   │   ├── LayerBoundarySegmentation
+│   │   │   ├── GPACLayerBoundarySegmentation.m
+│   │   │   ├── InitializePhi.m
+│   │   │   ├── LayerBoundarySegmentation.m
+│   │   │   ├── LayerBoundarySegmentation.xml
+│   │   │   ├── LBSDelGobj.m
+│   │   │   ├── MutualPrior_GPAC.mexglx
+│   │   │   ├── README
+│   │   │   ├── Retina_code
+│   │   │   │   ├── adjacency.m
+│   │   │   │   ├── dirichletboundary.m
+│   │   │   │   ├── Fast_Marching_OP.dll
+│   │   │   │   ├── Fast_Marching_OP.mexglx
+│   │   │   │   ├── f_checkLoop.m
+│   │   │   │   ├── f_detectLoop.m
+│   │   │   │   ├── f_discrepancy.m
+│   │   │   │   ├── f_evaluate.m
+│   │   │   │   ├── f_EvolveSnake.m
+│   │   │   │   ├── f_example.m
+│   │   │   │   ├── f_ExtForceFull.m
+│   │   │   │   ├── f_fastmarching_evaluation_segmentation.m
+│   │   │   │   ├── f_get1mask.m
+│   │   │   │   ├── f_get_fmeasure.m
+│   │   │   │   ├── f_get_fmeasurestd.m
+│   │   │   │   ├── f_getNormalCurvature.m
+│   │   │   │   ├── f_getProfile.m
+│   │   │   │   ├── f_getWindow.m
+│   │   │   │   ├── fill_test.m
+│   │   │   │   ├── f_InternalForce.m
+│   │   │   │   ├── f_intersect.m
+│   │   │   │   ├── f_mask.m
+│   │   │   │   ├── f_measure.m
+│   │   │   │   ├── f_measure_warea.m
+│   │   │   │   ├── f_m.m
+│   │   │   │   ├── f_pt2line.m
+│   │   │   │   ├── f_pt2mask2.m
+│   │   │   │   ├── f_ResampleCurve.m
+│   │   │   │   ├── f_segment.m
+│   │   │   │   ├── func_Drawline.m
+│   │   │   │   ├── get_file_list.m
+│   │   │   │   ├── get_search_path.m
+│   │   │   │   ├── laplacian.m
+│   │   │   │   ├── lattice.m
+│   │   │   │   ├── makeweights.m
+│   │   │   │   ├── m_displayGroundTruth.m
+│   │   │   │   ├── m_evaluation.m
+│   │   │   │   ├── m_example.m
+│   │   │   │   ├── m_get_fmeasure.m
+│   │   │   │   ├── m_get_std_fmeasure.m
+│   │   │   │   ├── m_mask.m
+│   │   │   │   ├── m_segment.m
+│   │   │   │   ├── normalize.m
+│   │   │   │   ├── readme.txt
+│   │   │   │   ├── retina_segment.m
+│   │   │   │   ├── retina_train.m
+│   │   │   │   └── script.m
+│   │   │   ├── seg2bmap.m
+│   │   │   └── SimByTiles4Mutual.mexglx
+│   │   ├── Mask2Gobj
+│   │   │   ├── delGobj.m
+│   │   │   ├── Mask2Gobj.m
+│   │   │   └── Mask2Gobj.xml
+│   │   ├── MicrotubuleSegmentation
+│   │   │   ├── lib
+│   │   │   │   ├── mt_gauss_kernel.m
+│   │   │   │   ├── mt_niblack_threshold.m
+│   │   │   │   └── mt_segmentation.m
+│   │   │   ├── MicrotubuleSegmentation.m
+│   │   │   ├── MicrotubuleSegmentation.xml
+│   │   │   └── MicrotubulesSegOK.m
+│   │   ├── MTAnalysisTool
+│   │   │   ├── lib
+│   │   │   │   ├── Constants.java
+│   │   │   │   ├── Event.java
+│   │   │   │   ├── gridxy.m
+│   │   │   │   ├── TrackEvent.java
+│   │   │   │   └── trackevent_tester.java
+│   │   │   ├── lib2
+│   │   │   │   ├── Constants.java
+│   │   │   │   ├── Event.java
+│   │   │   │   ├── TrackEvent.java
+│   │   │   │   └── trackevent_tester.java
+│   │   │   ├── MTAnalysisTool.m
+│   │   │   └── MTAnalysisTool.xml
+│   │   ├── MTDynamicsAnalysis
+│   │   │   ├── 072507_c2_03_t01.xls
+│   │   │   ├── MTDynamicsAnalysis.m
+│   │   │   ├── MTDynamicsAnalysis.xml
+│   │   │   ├── segment_length_series.m
+│   │   │   ├── unblank.m
+│   │   │   ├── unblank.p
+│   │   │   ├── upload_xls_data.m
+│   │   │   ├── xml_parseany.m
+│   │   │   ├── xml_parseany.p
+│   │   │   ├── xml_toolbox_version.m
+│   │   │   └── xml_toolbox_version.p
+│   │   ├── MTTracker
+│   │   │   ├── all_shortest_paths.m
+│   │   │   ├── astar_search.m
+│   │   │   ├── bellman_ford_sp.m
+│   │   │   ├── betweenness_centrality.m
+│   │   │   ├── bfs.m
+│   │   │   ├── biconnected_components.m
+│   │   │   ├── breadth_first_search.m
+│   │   │   ├── calculate_d_deriv.cpp
+│   │   │   ├── calculate_directions.m
+│   │   │   ├── calculate_obs_prob.cpp
+│   │   │   ├── calculate_vec_p_n.m
+│   │   │   ├── clustering_coefficients.m
+│   │   │   ├── combine_visitors.m
+│   │   │   ├── compile.m
+│   │   │   ├── components.m
+│   │   │   ├── compute_gradients.m
+│   │   │   ├── Contents.m
+│   │   │   ├── core_numbers.m
+│   │   │   ├── create_funnel.m
+│   │   │   ├── custom
+│   │   │   │   └── dijkstra_all_sp.m
+│   │   │   ├── cycle_graph.m
+│   │   │   ├── dag_sp.m
+│   │   │   ├── depth_first_search.m
+│   │   │   ├── dfs.m
+│   │   │   ├── dijkstra_sp.m
+│   │   │   ├── edge_weight_index.m
+│   │   │   ├── edmonds_maximum_cardinality_matching.m
+│   │   │   ├── edmunds_karp_max_flow.m
+│   │   │   ├── erdos_reyni.m
+│   │   │   ├── floyd_warshall_all_sp.m
+│   │   │   ├── get_fg_bg_model.m
+│   │   │   ├── get_pos_from_funnel.m
+│   │   │   ├── get_search_path.m
+│   │   │   ├── grid_graph.m
+│   │   │   ├── indexed_sparse.m
+│   │   │   ├── init_path.m
+│   │   │   ├── @inplace
+│   │   │   │   ├── assign.m
+│   │   │   │   ├── display.m
+│   │   │   │   ├── double.m
+│   │   │   │   ├── end.m
+│   │   │   │   ├── inplace.m
+│   │   │   │   ├── size.m
+│   │   │   │   ├── subsasgn.m
+│   │   │   │   └── subsref.m
+│   │   │   ├── @ipdouble
+│   │   │   │   └── ipdouble.m
+│   │   │   ├── @ipint32
+│   │   │   │   └── ipint32.m
+│   │   │   ├── johnson_all_sp.m
+│   │   │   ├── kolmogorov_max_flow.m
+│   │   │   ├── kruskal_mst.m
+│   │   │   ├── launch.py
+│   │   │   ├── lengauer_tarjan_dominator_tree.m
+│   │   │   ├── libmbgl
+│   │   │   │   ├── compile-linux-32.sh
+│   │   │   │   ├── compile-linux-64-large.sh
+│   │   │   │   ├── compile-linux-64.sh
+│   │   │   │   ├── compile-macosx-intel-32.sh
+│   │   │   │   ├── compile-macosx-ppc-32.sh
+│   │   │   │   ├── compile.sh
+│   │   │   │   ├── compile-win32.bat
+│   │   │   │   ├── compile-win64.bat
+│   │   │   │   ├── components.cc
+│   │   │   │   ├── crm_graph.hpp
+│   │   │   │   ├── include
+│   │   │   │   │   ├── matlab_bgl.h
+│   │   │   │   │   └── matlab_bgl_types.h
+│   │   │   │   ├── libmbgl.vcproj
+│   │   │   │   ├── libmbgl.vcproj.MITHANDOR.mithandor.user
+│   │   │   │   ├── max_flow.cc
+│   │   │   │   ├── orderings.cc
+│   │   │   │   ├── Release
+│   │   │   │   │   └── libmbgl-pcwin32.lib
+│   │   │   │   ├── searches.cc
+│   │   │   │   ├── shortest_path.cc
+│   │   │   │   ├── spanning_trees.cc
+│   │   │   │   ├── statistics.cc
+│   │   │   │   ├── stop_visitors.hpp
+│   │   │   │   ├── visitor_macros.hpp
+│   │   │   │   └── yasmic
+│   │   │   │       ├── boost_mod
+│   │   │   │       │   ├── bellman_ford_shortest_paths.hpp
+│   │   │   │       │   ├── betweenness_centrality.hpp
+│   │   │   │       │   ├── core_numbers.hpp
+│   │   │   │       │   ├── floyd_warshall_shortest.hpp
+│   │   │   │       │   ├── gzip.hpp
+│   │   │   │       │   ├── johnson_all_pairs_shortest.hpp
+│   │   │   │       │   ├── kolmogorov_max_flow.hpp
+│   │   │   │       │   ├── kruskal_min_spanning_tree.hpp
+│   │   │   │       │   └── zlib.cpp
+│   │   │   │       ├── generic_matrix_operations.hpp
+│   │   │   │       ├── iterator_utility.hpp
+│   │   │   │       ├── simple_csr_matrix_as_graph.hpp
+│   │   │   │       ├── simple_csr_matrix.hpp
+│   │   │   │       ├── simple_row_and_column_matrix_as_graph.hpp
+│   │   │   │       ├── simple_row_and_column_matrix.hpp
+│   │   │   │       ├── smatrix_traits.hpp
+│   │   │   │       ├── verbose_util.hpp
+│   │   │   │       ├── yasmic.cbp
+│   │   │   │       ├── yasmic.layout
+│   │   │   │       ├── yasmic.vcproj
+│   │   │   │       ├── yasmic.vcproj.DUALCORE.mithandor.user
+│   │   │   │       └── yasmic.vcproj.MITHANDOR.mithandor.user
+│   │   │   ├── matching.m
+│   │   │   ├── matlab.xsd
+│   │   │   ├── max_flow.m
+│   │   │   ├── maximal_matching.m
+│   │   │   ├── mk_stochastic.m
+│   │   │   ├── mmppder.m
+│   │   │   ├── mst.m
+│   │   │   ├── mt_funnel.m
+│   │   │   ├── mt_trace.m
+│   │   │   ├── mt_track_config.xml
+│   │   │   ├── MTTracker.m
+│   │   │   ├── MTTracker.xml
+│   │   │   ├── mt_track_init.m
+│   │   │   ├── mt_track.m
+│   │   │   ├── my_filter2.m
+│   │   │   ├── my_gradient.m
+│   │   │   ├── my_interp2.m
+│   │   │   ├── my_normpdf.m
+│   │   │   ├── my_viterbi_path.m
+│   │   │   ├── normalise.m
+│   │   │   ├── num_edges.m
+│   │   │   ├── num_vertices.m
+│   │   │   ├── path_conv.m
+│   │   │   ├── path_from_pred.m
+│   │   │   ├── prim_mst.m
+│   │   │   ├── private
+│   │   │   │   ├── astar_search_mex.c
+│   │   │   │   ├── betweenness_centrality_mex.c
+│   │   │   │   ├── bfs_dfs_vis_mex.c
+│   │   │   │   ├── bfs_mex.c
+│   │   │   │   ├── biconnected_components_mex.c
+│   │   │   │   ├── bisque_compile.m
+│   │   │   │   ├── check_matlab_bgl.m
+│   │   │   │   ├── clustering_coefficients_mex.c
+│   │   │   │   ├── common_functions.h
+│   │   │   │   ├── common_macros.h
+│   │   │   │   ├── compile.m
+│   │   │   │   ├── components_mex.c
+│   │   │   │   ├── core_numbers_mex.c
+│   │   │   │   ├── data.txt
+│   │   │   │   ├── dfs_mex.c
+│   │   │   │   ├── dominator_tree_mex.c
+│   │   │   │   ├── expand_macros.h
+│   │   │   │   ├── get_matlab_bgl_options.m
+│   │   │   │   ├── matching_mex.c
+│   │   │   │   ├── matlab_bgl_all_sp_mex.c
+│   │   │   │   ├── matlab_bgl_sp_mex.c
+│   │   │   │   ├── max_flow_mex.c
+│   │   │   │   ├── merge_structs.m
+│   │   │   │   ├── mst_mex.c
+│   │   │   │   ├── path_from_pred_mex.c
+│   │   │   │   ├── test_matching_mex.c
+│   │   │   │   ├── todo.m
+│   │   │   │   ├── topological_order_mex.c
+│   │   │   │   └── visitor_macros.h
+│   │   │   ├── project_to_tube.m
+│   │   │   ├── push_relabel_max_flow.m
+│   │   │   ├── run_matlab
+│   │   │   ├── runtime-module.cfg
+│   │   │   ├── set_matlab_bgl_default.m
+│   │   │   ├── setup.py
+│   │   │   ├── shortest_paths.m
+│   │   │   ├── smooth_path.m
+│   │   │   ├── star_graph.m
+│   │   │   ├── topological_order.m
+│   │   │   ├── trace_interp.m
+│   │   │   ├── tree_from_pred.m
+│   │   │   ├── trellis.m
+│   │   │   ├── wheel_graph.m
+│   │   │   └── xml_toolbox
+│   │   │       ├── contents.m
+│   │   │       ├── contents.p
+│   │   │       ├── matlab.xsd
+│   │   │       ├── strsplit.m
+│   │   │       ├── strsplit.p
+│   │   │       ├── test_datatypes.m
+│   │   │       ├── test_datatypes.p
+│   │   │       ├── test_execute.m
+│   │   │       ├── test_execute.p
+│   │   │       ├── test_xmlstrings.m
+│   │   │       ├── test_xmlstrings.p
+│   │   │       ├── unblank.m
+│   │   │       ├── unblank.p
+│   │   │       ├── xml_formatany.m
+│   │   │       ├── xml_formatany.p
+│   │   │       ├── xml_format.m
+│   │   │       ├── xml_format.p
+│   │   │       ├── xml_help.m
+│   │   │       ├── xml_help.p
+│   │   │       ├── xml_load.m
+│   │   │       ├── xml_load.p
+│   │   │       ├── xml_parseany.m
+│   │   │       ├── xml_parseany.p
+│   │   │       ├── xml_parse.m
+│   │   │       ├── xml_parse.p
+│   │   │       ├── xml_save.m
+│   │   │       ├── xml_save.p
+│   │   │       ├── xml_toolbox_test.m
+│   │   │       ├── xml_toolbox_test.p
+│   │   │       ├── xml_toolbox_version.m
+│   │   │       ├── xml_toolbox_version.p
+│   │   │       └── xml_toolbox-version.txt
+│   │   ├── MTTrackingEvaluation
+│   │   │   ├── Fast_Marching_OP.dll
+│   │   │   ├── Fast_Marching_OP.mexglx
+│   │   │   ├── f_fastmarching_evaluation.m
+│   │   │   ├── f_getstats_one_microtubule.m
+│   │   │   ├── f_hausdorff_distance.m
+│   │   │   ├── f_lengthstats.m
+│   │   │   ├── f_length_trace.m
+│   │   │   ├── f_tip_distance.m
+│   │   │   ├── f_trace_error1.m
+│   │   │   ├── get_search_path.m
+│   │   │   ├── get_stats.m
+│   │   │   ├── MTTrackingEvaluation.m
+│   │   │   ├── MTTrackingEvaluation.xml
+│   │   │   ├── unblank.m
+│   │   │   ├── unblank.p
+│   │   │   ├── xml_parseany.m
+│   │   │   ├── xml_parseany.p
+│   │   │   ├── xml_toolbox_version.m
+│   │   │   └── xml_toolbox_version.p
+│   │   ├── MutualGPACEvaluation
+│   │   │   ├── InitializePhi.m
+│   │   │   ├── MutualGPACEvaluation.m
+│   │   │   ├── MutualGPACEvaluation.xml
+│   │   │   ├── MutualPrior_GPAC.dll
+│   │   │   ├── MutualPrior_GPAC.mexglx
+│   │   │   ├── Retina_code
+│   │   │   │   ├── adjacency.m
+│   │   │   │   ├── dirichletboundary.m
+│   │   │   │   ├── Fast_Marching_OP.dll
+│   │   │   │   ├── Fast_Marching_OP.mexglx
+│   │   │   │   ├── f_checkLoop.m
+│   │   │   │   ├── f_detectLoop.m
+│   │   │   │   ├── f_discrepancy.m
+│   │   │   │   ├── f_evaluate.m
+│   │   │   │   ├── f_EvolveSnake.m
+│   │   │   │   ├── f_example.m
+│   │   │   │   ├── f_ExtForceFull.m
+│   │   │   │   ├── f_fastmarching_evaluation_segmentation.m
+│   │   │   │   ├── f_get1mask.m
+│   │   │   │   ├── f_get_fmeasure.m
+│   │   │   │   ├── f_get_fmeasurestd.m
+│   │   │   │   ├── f_getNormalCurvature.m
+│   │   │   │   ├── f_getProfile.m
+│   │   │   │   ├── f_getWindow.m
+│   │   │   │   ├── fill_test.m
+│   │   │   │   ├── f_InternalForce.m
+│   │   │   │   ├── f_intersect.m
+│   │   │   │   ├── f_mask.m
+│   │   │   │   ├── f_measure.m
+│   │   │   │   ├── f_measure_warea.m
+│   │   │   │   ├── f_pt2line.m
+│   │   │   │   ├── f_pt2mask2.m
+│   │   │   │   ├── f_ResampleCurve.m
+│   │   │   │   ├── f_segment.m
+│   │   │   │   ├── func_Drawline.m
+│   │   │   │   ├── get_file_list.m
+│   │   │   │   ├── get_search_path.m
+│   │   │   │   ├── laplacian.m
+│   │   │   │   ├── lattice.m
+│   │   │   │   ├── makeweights.m
+│   │   │   │   ├── m_displayGroundTruth.m
+│   │   │   │   ├── m_evaluation.m
+│   │   │   │   ├── m_example.m
+│   │   │   │   ├── m_get_fmeasure.m
+│   │   │   │   ├── m_get_std_fmeasure.m
+│   │   │   │   ├── m_mask.m
+│   │   │   │   ├── m_segment.m
+│   │   │   │   ├── normalize.m
+│   │   │   │   ├── readme.txt
+│   │   │   │   └── script.m
+│   │   │   ├── seg2bmap.m
+│   │   │   └── SimByTiles4Mutual.mexglx
+│   │   ├── MutualGPACRetinalLayersSegmentation
+│   │   │   ├── GPACDelAllGobj.m
+│   │   │   ├── GPACDelGobj.m
+│   │   │   ├── InitializePhi.m
+│   │   │   ├── mask2seg.m
+│   │   │   ├── MutualGPACRetinalLayersSegmentation.m
+│   │   │   ├── MutualGPACRetinalLayersSegmentation.xml
+│   │   │   ├── MutualPrior_GPAC.mexglx
+│   │   │   ├── old
+│   │   │   │   ├── data (10).TIF
+│   │   │   │   ├── data (11).TIF
+│   │   │   │   ├── dat_gt_N_im10.mat
+│   │   │   │   ├── dat_gt_N_im11.mat
+│   │   │   │   ├── f_detectLoop.m
+│   │   │   │   ├── f_EvolveSnake.m
+│   │   │   │   ├── f_ExtForceFull.m
+│   │   │   │   ├── f_GetBoundary.m
+│   │   │   │   ├── f_GetBoundary_WithLoop.m
+│   │   │   │   ├── f_getNormalCurvature.m
+│   │   │   │   ├── f_getProfile.m
+│   │   │   │   ├── f_GetWholeTraining.m
+│   │   │   │   ├── f_getWindow.m
+│   │   │   │   ├── f_InternalForce.m
+│   │   │   │   ├── f_intersect.m
+│   │   │   │   ├── f_pt2line.m
+│   │   │   │   ├── f_ResampleCurve.m
+│   │   │   │   ├── func_Drawline.m
+│   │   │   │   ├── RetinalGridSeg_OLD.m
+│   │   │   │   ├── t_snakeExample_2.m
+│   │   │   │   ├── t_snakeExample_3.m
+│   │   │   │   ├── t_snakeExample_4.m
+│   │   │   │   └── t_snakeExample.m
+│   │   │   ├── README
+│   │   │   ├── Retina_code
+│   │   │   │   ├── adjacency.m
+│   │   │   │   ├── dirichletboundary.m
+│   │   │   │   ├── Fast_Marching_OP.dll
+│   │   │   │   ├── Fast_Marching_OP.mexglx
+│   │   │   │   ├── f_checkLoop.m
+│   │   │   │   ├── f_detectLoop.m
+│   │   │   │   ├── f_discrepancy.m
+│   │   │   │   ├── f_evaluate.m
+│   │   │   │   ├── f_EvolveSnake.m
+│   │   │   │   ├── f_example.m
+│   │   │   │   ├── f_ExtForceFull.m
+│   │   │   │   ├── f_fastmarching_evaluation_segmentation.m
+│   │   │   │   ├── f_get1mask.m
+│   │   │   │   ├── f_get_fmeasure.m
+│   │   │   │   ├── f_get_fmeasurestd.m
+│   │   │   │   ├── f_getNormalCurvature.m
+│   │   │   │   ├── f_getProfile.m
+│   │   │   │   ├── f_getWindow.m
+│   │   │   │   ├── fill_test.m
+│   │   │   │   ├── f_InternalForce.m
+│   │   │   │   ├── f_intersect.m
+│   │   │   │   ├── f_mask.m
+│   │   │   │   ├── f_measure.m
+│   │   │   │   ├── f_measure_warea.m
+│   │   │   │   ├── f_m.m
+│   │   │   │   ├── f_pt2line.m
+│   │   │   │   ├── f_pt2mask2.m
+│   │   │   │   ├── f_ResampleCurve.m
+│   │   │   │   ├── f_segment.m
+│   │   │   │   ├── func_Drawline.m
+│   │   │   │   ├── get_file_list.m
+│   │   │   │   ├── get_search_path.m
+│   │   │   │   ├── laplacian.m
+│   │   │   │   ├── lattice.m
+│   │   │   │   ├── makeweights.m
+│   │   │   │   ├── m_displayGroundTruth.m
+│   │   │   │   ├── m_evaluation.m
+│   │   │   │   ├── m_example.m
+│   │   │   │   ├── m_get_fmeasure.m
+│   │   │   │   ├── m_get_std_fmeasure.m
+│   │   │   │   ├── m_mask.m
+│   │   │   │   ├── m_segment.m
+│   │   │   │   ├── normalize.m
+│   │   │   │   ├── readme.txt
+│   │   │   │   └── script.m
+│   │   │   ├── seg2bmap.m
+│   │   │   └── SimByTiles4Mutual.mexglx
+│   │   ├── NucleiDetector
+│   │   │   ├── BOGetImageData.m
+│   │   │   ├── convnsep.m
+│   │   │   ├── delAllGobject.m
+│   │   │   ├── Detector2D
+│   │   │   │   ├── BOCreateMask2D.m
+│   │   │   │   ├── BOGaussianFilter2D.m
+│   │   │   │   ├── BOLoGDetector2D.m
+│   │   │   │   ├── BOMaskDescriptor2D.m
+│   │   │   │   ├── BONucleiDetector2D.m
+│   │   │   │   ├── BOProfileDescriptor2D.m
+│   │   │   │   ├── BOSeedSearch2D.m
+│   │   │   │   ├── BOStatDescriptor2D.m
+│   │   │   │   └── func_DrawLine.m
+│   │   │   ├── Detector3D
+│   │   │   │   ├── BO3DFiltering.m
+│   │   │   │   ├── BO3DLogKernel.m
+│   │   │   │   ├── BO3DMaskDescriptor.m
+│   │   │   │   ├── BO3DProfileDescriptor.m
+│   │   │   │   ├── BO3DStatDescriptor.m
+│   │   │   │   ├── BOCreateMask3D.m
+│   │   │   │   ├── BOGaussian3DFastDiv.m
+│   │   │   │   ├── BOGaussian3DFast.m
+│   │   │   │   ├── BOGaussian3D.m
+│   │   │   │   ├── BOLoGDetector3D.m
+│   │   │   │   ├── BONucleiDetector3D.m
+│   │   │   │   ├── BOSeedSearch.m
+│   │   │   │   └── bresenham_line_3D.m
+│   │   │   ├── isvectord.m
+│   │   │   ├── launch.py
+│   │   │   ├── logkernel.m
+│   │   │   ├── NucleiDetector.m
+│   │   │   ├── NucleiDetector.xml
+│   │   │   ├── runtime-module.cfg
+│   │   │   └── setup.py
+│   │   ├── NucleiDetector2D
+│   │   │   ├── BOCreateMask2D.m
+│   │   │   ├── BOGaussianFilter2D.m
+│   │   │   ├── BOGetImageData.m
+│   │   │   ├── BOLoGDetector2D.m
+│   │   │   ├── BOMaskDescriptor2D.m
+│   │   │   ├── BONucleiDetector2D.m
+│   │   │   ├── BOProfileDescriptor2D.m
+│   │   │   ├── BOSeedSearch2D.m
+│   │   │   ├── BOStatDescriptor2D.m
+│   │   │   ├── convnsep.m
+│   │   │   ├── func_DrawLine.m
+│   │   │   ├── isvectord.m
+│   │   │   ├── logkernel.m
+│   │   │   ├── NucleiDetector2D.m
+│   │   │   └── NucleiDetector2D.xml
+│   │   ├── ProbabilisticSegmentation
+│   │   │   ├── bisquik_if.py
+│   │   │   ├── BQInterface.py
+│   │   │   ├── code
+│   │   │   │   ├── Args.h
+│   │   │   │   ├── cells.cpp
+│   │   │   │   ├── cells.h
+│   │   │   │   ├── common.h
+│   │   │   │   ├── imageIO.cpp
+│   │   │   │   ├── imageIO.h
+│   │   │   │   ├── loader.cpp
+│   │   │   │   ├── loader.h
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── RandWalk.cpp
+│   │   │   │   ├── RandWalk.h
+│   │   │   │   ├── Tmatrix.cpp
+│   │   │   │   └── Tmatrix.h
+│   │   │   ├── ProbabilisticSegmentation.py
+│   │   │   └── ProbabilisticSegmentation.xml
+│   │   ├── RetinalImageEvaluation
+│   │   │   ├── Retina_code
+│   │   │   │   ├── adjacency.m
+│   │   │   │   ├── dirichletboundary.m
+│   │   │   │   ├── Fast_Marching_OP.dll
+│   │   │   │   ├── Fast_Marching_OP.mexglx
+│   │   │   │   ├── f_checkLoop.m
+│   │   │   │   ├── f_detectLoop.m
+│   │   │   │   ├── f_discrepancy.m
+│   │   │   │   ├── f_evaluate.m
+│   │   │   │   ├── f_EvolveSnake.m
+│   │   │   │   ├── f_example.m
+│   │   │   │   ├── f_ExtForceFull.m
+│   │   │   │   ├── f_fastmarching_evaluation_segmentation.m
+│   │   │   │   ├── f_get1mask.m
+│   │   │   │   ├── f_get_fmeasure.m
+│   │   │   │   ├── f_get_fmeasurestd.m
+│   │   │   │   ├── f_getNormalCurvature.m
+│   │   │   │   ├── f_getProfile.m
+│   │   │   │   ├── f_getWindow.m
+│   │   │   │   ├── fill_test.m
+│   │   │   │   ├── f_InternalForce.m
+│   │   │   │   ├── f_intersect.m
+│   │   │   │   ├── f_mask.m
+│   │   │   │   ├── f_measure.m
+│   │   │   │   ├── f_measure_warea.m
+│   │   │   │   ├── f_pt2line.m
+│   │   │   │   ├── f_pt2mask2.m
+│   │   │   │   ├── f_ResampleCurve.m
+│   │   │   │   ├── f_segment.m
+│   │   │   │   ├── func_Drawline.m
+│   │   │   │   ├── get_file_list.m
+│   │   │   │   ├── get_search_path.m
+│   │   │   │   ├── laplacian.m
+│   │   │   │   ├── lattice.m
+│   │   │   │   ├── makeweights.m
+│   │   │   │   ├── m_displayGroundTruth.m
+│   │   │   │   ├── m_evaluation.m
+│   │   │   │   ├── m_example.m
+│   │   │   │   ├── m_get_fmeasure.m
+│   │   │   │   ├── m_get_std_fmeasure.m
+│   │   │   │   ├── m_mask.m
+│   │   │   │   ├── m_segment.m
+│   │   │   │   ├── normalize.m
+│   │   │   │   ├── readme.txt
+│   │   │   │   └── script.m
+│   │   │   ├── RetinalImageEvaluation_Gobject.m
+│   │   │   ├── RetinalImageEvaluation.m
+│   │   │   └── RetinalImageEvaluation.xml
+│   │   ├── SplinesRetinalLayersSegmentation
+│   │   │   ├── CanvasWarpTPS.m
+│   │   │   ├── ClusterNormalize.m
+│   │   │   ├── EMIterate.m
+│   │   │   ├── EStep.m
+│   │   │   ├── eval_2d_gmm.m
+│   │   │   ├── Fast_Marching_OP.mexglx
+│   │   │   ├── find_contr_pts2.m
+│   │   │   ├── GaussianMixture.m
+│   │   │   ├── GMClassLikelihood.m
+│   │   │   ├── initMixture.m
+│   │   │   ├── inpaint_nans.m
+│   │   │   ├── MDLReduceOrder.m
+│   │   │   ├── MStep.m
+│   │   │   ├── Mutual_CV_Multi_TPS.m
+│   │   │   ├── Retina_code
+│   │   │   │   ├── adjacency.m
+│   │   │   │   ├── dirichletboundary.m
+│   │   │   │   ├── Fast_Marching_OP.dll
+│   │   │   │   ├── Fast_Marching_OP.mexglx
+│   │   │   │   ├── f_checkLoop.m
+│   │   │   │   ├── f_detectLoop.m
+│   │   │   │   ├── f_discrepancy.m
+│   │   │   │   ├── f_evaluate.m
+│   │   │   │   ├── f_EvolveSnake.m
+│   │   │   │   ├── f_example.m
+│   │   │   │   ├── f_ExtForceFull.m
+│   │   │   │   ├── f_fastmarching_evaluation_segmentation.m
+│   │   │   │   ├── f_get1mask.m
+│   │   │   │   ├── f_get_fmeasure.m
+│   │   │   │   ├── f_get_fmeasurestd.m
+│   │   │   │   ├── f_getNormalCurvature.m
+│   │   │   │   ├── f_getProfile.m
+│   │   │   │   ├── f_getWindow.m
+│   │   │   │   ├── fill_test.m
+│   │   │   │   ├── f_InternalForce.m
+│   │   │   │   ├── f_intersect.m
+│   │   │   │   ├── f_mask.m
+│   │   │   │   ├── f_measure.m
+│   │   │   │   ├── f_measure_warea.m
+│   │   │   │   ├── f_m.m
+│   │   │   │   ├── f_pt2line.m
+│   │   │   │   ├── f_pt2mask2.m
+│   │   │   │   ├── f_ResampleCurve.m
+│   │   │   │   ├── f_segment.m
+│   │   │   │   ├── func_Drawline.m
+│   │   │   │   ├── get_file_list.m
+│   │   │   │   ├── get_search_path.m
+│   │   │   │   ├── laplacian.m
+│   │   │   │   ├── lattice.m
+│   │   │   │   ├── makeweights.m
+│   │   │   │   ├── m_displayGroundTruth.m
+│   │   │   │   ├── m_evaluation.m
+│   │   │   │   ├── m_example.m
+│   │   │   │   ├── m_get_fmeasure.m
+│   │   │   │   ├── m_get_std_fmeasure.m
+│   │   │   │   ├── m_mask.m
+│   │   │   │   ├── m_segment.m
+│   │   │   │   ├── normalize.m
+│   │   │   │   ├── readme.txt
+│   │   │   │   └── script.m
+│   │   │   ├── seg2bmap.m
+│   │   │   ├── SplinesRetinalLayersSegmentation.m
+│   │   │   ├── SplinesRetinalLayersSegmentation.xml
+│   │   │   └── SplitClasses.m
+│   │   └── WatershedSegmentationPY
+│   │       ├── WatershedSegmentationPY.py
+│   │       └── WatershedSegmentationPY.xml
+│   ├── WatershedSegmentation
+│   │   ├── adaptivethresh.m
+│   │   ├── +bim
+│   │   │   ├── LICENCE.txt
+│   │   │   └── write_ome_tiff.m
+│   │   ├── +bq
+│   │   │   ├── cacerts
+│   │   │   │   ├── cacerts
+│   │   │   │   ├── cacerts_letsencrypt
+│   │   │   │   ├── isrgrootx1.der
+│   │   │   │   ├── letsencryptauthorityx3.der
+│   │   │   │   ├── lets-encrypt-x3-cross-signed.der
+│   │   │   │   └── lets-encrypt-x4-cross-signed.der
+│   │   │   ├── connect.m
+│   │   │   ├── @Dataset
+│   │   │   │   └── Dataset.m
+│   │   │   ├── delete.m
+│   │   │   ├── @Factory
+│   │   │   │   └── Factory.m
+│   │   │   ├── @Feature
+│   │   │   │   └── Feature.m
+│   │   │   ├── @File
+│   │   │   │   └── File.m
+│   │   │   ├── get.m
+│   │   │   ├── get_xml.m
+│   │   │   ├── @Gobject
+│   │   │   │   └── Gobject.m
+│   │   │   ├── @Image
+│   │   │   │   └── Image.m
+│   │   │   ├── iminfo.m
+│   │   │   ├── imread.m
+│   │   │   ├── imreadND.m
+│   │   │   ├── @Node
+│   │   │   │   └── Node.m
+│   │   │   ├── parsetags.m
+│   │   │   ├── path2url.m
+│   │   │   ├── post.m
+│   │   │   ├── post_mpform.m
+│   │   │   ├── put.m
+│   │   │   ├── @Session
+│   │   │   │   └── Session.m
+│   │   │   ├── str2xml.m
+│   │   │   ├── @Url
+│   │   │   │   └── Url.m
+│   │   │   ├── url2path.m
+│   │   │   ├── urlread.m
+│   │   │   ├── urlwrite.m
+│   │   │   └── xml2str.m
+│   │   ├── cacerts_letsencrypt
+│   │   ├── java.opts
+│   │   ├── makeRFSfilters.m
+│   │   ├── multi_local_runner.m
+│   │   ├── multi_mex_runner.m
+│   │   ├── public
+│   │   │   ├── help.html
+│   │   │   ├── images
+│   │   │   │   ├── nuclei_2ch.png
+│   │   │   │   ├── nuclei.png
+│   │   │   │   ├── nucleur_3d.png
+│   │   │   │   ├── nucleur_plain.png
+│   │   │   │   └── thumbnail.png
+│   │   │   ├── thumbnail.png
+│   │   │   ├── webapp.css
+│   │   │   └── webapp.js
+│   │   ├── runtime-module.cfg
+│   │   ├── seg.m
+│   │   ├── setup.py
+│   │   ├── WatershedSegmentation2.m
+│   │   ├── WatershedSegmentation.m
+│   │   └── WatershedSegmentation.xml
+│   └── WorkflowRunner
+│       ├── ExampleWorkflow.bq
+│       ├── public
+│       │   ├── help.html
+│       │   └── thumbnail.png
+│       ├── runtime-module.cfg
+│       ├── setup.py
+│       ├── WorkflowRunner
+│       ├── WorkflowRunner.py
+│       └── WorkflowRunner.xml
+├── README.md
+├── run-bisque.sh
+├── source
+│   ├── bqapi
+│   │   ├── bqapi
+│   │   │   ├── blockable_module.py
+│   │   │   ├── bqclass.py
+│   │   │   ├── bqfeature.py
+│   │   │   ├── bqnode.py
+│   │   │   ├── casauth.py
+│   │   │   ├── comm.py
+│   │   │   ├── exception.py
+│   │   │   ├── __init__.py
+│   │   │   ├── RequestsMonkeyPatch
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── monkeypatch.py
+│   │   │   │   └── requests_patch.py
+│   │   │   ├── services.py
+│   │   │   ├── tests
+│   │   │   │   ├── conftest.py
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── setup.cfg.sample
+│   │   │   │   ├── test_bqapi.py
+│   │   │   │   ├── test_bqclass.py
+│   │   │   │   ├── test_bqfeature.py
+│   │   │   │   ├── test_comm.py
+│   │   │   │   ├── test_util.py
+│   │   │   │   └── util.py
+│   │   │   ├── types.py
+│   │   │   ├── util.py
+│   │   │   └── xmldict.py
+│   │   ├── MANIFEST.in
+│   │   ├── setup.cfg
+│   │   └── setup.py
+│   ├── bqcore
+│   │   ├── bq
+│   │   │   ├── commands
+│   │   │   │   ├── admin.py
+│   │   │   │   ├── bisque_template.py
+│   │   │   │   ├── cleandb.py
+│   │   │   │   ├── create.py
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── server_ops.py
+│   │   │   │   ├── stores.py
+│   │   │   │   ├── templates
+│   │   │   │   │   ├── core_service
+│   │   │   │   │   │   ├── bq
+│   │   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   │   └── +package+
+│   │   │   │   │   │   │       ├── controllers
+│   │   │   │   │   │   │       │   ├── __init__.py
+│   │   │   │   │   │   │       │   └── +package+.py_tmpl
+│   │   │   │   │   │   │       ├── i18n
+│   │   │   │   │   │   │       │   └── README
+│   │   │   │   │   │   │       ├── __init__.py
+│   │   │   │   │   │   │       ├── model
+│   │   │   │   │   │   │       │   ├── __init__.py_tmpl
+│   │   │   │   │   │   │       │   └── +package+_model.py
+│   │   │   │   │   │   │       ├── public
+│   │   │   │   │   │   │       │   ├── +package+.css
+│   │   │   │   │   │   │       │   └── +package+.js
+│   │   │   │   │   │   │       └── templates
+│   │   │   │   │   │   │           ├── index.html_tmpl
+│   │   │   │   │   │   │           └── __init__.py
+│   │   │   │   │   │   ├── +einame+.egg-info
+│   │   │   │   │   │   │   └── README_tmpl
+│   │   │   │   │   │   ├── MANIFEST.in_tmpl
+│   │   │   │   │   │   ├── setup.cfg_tmpl
+│   │   │   │   │   │   └── setup.py_tmpl
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── service
+│   │   │   │   │       ├── +einame+.egg-info
+│   │   │   │   │       │   └── README_tmpl
+│   │   │   │   │       ├── MANIFEST.in_tmpl
+│   │   │   │   │       ├── +package+
+│   │   │   │   │       │   ├── controllers
+│   │   │   │   │       │   │   ├── __init__.py
+│   │   │   │   │       │   │   └── +package+.py_tmpl
+│   │   │   │   │       │   ├── i18n
+│   │   │   │   │       │   │   └── README
+│   │   │   │   │       │   ├── __init__.py
+│   │   │   │   │       │   ├── model
+│   │   │   │   │       │   │   ├── __init__.py_tmpl
+│   │   │   │   │       │   │   └── +package+_model.py
+│   │   │   │   │       │   ├── public
+│   │   │   │   │       │   │   ├── +package+.css
+│   │   │   │   │       │   │   └── +package+.js
+│   │   │   │   │       │   └── templates
+│   │   │   │   │       │       ├── index.html_tmpl
+│   │   │   │   │       │       └── __init__.py
+│   │   │   │   │       ├── setup.cfg_tmpl
+│   │   │   │   │       └── setup.py_tmpl
+│   │   │   │   ├── uploadbinary.py
+│   │   │   │   └── uploadimages.py
+│   │   │   ├── config
+│   │   │   │   ├── app_cfg.py
+│   │   │   │   ├── deployment.ini_tmpl
+│   │   │   │   ├── direct_cascade.py
+│   │   │   │   ├── environment.py
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── middleware.py
+│   │   │   ├── core
+│   │   │   │   ├── controllers
+│   │   │   │   │   ├── controller.template
+│   │   │   │   │   ├── error.py
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── proxy.py
+│   │   │   │   │   ├── root.py
+│   │   │   │   │   └── secure.py
+│   │   │   │   ├── i18n
+│   │   │   │   │   └── ru
+│   │   │   │   │       └── LC_MESSAGES
+│   │   │   │   │           └── bq.po
+│   │   │   │   ├── identity.py
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── lib
+│   │   │   │   │   ├── app_auth.py
+│   │   │   │   │   ├── app_globals.py
+│   │   │   │   │   ├── autoreg.py
+│   │   │   │   │   ├── base.py
+│   │   │   │   │   ├── cas_auth.py
+│   │   │   │   │   ├── cas_saml.py
+│   │   │   │   │   ├── challenge_decider.py
+│   │   │   │   │   ├── helpers.py
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── js_includes.py
+│   │   │   │   │   ├── ldap_auth.py
+│   │   │   │   │   ├── mex_auth.py
+│   │   │   │   │   ├── openid.py
+│   │   │   │   │   ├── sqlauth.py
+│   │   │   │   │   └── statics.py
+│   │   │   │   ├── model
+│   │   │   │   │   ├── auth.py
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── model.template
+│   │   │   │   ├── permission.py
+│   │   │   │   ├── public
+│   │   │   │   │   ├── async
+│   │   │   │   │   │   └── async.js
+│   │   │   │   │   ├── css
+│   │   │   │   │   │   ├── admin.css
+│   │   │   │   │   │   ├── bisquik_extjs_fix.css
+│   │   │   │   │   │   ├── bq.css
+│   │   │   │   │   │   ├── bq_ui_toolbar.css
+│   │   │   │   │   │   ├── imgview.css
+│   │   │   │   │   │   └── style.css
+│   │   │   │   │   ├── d3
+│   │   │   │   │   │   └── d3.js
+│   │   │   │   │   ├── favicon.ico
+│   │   │   │   │   ├── html
+│   │   │   │   │   │   ├── dateformat.html
+│   │   │   │   │   │   └── querying.html
+│   │   │   │   │   ├── images
+│   │   │   │   │   │   ├── add.png
+│   │   │   │   │   │   ├── bisque_icon_circ.png
+│   │   │   │   │   │   ├── bisque_icon.png
+│   │   │   │   │   │   ├── bisque_logo_black.svg
+│   │   │   │   │   │   ├── bisque_logo_gray.svg
+│   │   │   │   │   │   ├── bisque_logo_white.svg
+│   │   │   │   │   │   ├── box_bottom.gif
+│   │   │   │   │   │   ├── box_bottom.png
+│   │   │   │   │   │   ├── box_bottom_sel.png
+│   │   │   │   │   │   ├── box_top.gif
+│   │   │   │   │   │   ├── bqlogo_git.png
+│   │   │   │   │   │   ├── browse_80.png
+│   │   │   │   │   │   ├── button_minus.png
+│   │   │   │   │   │   ├── button_plus.png
+│   │   │   │   │   │   ├── button_x.png
+│   │   │   │   │   │   ├── cancel.png
+│   │   │   │   │   │   ├── commandbar_background.png
+│   │   │   │   │   │   ├── contentbg.png
+│   │   │   │   │   │   ├── delete.png
+│   │   │   │   │   │   ├── error.png
+│   │   │   │   │   │   ├── google_logo91.png
+│   │   │   │   │   │   ├── google_logo.png
+│   │   │   │   │   │   ├── headerbg.png
+│   │   │   │   │   │   ├── icons_toolbar.svg
+│   │   │   │   │   │   ├── info.png
+│   │   │   │   │   │   ├── inputbg.png
+│   │   │   │   │   │   ├── isque_logo_gray.svg
+│   │   │   │   │   │   ├── loginbg.png
+│   │   │   │   │   │   ├── loginbottombg.png
+│   │   │   │   │   │   ├── loginheader-left.png
+│   │   │   │   │   │   ├── loginheader-right.png
+│   │   │   │   │   │   ├── menubg.png
+│   │   │   │   │   │   ├── menu-item-actibg-first.png
+│   │   │   │   │   │   ├── menu-item-actibg.png
+│   │   │   │   │   │   ├── menu-item-border.png
+│   │   │   │   │   │   ├── ok.png
+│   │   │   │   │   │   ├── pagebg.png
+│   │   │   │   │   │   ├── pencil.png
+│   │   │   │   │   │   ├── progress_circles.gif
+│   │   │   │   │   │   ├── signin
+│   │   │   │   │   │   │   ├── signin_bisque.png
+│   │   │   │   │   │   │   ├── signin_google.png
+│   │   │   │   │   │   │   ├── signin_iplant.png
+│   │   │   │   │   │   │   ├── signin.svg
+│   │   │   │   │   │   │   └── signin_yahoo.png
+│   │   │   │   │   │   ├── star.png
+│   │   │   │   │   │   ├── strype2.png
+│   │   │   │   │   │   ├── toolbar
+│   │   │   │   │   │   │   ├── browse.png
+│   │   │   │   │   │   │   ├── download.png
+│   │   │   │   │   │   │   ├── help.png
+│   │   │   │   │   │   │   ├── plus.png
+│   │   │   │   │   │   │   ├── services.png
+│   │   │   │   │   │   │   ├── upload.png
+│   │   │   │   │   │   │   └── user.png
+│   │   │   │   │   │   ├── under_the_hood_blue.png
+│   │   │   │   │   │   ├── viewer
+│   │   │   │   │   │   │   ├── 16px_close.png
+│   │   │   │   │   │   │   ├── 2d.png
+│   │   │   │   │   │   │   ├── 32px_close.png
+│   │   │   │   │   │   │   ├── 32px_gobs.png
+│   │   │   │   │   │   │   ├── 32px_view.png
+│   │   │   │   │   │   │   ├── 3d.png
+│   │   │   │   │   │   │   ├── 64px_close.png
+│   │   │   │   │   │   │   ├── 64px_gobs.png
+│   │   │   │   │   │   │   ├── 64px_view.png
+│   │   │   │   │   │   │   ├── 96px_close.psd
+│   │   │   │   │   │   │   ├── 96px_gobs.psd
+│   │   │   │   │   │   │   ├── 96px_view.psd
+│   │   │   │   │   │   │   ├── color_wheel.png
+│   │   │   │   │   │   │   ├── color_wheel.svg
+│   │   │   │   │   │   │   ├── compass-512.psd
+│   │   │   │   │   │   │   ├── compass.png
+│   │   │   │   │   │   │   ├── converter.png
+│   │   │   │   │   │   │   ├── delete-512.psd
+│   │   │   │   │   │   │   ├── delete.png
+│   │   │   │   │   │   │   ├── external.png
+│   │   │   │   │   │   │   ├── external.psd
+│   │   │   │   │   │   │   ├── icons_viewers.svg
+│   │   │   │   │   │   │   ├── icons_viewer.svg
+│   │   │   │   │   │   │   ├── movie.png
+│   │   │   │   │   │   │   ├── movie.psd
+│   │   │   │   │   │   │   ├── paintbrush.png
+│   │   │   │   │   │   │   ├── pipette.png
+│   │   │   │   │   │   │   ├── resize-handle.png
+│   │   │   │   │   │   │   ├── select-512.psd
+│   │   │   │   │   │   │   ├── select.png
+│   │   │   │   │   │   │   ├── slider_contrast.svg
+│   │   │   │   │   │   │   ├── template-512.psd
+│   │   │   │   │   │   │   ├── template_96px.psd
+│   │   │   │   │   │   │   ├── tool-checkbox.png
+│   │   │   │   │   │   │   ├── tool-checkbox.psd
+│   │   │   │   │   │   │   └── trash_can.png
+│   │   │   │   │   │   └── warning.png
+│   │   │   │   │   ├── jquery
+│   │   │   │   │   │   └── jquery.min.js
+│   │   │   │   │   ├── js
+│   │   │   │   │   │   ├── admin
+│   │   │   │   │   │   │   ├── BQ.user.Manager.css
+│   │   │   │   │   │   │   └── BQ.user.Manager.js
+│   │   │   │   │   │   ├── bq_api.js
+│   │   │   │   │   │   ├── bq_ui_application.js
+│   │   │   │   │   │   ├── bq_ui_extjs_fix.js
+│   │   │   │   │   │   ├── bq_ui_misc.css
+│   │   │   │   │   │   ├── bq_ui_misc.js
+│   │   │   │   │   │   ├── bq_ui_progress.js
+│   │   │   │   │   │   ├── bq_ui_toolbar.js
+│   │   │   │   │   │   ├── carousel
+│   │   │   │   │   │   │   ├── carousel.css
+│   │   │   │   │   │   │   ├── images
+│   │   │   │   │   │   │   │   ├── tabs_black.png
+│   │   │   │   │   │   │   │   └── tabs_white.png
+│   │   │   │   │   │   │   └── Panel.js
+│   │   │   │   │   │   ├── d3Component.js
+│   │   │   │   │   │   ├── DataExplore.js
+│   │   │   │   │   │   ├── DatasetBrowser
+│   │   │   │   │   │   │   ├── DatasetBrowser.css
+│   │   │   │   │   │   │   ├── DatasetBrowser.js
+│   │   │   │   │   │   │   └── Images
+│   │   │   │   │   │   │       ├── accept24.png
+│   │   │   │   │   │   │       ├── accept.png
+│   │   │   │   │   │   │       ├── cancel24.png
+│   │   │   │   │   │   │       └── cancel.png
+│   │   │   │   │   │   ├── date.js
+│   │   │   │   │   │   ├── drawing
+│   │   │   │   │   │   │   ├── drawing.css
+│   │   │   │   │   │   │   └── drawing.js
+│   │   │   │   │   │   ├── encoder.js
+│   │   │   │   │   │   ├── form
+│   │   │   │   │   │   │   └── field
+│   │   │   │   │   │   │       ├── Color.css
+│   │   │   │   │   │   │       └── Color.js
+│   │   │   │   │   │   ├── globals.js
+│   │   │   │   │   │   ├── graphviewer
+│   │   │   │   │   │   │   ├── dagre-d3.js
+│   │   │   │   │   │   │   ├── graphviewer.css
+│   │   │   │   │   │   │   └── GraphViewer.js
+│   │   │   │   │   │   ├── layout
+│   │   │   │   │   │   │   └── carousel.js
+│   │   │   │   │   │   ├── map
+│   │   │   │   │   │   │   └── map.js
+│   │   │   │   │   │   ├── modules
+│   │   │   │   │   │   │   ├── bq_grid_panel.js
+│   │   │   │   │   │   │   ├── bq_module_webapp_default.js
+│   │   │   │   │   │   │   ├── bq_ui_renderes.css
+│   │   │   │   │   │   │   ├── bq_ui_renderes.js
+│   │   │   │   │   │   │   ├── bq_webapp.css
+│   │   │   │   │   │   │   ├── bq_webapp.js
+│   │   │   │   │   │   │   ├── bq_webapp_service.js
+│   │   │   │   │   │   │   └── obsolete
+│   │   │   │   │   │   │       └── bq_ui_module.js
+│   │   │   │   │   │   ├── movie
+│   │   │   │   │   │   │   ├── movie.css
+│   │   │   │   │   │   │   └── movie.js
+│   │   │   │   │   │   ├── picker
+│   │   │   │   │   │   │   ├── AnnotationStatus.js
+│   │   │   │   │   │   │   ├── Color.css
+│   │   │   │   │   │   │   ├── Color.js
+│   │   │   │   │   │   │   ├── Excolor.js
+│   │   │   │   │   │   │   ├── Path.css
+│   │   │   │   │   │   │   └── Path.js
+│   │   │   │   │   │   ├── Preferences
+│   │   │   │   │   │   │   ├── BQ.Preferences.js
+│   │   │   │   │   │   │   ├── PreferenceTagger.js
+│   │   │   │   │   │   │   └── PreferenceViewer.js
+│   │   │   │   │   │   ├── renderers
+│   │   │   │   │   │   │   ├── dataset.css
+│   │   │   │   │   │   │   └── dataset.js
+│   │   │   │   │   │   ├── requestAnimationFrame.js
+│   │   │   │   │   │   ├── ResourceBrowser
+│   │   │   │   │   │   │   ├── Browser.js
+│   │   │   │   │   │   │   ├── CommandBar.js
+│   │   │   │   │   │   │   ├── DatasetManager.js
+│   │   │   │   │   │   │   ├── Images
+│   │   │   │   │   │   │   │   ├── activate.png
+│   │   │   │   │   │   │   │   ├── add.png
+│   │   │   │   │   │   │   │   ├── asc.png
+│   │   │   │   │   │   │   │   ├── blank.gif
+│   │   │   │   │   │   │   │   ├── card.png
+│   │   │   │   │   │   │   │   ├── checked.gif
+│   │   │   │   │   │   │   │   ├── close.gif
+│   │   │   │   │   │   │   │   ├── cog.png
+│   │   │   │   │   │   │   │   ├── datasets.png
+│   │   │   │   │   │   │   │   ├── delete.png
+│   │   │   │   │   │   │   │   ├── desc.png
+│   │   │   │   │   │   │   │   ├── download-small.png
+│   │   │   │   │   │   │   │   ├── down.png
+│   │   │   │   │   │   │   │   ├── eye-close.png
+│   │   │   │   │   │   │   │   ├── eye.png
+│   │   │   │   │   │   │   │   ├── file.svg
+│   │   │   │   │   │   │   │   ├── folder.gif
+│   │   │   │   │   │   │   │   ├── folder.svg
+│   │   │   │   │   │   │   │   ├── full.png
+│   │   │   │   │   │   │   │   ├── gear.png
+│   │   │   │   │   │   │   │   ├── grid.png
+│   │   │   │   │   │   │   │   ├── group.png
+│   │   │   │   │   │   │   │   ├── layout.png
+│   │   │   │   │   │   │   │   ├── left.png
+│   │   │   │   │   │   │   │   ├── lightning.png
+│   │   │   │   │   │   │   │   ├── link.png
+│   │   │   │   │   │   │   │   ├── loading.gif
+│   │   │   │   │   │   │   │   ├── menu.png
+│   │   │   │   │   │   │   │   ├── no-results.png
+│   │   │   │   │   │   │   │   ├── organize.png
+│   │   │   │   │   │   │   │   ├── owner.png
+│   │   │   │   │   │   │   │   ├── preferences.png
+│   │   │   │   │   │   │   │   ├── pstrip.png
+│   │   │   │   │   │   │   │   ├── refresh.png
+│   │   │   │   │   │   │   │   ├── res-slider-bg.png
+│   │   │   │   │   │   │   │   ├── res-slider-bg.v4.1.png
+│   │   │   │   │   │   │   │   ├── right.png
+│   │   │   │   │   │   │   │   ├── search.png
+│   │   │   │   │   │   │   │   ├── select.png
+│   │   │   │   │   │   │   │   ├── stop.svg
+│   │   │   │   │   │   │   │   ├── store_512.png
+│   │   │   │   │   │   │   │   ├── store.png
+│   │   │   │   │   │   │   │   ├── thumb.png
+│   │   │   │   │   │   │   │   ├── unavailable.png
+│   │   │   │   │   │   │   │   ├── unavailable.svg
+│   │   │   │   │   │   │   │   └── unchecked.gif
+│   │   │   │   │   │   │   ├── Include.js
+│   │   │   │   │   │   │   ├── LayoutFactory.js
+│   │   │   │   │   │   │   ├── Misc
+│   │   │   │   │   │   │   │   ├── DataTip.js
+│   │   │   │   │   │   │   │   ├── GestureManager.js
+│   │   │   │   │   │   │   │   ├── MessageBus.js
+│   │   │   │   │   │   │   │   └── Slider.js
+│   │   │   │   │   │   │   ├── OperationBar.js
+│   │   │   │   │   │   │   ├── ResourceBrowser.css
+│   │   │   │   │   │   │   ├── ResourceFactory
+│   │   │   │   │   │   │   │   ├── ResourceDataset.js
+│   │   │   │   │   │   │   │   ├── ResourceDir.js
+│   │   │   │   │   │   │   │   ├── ResourceFactory.js
+│   │   │   │   │   │   │   │   ├── ResourceFile.js
+│   │   │   │   │   │   │   │   ├── ResourceImage.js
+│   │   │   │   │   │   │   │   ├── ResourceMex.js
+│   │   │   │   │   │   │   │   ├── ResourceModule.js
+│   │   │   │   │   │   │   │   ├── ResourceTemplate.js
+│   │   │   │   │   │   │   │   └── ResourceUser.js
+│   │   │   │   │   │   │   ├── ResourceQueue.js
+│   │   │   │   │   │   │   └── viewStateManager.js
+│   │   │   │   │   │   ├── ResourceTagger
+│   │   │   │   │   │   │   ├── ComboBox.js
+│   │   │   │   │   │   │   ├── Images
+│   │   │   │   │   │   │   │   ├── add_folder.png
+│   │   │   │   │   │   │   │   ├── add.png
+│   │   │   │   │   │   │   │   ├── arrow.png
+│   │   │   │   │   │   │   │   ├── check.png
+│   │   │   │   │   │   │   │   ├── color_picker_256.png
+│   │   │   │   │   │   │   │   ├── color_picker.png
+│   │   │   │   │   │   │   │   ├── compass-512.png
+│   │   │   │   │   │   │   │   ├── compass.png
+│   │   │   │   │   │   │   │   ├── delete.gif
+│   │   │   │   │   │   │   │   ├── export.png
+│   │   │   │   │   │   │   │   ├── file.png
+│   │   │   │   │   │   │   │   ├── folder.gif
+│   │   │   │   │   │   │   │   ├── folder.png
+│   │   │   │   │   │   │   │   ├── grid.png
+│   │   │   │   │   │   │   │   ├── import.png
+│   │   │   │   │   │   │   │   ├── pencil_128.png
+│   │   │   │   │   │   │   │   ├── pencil.png
+│   │   │   │   │   │   │   │   ├── refresh.png
+│   │   │   │   │   │   │   │   ├── save.png
+│   │   │   │   │   │   │   │   ├── select-512.png
+│   │   │   │   │   │   │   │   ├── select.png
+│   │   │   │   │   │   │   │   ├── stats_512.png
+│   │   │   │   │   │   │   │   ├── stats.png
+│   │   │   │   │   │   │   │   ├── tag.png
+│   │   │   │   │   │   │   │   ├── text.png
+│   │   │   │   │   │   │   │   ├── trash_512.png
+│   │   │   │   │   │   │   │   ├── trash.png
+│   │   │   │   │   │   │   │   └── uncheck.png
+│   │   │   │   │   │   │   ├── ResourceRenderers
+│   │   │   │   │   │   │   │   └── BaseRenderer.js
+│   │   │   │   │   │   │   ├── RowEditing.js
+│   │   │   │   │   │   │   ├── Tagger.css
+│   │   │   │   │   │   │   ├── Tagger.js
+│   │   │   │   │   │   │   └── TaggerOffline.js
+│   │   │   │   │   │   ├── resourceview.js
+│   │   │   │   │   │   ├── senchatouch
+│   │   │   │   │   │   │   ├── AbstractManager.js
+│   │   │   │   │   │   │   ├── Array.js
+│   │   │   │   │   │   │   ├── Element.js
+│   │   │   │   │   │   │   ├── Element.style.js
+│   │   │   │   │   │   │   ├── Event.js
+│   │   │   │   │   │   │   ├── EventSimulator.js
+│   │   │   │   │   │   │   ├── ExtCore.js
+│   │   │   │   │   │   │   ├── Ext.js
+│   │   │   │   │   │   │   ├── ExtMini.js
+│   │   │   │   │   │   │   ├── Function.js
+│   │   │   │   │   │   │   ├── Gesture.js
+│   │   │   │   │   │   │   ├── HashMap.js
+│   │   │   │   │   │   │   ├── index.html
+│   │   │   │   │   │   │   ├── Manager.js
+│   │   │   │   │   │   │   ├── Observable.js
+│   │   │   │   │   │   │   ├── Pinch.js
+│   │   │   │   │   │   │   ├── Point.js
+│   │   │   │   │   │   │   ├── sencha-touch-gestures-debug.js
+│   │   │   │   │   │   │   ├── sencha-touch-gestures.js
+│   │   │   │   │   │   │   ├── Support.js
+│   │   │   │   │   │   │   ├── Swipe.js
+│   │   │   │   │   │   │   ├── Tap.js
+│   │   │   │   │   │   │   └── Touch.js
+│   │   │   │   │   │   ├── settings
+│   │   │   │   │   │   │   ├── BQ.ModuleDeveloper.js
+│   │   │   │   │   │   │   ├── BQ.ModuleManager.js
+│   │   │   │   │   │   │   ├── BQ.PreferenceManager.js
+│   │   │   │   │   │   │   ├── BQ.settings.Panel.css
+│   │   │   │   │   │   │   └── BQ.settings.Panel.js
+│   │   │   │   │   │   ├── Share
+│   │   │   │   │   │   │   ├── BQ.share.Dialog.css
+│   │   │   │   │   │   │   ├── BQ.share.Dialog.js
+│   │   │   │   │   │   │   ├── BQ.share.Multi.js
+│   │   │   │   │   │   │   └── images
+│   │   │   │   │   │   │       ├── lock_128.png
+│   │   │   │   │   │   │       ├── lock_64.png
+│   │   │   │   │   │   │       ├── lock.png
+│   │   │   │   │   │   │       └── lock.psd
+│   │   │   │   │   │   ├── slider
+│   │   │   │   │   │   │   ├── images
+│   │   │   │   │   │   │   │   └── icons_slider.svg
+│   │   │   │   │   │   │   ├── inversible.js
+│   │   │   │   │   │   │   ├── slider.css
+│   │   │   │   │   │   │   ├── slider.js
+│   │   │   │   │   │   │   ├── tslider.js
+│   │   │   │   │   │   │   └── zslider.js
+│   │   │   │   │   │   ├── TemplateManager
+│   │   │   │   │   │   │   ├── TagRenderer.js
+│   │   │   │   │   │   │   ├── TemplateManager.js
+│   │   │   │   │   │   │   └── TemplateTagger.js
+│   │   │   │   │   │   ├── tree
+│   │   │   │   │   │   │   ├── files.css
+│   │   │   │   │   │   │   ├── files.js
+│   │   │   │   │   │   │   ├── images
+│   │   │   │   │   │   │   │   ├── file_binary.svg
+│   │   │   │   │   │   │   │   ├── file.svg
+│   │   │   │   │   │   │   │   ├── file_text.svg
+│   │   │   │   │   │   │   │   ├── folder.svg
+│   │   │   │   │   │   │   │   ├── organizer_icons.svg
+│   │   │   │   │   │   │   │   ├── store_512.png
+│   │   │   │   │   │   │   │   └── store.png
+│   │   │   │   │   │   │   ├── organizer.css
+│   │   │   │   │   │   │   └── organizer.js
+│   │   │   │   │   │   ├── utils.js
+│   │   │   │   │   │   ├── viewer
+│   │   │   │   │   │   │   ├── 2D.js
+│   │   │   │   │   │   │   ├── cacher.js
+│   │   │   │   │   │   │   ├── canvasrender.js
+│   │   │   │   │   │   │   ├── canvasshapes.js
+│   │   │   │   │   │   │   ├── imageconverter.js
+│   │   │   │   │   │   │   ├── imgcalibration.js
+│   │   │   │   │   │   │   ├── imgcurrentview.js
+│   │   │   │   │   │   │   ├── imgedit.js
+│   │   │   │   │   │   │   ├── imgexternal.js
+│   │   │   │   │   │   │   ├── imginfobar.js
+│   │   │   │   │   │   │   ├── imgmovie.js
+│   │   │   │   │   │   │   ├── imgops.js
+│   │   │   │   │   │   │   ├── imgoverlayeditor.js
+│   │   │   │   │   │   │   ├── imgpixelcounter.js
+│   │   │   │   │   │   │   ├── imgscalebar.js
+│   │   │   │   │   │   │   ├── imgslicer.js
+│   │   │   │   │   │   │   ├── imgstats.js
+│   │   │   │   │   │   │   ├── imgview.js
+│   │   │   │   │   │   │   ├── kinetic-v5.1.0.js
+│   │   │   │   │   │   │   ├── listner_zoom.js
+│   │   │   │   │   │   │   ├── menu_gobjects.js
+│   │   │   │   │   │   │   ├── progressbar.js
+│   │   │   │   │   │   │   ├── renderer_test.js
+│   │   │   │   │   │   │   ├── scalebar.js
+│   │   │   │   │   │   │   ├── shapeanalyzer.js
+│   │   │   │   │   │   │   ├── simplify.js
+│   │   │   │   │   │   │   ├── svgrender.js
+│   │   │   │   │   │   │   ├── tilerender.js
+│   │   │   │   │   │   │   └── widget_extjs.js
+│   │   │   │   │   │   ├── volume
+│   │   │   │   │   │   │   ├── animationControls.js
+│   │   │   │   │   │   │   ├── bioWeb3D.css
+│   │   │   │   │   │   │   ├── bioWeb3D.js
+│   │   │   │   │   │   │   ├── d3Component.js
+│   │   │   │   │   │   │   ├── dagre-d3.js
+│   │   │   │   │   │   │   ├── extThreeJS.js
+│   │   │   │   │   │   │   ├── gobjectbuffers.js
+│   │   │   │   │   │   │   ├── GraphViewer.js
+│   │   │   │   │   │   │   ├── icons
+│   │   │   │   │   │   │   │   ├── dot.png
+│   │   │   │   │   │   │   │   ├── dot.svg
+│   │   │   │   │   │   │   │   ├── iadd16.png
+│   │   │   │   │   │   │   │   ├── iadd64.png
+│   │   │   │   │   │   │   │   ├── iBlue16.png
+│   │   │   │   │   │   │   │   ├── idelete16.png
+│   │   │   │   │   │   │   │   ├── idelete32.png
+│   │   │   │   │   │   │   │   ├── idelete48.png
+│   │   │   │   │   │   │   │   ├── idoc128.png
+│   │   │   │   │   │   │   │   ├── idoc16.png
+│   │   │   │   │   │   │   │   ├── iGreen16.png
+│   │   │   │   │   │   │   │   ├── ipause16.png
+│   │   │   │   │   │   │   │   ├── ipause48.png
+│   │   │   │   │   │   │   │   ├── iplay16.png
+│   │   │   │   │   │   │   │   ├── iplay48.png
+│   │   │   │   │   │   │   │   ├── iRed16.png
+│   │   │   │   │   │   │   │   ├── ivideo16.png
+│   │   │   │   │   │   │   │   ├── ivideo48.png
+│   │   │   │   │   │   │   │   ├── keyFrame.svg
+│   │   │   │   │   │   │   │   ├── keySlider.svg
+│   │   │   │   │   │   │   │   ├── key-thumb.png
+│   │   │   │   │   │   │   │   ├── movieSlider-bg.svg
+│   │   │   │   │   │   │   │   ├── movieSlider-thumb.svg
+│   │   │   │   │   │   │   │   ├── playbutton2.svg
+│   │   │   │   │   │   │   │   ├── playbutton.svg
+│   │   │   │   │   │   │   │   ├── redDot.png
+│   │   │   │   │   │   │   │   ├── screwdriver.svg
+│   │   │   │   │   │   │   │   ├── slider-bg-original.png
+│   │   │   │   │   │   │   │   ├── slider-bg.png
+│   │   │   │   │   │   │   │   ├── slider-thumb.png
+│   │   │   │   │   │   │   │   ├── ticks.gif
+│   │   │   │   │   │   │   │   ├── tool-icons.svg
+│   │   │   │   │   │   │   │   ├── toolOpts.svg
+│   │   │   │   │   │   │   │   ├── viewOpts1.svg
+│   │   │   │   │   │   │   │   ├── viewOpts.svg
+│   │   │   │   │   │   │   │   ├── wrench.svg
+│   │   │   │   │   │   │   │   ├── zoomSlider-bg.svg
+│   │   │   │   │   │   │   │   └── zoomSlider-thumb.svg
+│   │   │   │   │   │   │   ├── lib
+│   │   │   │   │   │   │   │   ├── polygon.js
+│   │   │   │   │   │   │   │   └── whammy.js
+│   │   │   │   │   │   │   ├── lightingControls.js
+│   │   │   │   │   │   │   ├── renderingControls.js
+│   │   │   │   │   │   │   ├── scalebar.js
+│   │   │   │   │   │   │   ├── shaders
+│   │   │   │   │   │   │   │   ├── rayCastBlocksForward.fs
+│   │   │   │   │   │   │   │   ├── rayCastBlocks.fs
+│   │   │   │   │   │   │   │   ├── rayCastBlocksStripped.fs
+│   │   │   │   │   │   │   │   ├── rayCast.vs
+│   │   │   │   │   │   │   │   ├── screen.fs
+│   │   │   │   │   │   │   │   └── screen.vs
+│   │   │   │   │   │   │   ├── threejs
+│   │   │   │   │   │   │   │   ├── AnaglyphEffect.js
+│   │   │   │   │   │   │   │   ├── FirstPersonControls.js
+│   │   │   │   │   │   │   │   ├── OrbitControls.js
+│   │   │   │   │   │   │   │   ├── RotationControls.js
+│   │   │   │   │   │   │   │   ├── three.min.js
+│   │   │   │   │   │   │   │   ├── TrackballControls.js
+│   │   │   │   │   │   │   │   └── TypedArrayUtils.js
+│   │   │   │   │   │   │   ├── transferEditorD3.js
+│   │   │   │   │   │   │   ├── transferEditorExt.js
+│   │   │   │   │   │   │   ├── utils
+│   │   │   │   │   │   │   │   └── webgl-debug.js
+│   │   │   │   │   │   │   └── volumeConfig.js
+│   │   │   │   │   │   └── XMLHttpRequest.js
+│   │   │   │   │   ├── panojs3
+│   │   │   │   │   │   ├── images
+│   │   │   │   │   │   │   ├── 16px_minus.png
+│   │   │   │   │   │   │   ├── 16px_plus.png
+│   │   │   │   │   │   │   ├── 32px_11.png
+│   │   │   │   │   │   │   ├── 32px_minus.png
+│   │   │   │   │   │   │   ├── 32px_plus.png
+│   │   │   │   │   │   │   ├── 32px_show.png
+│   │   │   │   │   │   │   ├── 64px_11.png
+│   │   │   │   │   │   │   ├── 64px_minus.png
+│   │   │   │   │   │   │   ├── 64px_plus.png
+│   │   │   │   │   │   │   ├── 64px_show.png
+│   │   │   │   │   │   │   ├── blank.gif
+│   │   │   │   │   │   │   ├── grabbing.cur
+│   │   │   │   │   │   │   ├── grab.cur
+│   │   │   │   │   │   │   ├── icons_viewer.svg
+│   │   │   │   │   │   │   ├── progress_128.gif
+│   │   │   │   │   │   │   ├── progress_256.gif
+│   │   │   │   │   │   │   ├── progress_512.gif
+│   │   │   │   │   │   │   └── progress.gif
+│   │   │   │   │   │   ├── panojs
+│   │   │   │   │   │   │   ├── control_info.js
+│   │   │   │   │   │   │   ├── controls.js
+│   │   │   │   │   │   │   ├── control_svg.js
+│   │   │   │   │   │   │   ├── control_thumbnail.js
+│   │   │   │   │   │   │   ├── PanoJS.js
+│   │   │   │   │   │   │   ├── pyramid_Bisque.js
+│   │   │   │   │   │   │   ├── pyramid_imgcnv.js
+│   │   │   │   │   │   │   ├── pyramid_Zoomify.js
+│   │   │   │   │   │   │   └── utils.js
+│   │   │   │   │   │   ├── panojs.html
+│   │   │   │   │   │   ├── styles
+│   │   │   │   │   │   │   └── panojs.css
+│   │   │   │   │   │   └── todo.txt
+│   │   │   │   │   ├── plugins
+│   │   │   │   │   │   ├── branding
+│   │   │   │   │   │   │   └── branding.css
+│   │   │   │   │   │   ├── pipeline
+│   │   │   │   │   │   │   ├── pipeline.py
+│   │   │   │   │   │   │   ├── pipeline.svg
+│   │   │   │   │   │   │   ├── ResourcePipeline.css
+│   │   │   │   │   │   │   └── ResourcePipeline.js
+│   │   │   │   │   │   ├── system
+│   │   │   │   │   │   │   ├── ResourceSystem.css
+│   │   │   │   │   │   │   ├── ResourceSystem.js
+│   │   │   │   │   │   │   └── system.svg
+│   │   │   │   │   │   ├── table
+│   │   │   │   │   │   │   ├── help.html
+│   │   │   │   │   │   │   ├── icons.svg
+│   │   │   │   │   │   │   ├── icons_toolbar.svg
+│   │   │   │   │   │   │   ├── table.css
+│   │   │   │   │   │   │   ├── table.js
+│   │   │   │   │   │   │   └── table.py
+│   │   │   │   │   │   └── text
+│   │   │   │   │   │       ├── ResourceText.css
+│   │   │   │   │   │       ├── ResourceText.js
+│   │   │   │   │   │       ├── text.py
+│   │   │   │   │   │       └── text.svg
+│   │   │   │   │   ├── proj4js
+│   │   │   │   │   │   ├── proj4.js
+│   │   │   │   │   │   └── proj4-src.js
+│   │   │   │   │   ├── raphael
+│   │   │   │   │   │   ├── g.bar.js
+│   │   │   │   │   │   ├── g.dot-min.js
+│   │   │   │   │   │   ├── g.line.js
+│   │   │   │   │   │   ├── g.pie-min.js
+│   │   │   │   │   │   ├── g.raphael-min.js
+│   │   │   │   │   │   └── raphael.js
+│   │   │   │   │   ├── sitedown.html
+│   │   │   │   │   ├── threejs
+│   │   │   │   │   │   ├── AnaglyphEffect.js
+│   │   │   │   │   │   ├── FirstPersonControls.js
+│   │   │   │   │   │   ├── math
+│   │   │   │   │   │   │   ├── ColorConverter.js
+│   │   │   │   │   │   │   └── Lut.js
+│   │   │   │   │   │   ├── OrbitControls.js
+│   │   │   │   │   │   ├── three.js
+│   │   │   │   │   │   ├── three.min.js
+│   │   │   │   │   │   ├── TrackballControls.js
+│   │   │   │   │   │   └── TypedArrayUtils.js
+│   │   │   │   │   └── xml
+│   │   │   │   │       └── dummy_tag_values.xml
+│   │   │   │   ├── service.py
+│   │   │   │   ├── templates
+│   │   │   │   │   ├── debug.html
+│   │   │   │   │   ├── environ.html
+│   │   │   │   │   ├── error.html
+│   │   │   │   │   ├── google.html
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── master.html
+│   │   │   │   │   └── piwik.html
+│   │   │   │   └── tests
+│   │   │   │       ├── functional
+│   │   │   │       │   ├── __init__.py
+│   │   │   │       │   ├── test_authentication.py
+│   │   │   │       │   └── test_root.py
+│   │   │   │       ├── __init__.py
+│   │   │   │       └── models
+│   │   │   │           ├── __init__.py
+│   │   │   │           └── test_auth.py
+│   │   │   ├── exceptions.py
+│   │   │   ├── __init__.py
+│   │   │   ├── release.py
+│   │   │   ├── setup
+│   │   │   │   ├── bisque_setup.py
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── module_setup.py
+│   │   │   ├── util
+│   │   │   │   ├── bisquik2db.py
+│   │   │   │   ├── bix2db.py
+│   │   │   │   ├── bqrender.py
+│   │   │   │   ├── bunch.py
+│   │   │   │   ├── commands.py
+│   │   │   │   ├── compat.py
+│   │   │   │   ├── configfile.py
+│   │   │   │   ├── contextfuns.py
+│   │   │   │   ├── converters.py
+│   │   │   │   ├── copylink.py
+│   │   │   │   ├── diskusage.py
+│   │   │   │   ├── dotnested.py
+│   │   │   │   ├── etreerender.py
+│   │   │   │   ├── fakerequestenv.py
+│   │   │   │   ├── fileapp.py
+│   │   │   │   ├── hash.py
+│   │   │   │   ├── hostutils.py
+│   │   │   │   ├── http
+│   │   │   │   │   ├── async_request_pool.py
+│   │   │   │   │   ├── async_request.py
+│   │   │   │   │   ├── http_client.py
+│   │   │   │   │   ├── httplib2.py.save
+│   │   │   │   │   ├── http_proxy.py
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── iri2uri.py
+│   │   │   │   │   ├── poster
+│   │   │   │   │   │   ├── encode.py
+│   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   └── streaminghttp.py
+│   │   │   │   │   ├── sync_request.py
+│   │   │   │   │   └── thread_pool.py
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── io_misc.py
+│   │   │   │   ├── irods_client.py
+│   │   │   │   ├── irods_icmd.py
+│   │   │   │   ├── LinesmanProfiler.py
+│   │   │   │   ├── locks.py
+│   │   │   │   ├── memoize.py
+│   │   │   │   ├── mkdir.py
+│   │   │   │   ├── paths.py
+│   │   │   │   ├── proxy.py
+│   │   │   │   ├── read_write_locks.py
+│   │   │   │   ├── registration.py
+│   │   │   │   ├── request.py
+│   │   │   │   ├── responses.py
+│   │   │   │   ├── s3_handler.py
+│   │   │   │   ├── samehost.py
+│   │   │   │   ├── security.py
+│   │   │   │   ├── sizeoffmt.py
+│   │   │   │   ├── thread_pool.py
+│   │   │   │   ├── timer.py
+│   │   │   │   ├── urlnorm.py
+│   │   │   │   ├── urlpaths.py
+│   │   │   │   ├── urlutil.py
+│   │   │   │   ├── wait_pid.py
+│   │   │   │   ├── XFile.py
+│   │   │   │   ├── xmldict.py
+│   │   │   │   ├── xmlrender.py
+│   │   │   │   └── xmltostring.py
+│   │   │   └── websetup
+│   │   │       ├── bootstrap.py
+│   │   │       ├── __init__.py
+│   │   │       └── schema.py
+│   │   ├── MANIFEST.in
+│   │   ├── migration
+│   │   │   ├── __init__.py
+│   │   │   ├── manage.py
+│   │   │   ├── migrate.cfg
+│   │   │   ├── README
+│   │   │   └── versions
+│   │   │       ├── 001_drop_visits.py
+│   │   │       ├── 002_resource_rationalization.py
+│   │   │       ├── 003_data_migration.py
+│   │   │       ├── 004_database_cleanup.py
+│   │   │       ├── 004_mysql_upgrade.sql
+│   │   │       ├── 005_resource_uniq.py
+│   │   │       ├── 006_document_id_vertex.py
+│   │   │       ├── 007_dataset_values.py
+│   │   │       ├── env002.py
+│   │   │       ├── __init__.py
+│   │   │       ├── mig002.py
+│   │   │       └── model002.py
+│   │   ├── pylint.old
+│   │   ├── README.txt
+│   │   ├── scripts
+│   │   │   ├── bsck.py
+│   │   │   ├── dataset.xml
+│   │   │   ├── deldb.sh
+│   │   │   ├── __init__.py
+│   │   │   ├── newimagerreq.xml
+│   │   │   ├── postdb.sh
+│   │   │   └── putdb.sh
+│   │   ├── setup.cfg
+│   │   ├── setup.py
+│   │   └── test.ini
+│   ├── bqengine
+│   │   ├── apache
+│   │   │   ├── engine.apache
+│   │   │   └── engine.wsgi
+│   │   ├── bq
+│   │   │   ├── engine
+│   │   │   │   ├── commands
+│   │   │   │   │   ├── engine_admin.py
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── module_admin.py
+│   │   │   │   ├── controllers
+│   │   │   │   │   ├── attrdict.py
+│   │   │   │   │   ├── base_adapter.py
+│   │   │   │   │   ├── base_env.py
+│   │   │   │   │   ├── command_run.py
+│   │   │   │   │   ├── condor_run.py
+│   │   │   │   │   ├── condor_templates.py
+│   │   │   │   │   ├── docker_env.py
+│   │   │   │   │   ├── engine_service.py
+│   │   │   │   │   ├── execone.py
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── matlab_env.py
+│   │   │   │   │   ├── mexparser.py
+│   │   │   │   │   ├── module_env.py
+│   │   │   │   │   ├── module_run.py
+│   │   │   │   │   ├── pool.py
+│   │   │   │   │   ├── runtime_adapter.py
+│   │   │   │   │   ├── script_env.py
+│   │   │   │   │   └── staged_env.py
+│   │   │   │   ├── i18n
+│   │   │   │   │   └── README
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── model
+│   │   │   │   │   ├── engine_model.py
+│   │   │   │   │   └── __init__.py
+│   │   │   │   ├── public
+│   │   │   │   │   └── default_module.css
+│   │   │   │   ├── release.py
+│   │   │   │   └── templates
+│   │   │   │       ├── default_module.html
+│   │   │   │       ├── engine_modules.html
+│   │   │   │       ├── index.html
+│   │   │   │       └── __init__.py
+│   │   │   └── __init__.py
+│   │   ├── MANIFEST.in
+│   │   ├── setup.cfg
+│   │   └── setup.py
+│   ├── bqfeature
+│   │   ├── bq
+│   │   │   ├── features
+│   │   │   │   ├── api.py
+│   │   │   │   ├── controllers
+│   │   │   │   │   ├── exceptions.py
+│   │   │   │   │   ├── extractors
+│   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   ├── Mahotas
+│   │   │   │   │   │   │   ├── extractor.py
+│   │   │   │   │   │   │   └── __init__.py
+│   │   │   │   │   │   ├── MPEG7Flex
+│   │   │   │   │   │   │   ├── extractor.py
+│   │   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   │   └── pyMPEG7FlexLib.py
+│   │   │   │   │   │   ├── MyFeatures
+│   │   │   │   │   │   │   ├── extractor.py
+│   │   │   │   │   │   │   ├── fftsd_extract.py
+│   │   │   │   │   │   │   ├── hog_extractor.py
+│   │   │   │   │   │   │   ├── htd_extractor.py
+│   │   │   │   │   │   │   └── __init__.py
+│   │   │   │   │   │   ├── OpenCV
+│   │   │   │   │   │   │   ├── extractor.py
+│   │   │   │   │   │   │   └── __init__.py
+│   │   │   │   │   │   ├── ScikitImage
+│   │   │   │   │   │   │   ├── extractor.py
+│   │   │   │   │   │   │   └── __init__.py
+│   │   │   │   │   │   ├── Test
+│   │   │   │   │   │   │   ├── extractor.py
+│   │   │   │   │   │   │   └── __init__.py
+│   │   │   │   │   │   ├── VRL
+│   │   │   │   │   │   │   ├── extractor.py
+│   │   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   │   └── pyVRLLib.py
+│   │   │   │   │   │   └── WNDCharm
+│   │   │   │   │   │       ├── extractor.py
+│   │   │   │   │   │       ├── __init__.py
+│   │   │   │   │   │       ├── PyWNDCharmFeatureList.py
+│   │   │   │   │   │       ├── pyWNDCharmLib.py
+│   │   │   │   │   │       └── WNDCharmBase.py
+│   │   │   │   │   ├── Feature.py
+│   │   │   │   │   ├── ID.py
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── PytablesMonkeyPatch
+│   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   ├── monkeypatch.py
+│   │   │   │   │   │   └── pytables_fix.py
+│   │   │   │   │   ├── README.txt
+│   │   │   │   │   ├── service.py
+│   │   │   │   │   ├── TablesInterface.py
+│   │   │   │   │   ├── utils.py
+│   │   │   │   │   └── var.py
+│   │   │   │   ├── FeatureDoc.txt
+│   │   │   │   ├── i18n
+│   │   │   │   │   └── README
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── release.py
+│   │   │   │   ├── templates
+│   │   │   │   │   └── __init__.py
+│   │   │   │   └── tests
+│   │   │   │       ├── assert_util.py
+│   │   │   │       ├── setup.cfg.default
+│   │   │   │       ├── test_features.py
+│   │   │   │       ├── test_malformedrequests.py
+│   │   │   │       ├── test_parallel.py
+│   │   │   │       ├── test_requests.py
+│   │   │   │       ├── utils.py
+│   │   │   │       └── var.py
+│   │   │   └── __init__.py
+│   │   ├── MANIFEST.in
+│   │   ├── requirements.txt
+│   │   ├── setup.cfg
+│   │   └── setup.py
+│   ├── bqserver
+│   │   ├── bq
+│   │   │   ├── admin_service
+│   │   │   │   ├── controllers
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── service.py
+│   │   │   │   ├── i18n
+│   │   │   │   │   └── README
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── release.py
+│   │   │   │   └── templates
+│   │   │   │       ├── __init__.py
+│   │   │   │       └── manager.html
+│   │   │   ├── blob_service
+│   │   │   │   ├── api.py
+│   │   │   │   ├── controllers
+│   │   │   │   │   ├── blob_drivers.py
+│   │   │   │   │   ├── blob_plugins.py
+│   │   │   │   │   ├── blobsrv.py
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── mount_service.py
+│   │   │   │   ├── i18n
+│   │   │   │   │   └── README
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── model
+│   │   │   │   │   └── __init__.py
+│   │   │   │   ├── release.py
+│   │   │   │   ├── templates
+│   │   │   │   │   ├── index.html
+│   │   │   │   │   └── __init__.py
+│   │   │   │   └── tests
+│   │   │   │       └── test_driver.py
+│   │   │   ├── client_service
+│   │   │   │   ├── controllers
+│   │   │   │   │   ├── auth_service.py
+│   │   │   │   │   ├── client_service.py
+│   │   │   │   │   ├── dn_service.py
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── notify_service.py
+│   │   │   │   │   ├── service.py
+│   │   │   │   │   └── xmlmerge.py
+│   │   │   │   ├── i18n
+│   │   │   │   │   └── README
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── model
+│   │   │   │   │   ├── client_service_model.py
+│   │   │   │   │   └── __init__.py
+│   │   │   │   ├── public
+│   │   │   │   │   ├── about
+│   │   │   │   │   │   ├── about.html
+│   │   │   │   │   │   ├── license.html
+│   │   │   │   │   │   ├── privacypolicy.html
+│   │   │   │   │   │   └── termsofuse.html
+│   │   │   │   │   ├── css
+│   │   │   │   │   │   ├── admin.css
+│   │   │   │   │   │   ├── login.css
+│   │   │   │   │   │   └── welcome.css
+│   │   │   │   │   └── upload
+│   │   │   │   │       └── index.html
+│   │   │   │   └── templates
+│   │   │   │       ├── about.html
+│   │   │   │       ├── browser.html
+│   │   │   │       ├── embedded.html
+│   │   │   │       ├── help.html
+│   │   │   │       ├── __init__.py
+│   │   │   │       ├── login.html
+│   │   │   │       ├── view.html
+│   │   │   │       └── welcome.html
+│   │   │   ├── data_service
+│   │   │   │   ├── api.py
+│   │   │   │   ├── controllers
+│   │   │   │   │   ├── bisquik_resource.py
+│   │   │   │   │   ├── data_service.py
+│   │   │   │   │   ├── filter_parser.py
+│   │   │   │   │   ├── formats.py
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── resource_auth.py
+│   │   │   │   │   ├── resource.py
+│   │   │   │   │   └── resource_query.py
+│   │   │   │   ├── i18n
+│   │   │   │   │   └── README
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── model
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── irods_user.py
+│   │   │   │   │   └── tag_model.py
+│   │   │   │   ├── public
+│   │   │   │   │   ├── css
+│   │   │   │   │   │   └── data_service.css
+│   │   │   │   │   └── js
+│   │   │   │   │       └── data_service.js
+│   │   │   │   ├── templates
+│   │   │   │   │   └── __init__.py
+│   │   │   │   └── tests
+│   │   │   │       ├── conftest.py
+│   │   │   │       ├── __init__.py
+│   │   │   │       ├── test2.xml
+│   │   │   │       ├── test3.xml
+│   │   │   │       ├── test4.xml
+│   │   │   │       ├── test5.xml
+│   │   │   │       ├── test_cascade.py
+│   │   │   │       ├── test_doc_resource.py
+│   │   │   │       ├── test_ds.py
+│   │   │   │       ├── test_test.py
+│   │   │   │       └── test.xml
+│   │   │   ├── dataset_service
+│   │   │   │   ├── controllers
+│   │   │   │   │   ├── dataset_service.py
+│   │   │   │   │   └── __init__.py
+│   │   │   │   ├── i18n
+│   │   │   │   │   └── README
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── model
+│   │   │   │   │   └── __init__.py
+│   │   │   │   ├── public
+│   │   │   │   │   ├── dataset_operations.js
+│   │   │   │   │   ├── dataset_panel.css
+│   │   │   │   │   ├── dataset_panel.js
+│   │   │   │   │   ├── dataset_service.css
+│   │   │   │   │   ├── dataset_service.js
+│   │   │   │   │   └── images
+│   │   │   │   │       └── splitter.png
+│   │   │   │   ├── release.py
+│   │   │   │   └── templates
+│   │   │   │       ├── datasets.html
+│   │   │   │       └── __init__.py
+│   │   │   ├── export_service
+│   │   │   │   ├── api.py
+│   │   │   │   ├── controllers
+│   │   │   │   │   ├── archiver
+│   │   │   │   │   │   ├── archiver_factory.py
+│   │   │   │   │   │   ├── bz2_archiver.py
+│   │   │   │   │   │   ├── gzip_archiver.py
+│   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   ├── tar_archiver.py
+│   │   │   │   │   │   └── zip_archiver.py
+│   │   │   │   │   ├── archive_streamer.py
+│   │   │   │   │   ├── export_service.py
+│   │   │   │   │   └── __init__.py
+│   │   │   │   ├── i18n
+│   │   │   │   │   └── README
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── public
+│   │   │   │   │   ├── css
+│   │   │   │   │   │   ├── BQ.Export.css
+│   │   │   │   │   │   └── icons.svg
+│   │   │   │   │   ├── images
+│   │   │   │   │   │   ├── delete.png
+│   │   │   │   │   │   ├── download.png
+│   │   │   │   │   │   ├── file-large.png
+│   │   │   │   │   │   ├── file.png
+│   │   │   │   │   │   ├── folder-large.png
+│   │   │   │   │   │   ├── folder.png
+│   │   │   │   │   │   ├── gdocs.png
+│   │   │   │   │   │   ├── select-dataset.png
+│   │   │   │   │   │   └── select-images.png
+│   │   │   │   │   └── js
+│   │   │   │   │       └── BQ.Export.js
+│   │   │   │   ├── release.py
+│   │   │   │   └── templates
+│   │   │   │       ├── downloadTarFiles.html
+│   │   │   │       ├── index.html
+│   │   │   │       ├── __init__.py
+│   │   │   │       ├── to_gdocs.html
+│   │   │   │       ├── to_gdocs_send.html
+│   │   │   │       └── to_tar.html
+│   │   │   ├── graph
+│   │   │   │   ├── controllers
+│   │   │   │   │   ├── graph.py
+│   │   │   │   │   └── __init__.py
+│   │   │   │   ├── i18n
+│   │   │   │   │   └── README
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── model
+│   │   │   │   │   ├── graph_model.py
+│   │   │   │   │   └── __init__.py
+│   │   │   │   ├── public
+│   │   │   │   │   ├── graph.css
+│   │   │   │   │   └── graph.js
+│   │   │   │   └── templates
+│   │   │   │       ├── index.html
+│   │   │   │       └── __init__.py
+│   │   │   ├── image_service
+│   │   │   │   ├── api.py
+│   │   │   │   ├── controllers
+│   │   │   │   │   ├── converter_base.py
+│   │   │   │   │   ├── converter_dict.py
+│   │   │   │   │   ├── converters
+│   │   │   │   │   │   ├── converter_bioformats.py
+│   │   │   │   │   │   ├── converter_ffmpeg.py
+│   │   │   │   │   │   ├── converter_imaris.py
+│   │   │   │   │   │   ├── converter_imgcnv.py
+│   │   │   │   │   │   ├── converter_openslide.py
+│   │   │   │   │   │   └── __init__.py
+│   │   │   │   │   ├── defaults.py
+│   │   │   │   │   ├── exceptions.py
+│   │   │   │   │   ├── imgsrv.py
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── install_openslide.txt
+│   │   │   │   │   ├── operation_base.py
+│   │   │   │   │   ├── operations
+│   │   │   │   │   │   ├── brightnesscontrast.py
+│   │   │   │   │   │   ├── cleancache.py
+│   │   │   │   │   │   ├── deinterlace.py
+│   │   │   │   │   │   ├── depth.py
+│   │   │   │   │   │   ├── dims.py
+│   │   │   │   │   │   ├── format.py
+│   │   │   │   │   │   ├── formats.py
+│   │   │   │   │   │   ├── frames.py
+│   │   │   │   │   │   ├── fuse.py
+│   │   │   │   │   │   ├── histogram.py
+│   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   ├── intensityprojection.py
+│   │   │   │   │   │   ├── levels.py
+│   │   │   │   │   │   ├── localpath.py
+│   │   │   │   │   │   ├── meta.py
+│   │   │   │   │   │   ├── negative.py
+│   │   │   │   │   │   ├── operations.py
+│   │   │   │   │   │   ├── pixelcounter.py
+│   │   │   │   │   │   ├── rearrange3d.py
+│   │   │   │   │   │   ├── remap.py
+│   │   │   │   │   │   ├── resize.py
+│   │   │   │   │   │   ├── roi.py
+│   │   │   │   │   │   ├── rotate.py
+│   │   │   │   │   │   ├── sampleframes.py
+│   │   │   │   │   │   ├── slice.py
+│   │   │   │   │   │   ├── textureatlas.py
+│   │   │   │   │   │   ├── threshold.py
+│   │   │   │   │   │   ├── thumbnail.py
+│   │   │   │   │   │   ├── tile.py
+│   │   │   │   │   │   ├── transform.py
+│   │   │   │   │   │   └── view.py
+│   │   │   │   │   ├── plugin_manager.py
+│   │   │   │   │   ├── process_token.py
+│   │   │   │   │   ├── resource_cache.py
+│   │   │   │   │   ├── service.py
+│   │   │   │   │   └── utils.py
+│   │   │   │   ├── i18n
+│   │   │   │   │   └── README
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── model
+│   │   │   │   │   ├── image_service_model.py
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── model.py.save
+│   │   │   │   ├── public
+│   │   │   │   │   ├── bq_is_formats.js
+│   │   │   │   │   ├── converter.css
+│   │   │   │   │   └── converter.js
+│   │   │   │   ├── release.py
+│   │   │   │   ├── templates
+│   │   │   │   │   ├── index.html
+│   │   │   │   │   └── __init__.py
+│   │   │   │   └── tests
+│   │   │   │       ├── config.cfg.sample
+│   │   │   │       ├── create_mex_gobs.py
+│   │   │   │       ├── __init__.py
+│   │   │   │       ├── insert_gob_link.py
+│   │   │   │       ├── insert_gobs.py
+│   │   │   │       ├── insert_multifile_andor.py
+│   │   │   │       ├── insert_multifile_cellomics.py
+│   │   │   │       ├── insert_multifile_dicom.py
+│   │   │   │       ├── insert_multifile_jpegseries.py
+│   │   │   │       ├── insert_multifile_leica.py
+│   │   │   │       ├── insert_multifile_tiffseries.py
+│   │   │   │       ├── insert_multifile_volocity.py
+│   │   │   │       ├── insert_multiimage.py
+│   │   │   │       ├── run_tests_extended.py
+│   │   │   │       ├── run_tests_multifile.py
+│   │   │   │       ├── run_tests_operational.py
+│   │   │   │       ├── run_tests.py
+│   │   │   │       ├── run_tests_thirdpartysupport.py
+│   │   │   │       ├── run_tests_tiles.py
+│   │   │   │       ├── run_tests_unicode.py
+│   │   │   │       ├── tests_base.py
+│   │   │   │       ├── times.multifile.txt
+│   │   │   │       ├── times.operational.txt
+│   │   │   │       ├── times_tiles.txt
+│   │   │   │       └── times.txt
+│   │   │   ├── import_service
+│   │   │   │   ├── controllers
+│   │   │   │   │   ├── import_service.py
+│   │   │   │   │   └── __init__.py
+│   │   │   │   ├── i18n
+│   │   │   │   │   └── README
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── public
+│   │   │   │   │   ├── bq_file_upload.js
+│   │   │   │   │   ├── bq_ui_upload.css
+│   │   │   │   │   ├── bq_ui_upload.js
+│   │   │   │   │   ├── File.js
+│   │   │   │   │   ├── help.html
+│   │   │   │   │   ├── icons.svg
+│   │   │   │   │   └── images
+│   │   │   │   │       ├── annotations.png
+│   │   │   │   │       ├── blank.png
+│   │   │   │   │       ├── browse.png
+│   │   │   │   │       ├── cancel.png
+│   │   │   │   │       ├── drop_background.png
+│   │   │   │   │       ├── drop_background.psd
+│   │   │   │   │       ├── formats.png
+│   │   │   │   │       ├── help.png
+│   │   │   │   │       └── upload.png
+│   │   │   │   ├── release.py
+│   │   │   │   └── templates
+│   │   │   │       ├── __init__.py
+│   │   │   │       ├── uploaded.html
+│   │   │   │       └── upload.html
+│   │   │   ├── ingest
+│   │   │   │   ├── api.py
+│   │   │   │   ├── commands
+│   │   │   │   │   └── auto_discovery_crawler.py
+│   │   │   │   ├── controllers
+│   │   │   │   │   ├── ingest_server.py
+│   │   │   │   │   └── __init__.py
+│   │   │   │   ├── i18n
+│   │   │   │   │   └── README
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── model
+│   │   │   │   │   ├── ingest_model.py
+│   │   │   │   │   └── __init__.py
+│   │   │   │   ├── public
+│   │   │   │   │   ├── css
+│   │   │   │   │   │   └── ingest.css
+│   │   │   │   │   └── js
+│   │   │   │   │       └── ingest.js
+│   │   │   │   ├── release.py
+│   │   │   │   ├── templates
+│   │   │   │   │   ├── index.html
+│   │   │   │   │   └── __init__.py
+│   │   │   │   └── tests
+│   │   │   │       └── test_new_resource.py
+│   │   │   ├── __init__.py
+│   │   │   ├── module_service
+│   │   │   │   ├── api.py
+│   │   │   │   ├── commands
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── module_admin.py
+│   │   │   │   ├── controllers
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── module_server.py
+│   │   │   │   ├── i18n
+│   │   │   │   │   └── README
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── model
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── module_service_model.py
+│   │   │   │   ├── public
+│   │   │   │   │   ├── css
+│   │   │   │   │   │   └── module_service.css
+│   │   │   │   │   └── js
+│   │   │   │   │       └── module_service.js
+│   │   │   │   ├── release.py
+│   │   │   │   └── templates
+│   │   │   │       ├── browse.html
+│   │   │   │       ├── index.html
+│   │   │   │       ├── __init__.py
+│   │   │   │       └── register.html
+│   │   │   ├── pipeline
+│   │   │   │   ├── controllers
+│   │   │   │   │   ├── exporters
+│   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   ├── to_bqworkflow.py
+│   │   │   │   │   │   ├── to_cellprofiler.py
+│   │   │   │   │   │   ├── to_dream3d.py
+│   │   │   │   │   │   ├── to_imagej.py
+│   │   │   │   │   │   ├── to_json.py
+│   │   │   │   │   │   └── to_xml.py
+│   │   │   │   │   ├── importers
+│   │   │   │   │   │   ├── from_bqworkflow.py
+│   │   │   │   │   │   ├── from_cellprofiler.py
+│   │   │   │   │   │   ├── from_dream3d.py
+│   │   │   │   │   │   ├── from_imagej.py
+│   │   │   │   │   │   └── __init__.py
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── pipeline_base.py
+│   │   │   │   │   ├── pipeline_exporter.py
+│   │   │   │   │   ├── plugin_manager.py
+│   │   │   │   │   └── service.py
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── release.py
+│   │   │   │   ├── templates
+│   │   │   │   │   ├── index.html
+│   │   │   │   │   └── __init__.py
+│   │   │   │   └── tests
+│   │   │   │       └── __init__.py
+│   │   │   ├── preference
+│   │   │   │   ├── controllers
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── service.py
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── templates
+│   │   │   │   │   └── __init__.py
+│   │   │   │   └── test
+│   │   │   │       ├── test_func.py
+│   │   │   │       └── test_request.py
+│   │   │   ├── registration
+│   │   │   │   ├── controllers
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── registration_service.py
+│   │   │   │   ├── i18n
+│   │   │   │   │   └── README
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── model
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── registration_model.py
+│   │   │   │   ├── public
+│   │   │   │   │   ├── css
+│   │   │   │   │   │   └── registration.css
+│   │   │   │   │   └── js
+│   │   │   │   │       └── registration.js
+│   │   │   │   ├── release.py
+│   │   │   │   └── templates
+│   │   │   │       ├── index.html
+│   │   │   │       └── __init__.py
+│   │   │   ├── stats
+│   │   │   │   ├── controllers
+│   │   │   │   │   ├── bqapi.py
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── stats_operators.py
+│   │   │   │   │   ├── stats_server.py
+│   │   │   │   │   └── stats_summarizers.py
+│   │   │   │   ├── i18n
+│   │   │   │   │   └── README
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── public
+│   │   │   │   │   ├── images
+│   │   │   │   │   │   └── progress_circles.gif
+│   │   │   │   │   ├── js
+│   │   │   │   │   │   └── stats.js
+│   │   │   │   │   └── stats.css
+│   │   │   │   ├── release.py
+│   │   │   │   └── templates
+│   │   │   │       ├── index.html
+│   │   │   │       └── __init__.py
+│   │   │   ├── table
+│   │   │   │   ├── api.py
+│   │   │   │   ├── controllers
+│   │   │   │   │   ├── exporters
+│   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   ├── to_csv.py
+│   │   │   │   │   │   ├── to_hdf5.py
+│   │   │   │   │   │   ├── to_json.py
+│   │   │   │   │   │   ├── to_table.py
+│   │   │   │   │   │   └── to_xml.py
+│   │   │   │   │   ├── importers
+│   │   │   │   │   │   ├── from_csv.py
+│   │   │   │   │   │   ├── from_excel.py
+│   │   │   │   │   │   ├── from_hdf5.py
+│   │   │   │   │   │   └── __init__.py
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── operations
+│   │   │   │   │   │   ├── agg.py
+│   │   │   │   │   │   ├── filter.py
+│   │   │   │   │   │   └── __init__.py
+│   │   │   │   │   ├── plugin_manager.py
+│   │   │   │   │   ├── service.py
+│   │   │   │   │   ├── table_base.py
+│   │   │   │   │   ├── table_exporter.py
+│   │   │   │   │   └── table_operation.py
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── release.py
+│   │   │   │   ├── templates
+│   │   │   │   │   ├── index.html
+│   │   │   │   │   └── __init__.py
+│   │   │   │   └── tests
+│   │   │   │       ├── config.cfg.sample
+│   │   │   │       ├── create_large_csv.py
+│   │   │   │       ├── hdf5_test.h5
+│   │   │   │       ├── __init__.py
+│   │   │   │       ├── insert_section.py
+│   │   │   │       ├── large_1K.xls
+│   │   │   │       ├── run_tests.py
+│   │   │   │       ├── small.csv
+│   │   │   │       ├── test_runquery.py
+│   │   │   │       └── tests_base.py
+│   │   │   └── usage
+│   │   │       ├── controllers
+│   │   │       │   ├── __init__.py
+│   │   │       │   └── usage.py
+│   │   │       ├── i18n
+│   │   │       │   └── README
+│   │   │       ├── __init__.py
+│   │   │       ├── public
+│   │   │       │   ├── bq_usage_stats.css
+│   │   │       │   └── bq_usage_stats.js
+│   │   │       ├── release.py
+│   │   │       └── templates
+│   │   │           ├── index.html
+│   │   │           └── __init__.py
+│   │   ├── MANIFEST.in
+│   │   ├── setup.cfg
+│   │   └── setup.py
+│   ├── config-defaults
+│   │   ├── alembic.ini.default
+│   │   ├── engine.cfg.default
+│   │   ├── EXTERNAL_FILES
+│   │   ├── MODULES
+│   │   ├── PLUGINS
+│   │   ├── preferences.xml.default
+│   │   ├── registration.cfg.default
+│   │   ├── runtime-bisque.default
+│   │   ├── server.ini.default
+│   │   ├── shell.ini.default
+│   │   ├── site.cfg.default
+│   │   ├── templates
+│   │   │   ├── condor_dag_conf.tmpl
+│   │   │   ├── condor_dag.tmpl
+│   │   │   ├── condor_submit_shared.tmpl
+│   │   │   ├── condor_submit.tmpl
+│   │   │   ├── matlab_launcher.tmpl
+│   │   │   ├── matlab_launcher_win.tmpl
+│   │   │   └── python_launcher.tmpl
+│   │   ├── test.ini.default
+│   │   ├── uwsgi.cfg.default
+│   │   ├── who.engine.ini
+│   │   └── who.ini.default
+│   ├── contrib
+│   │   ├── annotate_from_excel
+│   │   │   ├── annotate.py
+│   │   │   ├── check_xls.py
+│   │   │   └── run_all.py
+│   │   ├── apache
+│   │   │   ├── proxy-http
+│   │   │   ├── proxy-ssl
+│   │   │   ├── README
+│   │   │   └── wsgi
+│   │   │       ├── bisquik.apache
+│   │   │       └── bisquik.wsgi
+│   │   ├── bisque_paths
+│   │   │   ├── bisque_paths.py
+│   │   │   └── setup.py
+│   │   ├── bootstrap
+│   │   │   └── bisque-bootstrap.py
+│   │   ├── cas
+│   │   │   ├── README
+│   │   │   └── setbasicauth.py
+│   │   ├── cleaner
+│   │   │   └── cleanfiles.py
+│   │   ├── curl
+│   │   │   ├── dataset.xml
+│   │   │   ├── deldb.sh
+│   │   │   ├── mex.xml
+│   │   │   ├── postdb.sh
+│   │   │   ├── putdb.sh
+│   │   │   └── run_module.txt
+│   │   ├── dataset2image
+│   │   │   └── dataset2image.py
+│   │   ├── docker
+│   │   │   └── resolve-container-ip
+│   │   ├── docker-base-images
+│   │   │   ├── cellprofiler
+│   │   │   │   ├── Dockerfile
+│   │   │   │   ├── Makefile
+│   │   │   │   └── README.markdown
+│   │   │   └── mcr_runtime
+│   │   │       ├── cacerts
+│   │   │       ├── Dockerfile
+│   │   │       ├── input.txt
+│   │   │       └── Makefile
+│   │   ├── examples
+│   │   │   └── uploader
+│   │   │       ├── MaizeImaging.csv
+│   │   │       └── maizeupload.py
+│   │   ├── haproxy
+│   │   │   ├── apache-site
+│   │   │   ├── haproxy.cfg
+│   │   │   └── README
+│   │   ├── init.d
+│   │   │   ├── bisque
+│   │   │   └── bisquectl
+│   │   ├── irods
+│   │   │   ├── bisque.re
+│   │   │   ├── core.re.patch
+│   │   │   ├── insert2bisque.py
+│   │   │   └── irods2bisque.py
+│   │   ├── logging
+│   │   │   ├── loggingwebmonitor.ini
+│   │   │   ├── loggingwebmonitor.py
+│   │   │   ├── logrotate.bisque
+│   │   │   └── README
+│   │   ├── matlab.ssl
+│   │   │   ├── portecle.jnlp
+│   │   │   └── README
+│   │   ├── mysql
+│   │   │   ├── add-contraints.sql
+│   │   │   ├── isam2innodb.sh
+│   │   │   └── README
+│   │   ├── nginx
+│   │   │   ├── bisque
+│   │   │   ├── bisque-ssl
+│   │   │   ├── nginx.conf
+│   │   │   ├── README
+│   │   │   └── SSL-HOWTO
+│   │   ├── perftools
+│   │   │   ├── makehttperf.py
+│   │   │   └── readme.txt
+│   │   ├── perl
+│   │   │   ├── bqcondor.pl
+│   │   │   ├── bqfetch.pl
+│   │   │   ├── csv.pl
+│   │   │   └── tips.csv
+│   │   ├── pylint
+│   │   │   ├── bq_pylint
+│   │   │   │   ├── errors.py
+│   │   │   │   └── __init__.py
+│   │   │   └── setup.py
+│   │   ├── shell
+│   │   │   ├── bash_funs
+│   │   │   ├── bash_funs.sh
+│   │   │   └── README
+│   │   ├── ssl
+│   │   │   ├── InstallCert.java
+│   │   │   └── README
+│   │   ├── supervisord
+│   │   │   ├── bisque.conf
+│   │   │   ├── README.rst
+│   │   │   ├── supervisord.conf
+│   │   │   └── virtrun
+│   │   ├── uploads
+│   │   │   └── uploaddirp.py
+│   │   ├── uwsgi
+│   │   │   └── README
+│   │   └── watcher
+│   │       ├── bq
+│   │       │   ├── __init__.py
+│   │       │   └── watcher
+│   │       │       ├── __init__.py
+│   │       │       └── which.py
+│   │       ├── README.md
+│   │       └── setup.py
+│   ├── COPYRIGHT
+│   ├── LICENSE
+│   ├── migrations
+│   │   ├── env.py
+│   │   ├── README
+│   │   ├── script.py.mako
+│   │   └── versions
+│   │       ├── 138f50ba7665_clean_orphans.py
+│   │       ├── 14bcc365e5d6_value_columns.py
+│   │       ├── 156205cd1d39_mex_owner_index.py
+│   │       ├── 15bcb37c214e_remove_duplicate_members.py
+│   │       ├── 1653e79bb48b_setup_ordering.py
+│   │       ├── 1fd412bca00e_migrate_resource_ids.py
+│   │       ├── 265a09af6b4f_user_unid.py
+│   │       ├── 2cbd9f4d11af_hidden_preferences_in_images.py
+│   │       ├── 2f38b45d9ba5_index_ts.py
+│   │       ├── 306c5eb91bac_resource_uniq.py
+│   │       ├── 318381ec60ba_indexes_4_deletes.py
+│   │       ├── 33b00e22cb16_init_stores.py
+│   │       ├── 4687c8254c92_use_ondelete.py
+│   │       ├── 49f2fd567fb7_resource_uniq_contraint.py
+│   │       ├── 879bff686dd_ensure80.py
+│   │       └── 9c13d7f2587_preference.py
+│   ├── pavement.py
+│   ├── paver-minilib.zip
+│   ├── pytest-bisque
+│   │   ├── MANIFEST.in
+│   │   ├── pytest_bisque.py
+│   │   ├── README.rst
+│   │   └── setup.py
+│   ├── pytest.ini
+│   ├── requirements.txt
+│   ├── setup.py
+│   └── tools
+│       ├── BQMatlab
+│       │   ├── +bim
+│       │   │   ├── avcodec-52.dll
+│       │   │   ├── avformat-52.dll
+│       │   │   ├── avutil-50.dll
+│       │   │   ├── LICENCE.txt
+│       │   │   ├── msvcp90.dll
+│       │   │   ├── msvcr90.dll
+│       │   │   ├── read_stack_ch.m
+│       │   │   ├── read_stack.m
+│       │   │   ├── swscale-0.dll
+│       │   │   └── write_ome_tiff.m
+│       │   ├── +bq
+│       │   │   ├── cacerts
+│       │   │   │   ├── cacerts
+│       │   │   │   ├── cacerts_letsencrypt
+│       │   │   │   ├── isrgrootx1.der
+│       │   │   │   ├── letsencryptauthorityx3.der
+│       │   │   │   ├── lets-encrypt-x3-cross-signed.der
+│       │   │   │   └── lets-encrypt-x4-cross-signed.der
+│       │   │   ├── connect.m
+│       │   │   ├── @Dataset
+│       │   │   │   └── Dataset.m
+│       │   │   ├── delete.m
+│       │   │   ├── @Factory
+│       │   │   │   └── Factory.m
+│       │   │   ├── @Feature
+│       │   │   │   └── Feature.m
+│       │   │   ├── @File
+│       │   │   │   └── File.m
+│       │   │   ├── get.m
+│       │   │   ├── get_xml.m
+│       │   │   ├── @Gobject
+│       │   │   │   └── Gobject.m
+│       │   │   ├── @Image
+│       │   │   │   └── Image.m
+│       │   │   ├── iminfo.m
+│       │   │   ├── imread.m
+│       │   │   ├── imreadND.m
+│       │   │   ├── @Node
+│       │   │   │   └── Node.m
+│       │   │   ├── parsetags.m
+│       │   │   ├── path2url.m
+│       │   │   ├── post.m
+│       │   │   ├── post_mpform.m
+│       │   │   ├── put.m
+│       │   │   ├── @Session
+│       │   │   │   └── Session.m
+│       │   │   ├── str2xml.m
+│       │   │   ├── @Url
+│       │   │   │   └── Url.m
+│       │   │   ├── url2path.m
+│       │   │   ├── urlread.m
+│       │   │   ├── urlwrite.m
+│       │   │   └── xml2str.m
+│       │   ├── examples
+│       │   │   ├── large_scale_segmentation
+│       │   │   │   ├── large_segmentation.m
+│       │   │   │   └── reduce_poly.m
+│       │   │   └── simple_segmentation
+│       │   │       ├── classification.m
+│       │   │       ├── reduce_poly.m
+│       │   │       └── segmentation.m
+│       │   ├── java.opts
+│       │   ├── matlab.ssl.tls
+│       │   │   ├── cacerts_letsencrypt
+│       │   │   ├── portecle.jnlp
+│       │   │   └── README
+│       │   ├── README.txt
+│       │   ├── ssl_errors_readme.txt
+│       │   ├── test_auth_mex.m
+│       │   ├── test_dataset.m
+│       │   ├── test_feature.m
+│       │   ├── test_file.m
+│       │   ├── test_gobject.m
+│       │   ├── test_image_compile.m
+│       │   ├── test_image.m
+│       │   ├── test_local.m
+│       │   ├── test_mex.m
+│       │   ├── test_session.m
+│       │   └── test_url.m
+│       ├── BQPhytomorph
+│       │   ├── Changes
+│       │   ├── lib
+│       │   │   ├── BQPhytomorph
+│       │   │   │   └── Condor.pm
+│       │   │   └── BQPhytomorph.pm
+│       │   ├── Makefile.PL
+│       │   ├── MANIFEST
+│       │   ├── README
+│       │   └── t
+│       │       ├── 00-load.t
+│       │       ├── 01-create.t
+│       │       ├── boilerplate.t
+│       │       ├── pod-coverage.t
+│       │       └── pod.t
+│       ├── libbisque
+│       │   ├── Bisque
+│       │   ├── bisque.pro
+│       │   ├── INSTALL.txt
+│       │   ├── LICENCE.txt
+│       │   ├── projects
+│       │   │   └── msvc2012
+│       │   │       ├── libbisque.rc
+│       │   │       ├── libbisque.sln
+│       │   │       ├── libbisque.vcxproj
+│       │   │       ├── libbisque.vcxproj.filters
+│       │   │       └── resource.h
+│       │   └── src
+│       │       ├── bisqueAccess.cpp
+│       │       ├── bisqueAccess.h
+│       │       ├── bisqueAccess.ui
+│       │       ├── bisque_api.cpp
+│       │       ├── bisque_api.h
+│       │       ├── bisqueWebAccess.cpp
+│       │       ├── bisqueWebAccess.h
+│       │       └── bisqueWebAccess.ui
+│       ├── obsolete
+│       │   ├── BQBisqueJ
+│       │   │   └── BQBisqueJ_.java
+│       │   ├── BQC++Toolbox
+│       │   │   ├── bisquik
+│       │   │   │   ├── bisquikAccess.cpp
+│       │   │   │   ├── bisquikAccess.h
+│       │   │   │   ├── bisquikAccess.ui
+│       │   │   │   ├── bisquikWebAccess.cpp
+│       │   │   │   ├── bisquikWebAccess.h
+│       │   │   │   └── bisquikWebAccess.ui
+│       │   │   ├── bisquik.pro
+│       │   │   ├── main.cpp
+│       │   │   └── readme.txt
+│       │   ├── BQJavaLib
+│       │   │   ├── BQAuthorization.java
+│       │   │   ├── BQClientService.java
+│       │   │   ├── BQDataProducer.java
+│       │   │   ├── BQDataService.java
+│       │   │   ├── BQDataset.java
+│       │   │   ├── BQError.java
+│       │   │   ├── BQException.java
+│       │   │   ├── BQGObject.java
+│       │   │   ├── BQImage.java
+│       │   │   ├── BQImagePixels.java
+│       │   │   ├── BQImagePlane.java
+│       │   │   ├── BQImageProducer.java
+│       │   │   ├── BQMatlab.java
+│       │   │   ├── BQMatlabStart.m
+│       │   │   ├── BQMEX.java
+│       │   │   ├── BQObject.java
+│       │   │   ├── BQTag.java
+│       │   │   ├── BQTest.java
+│       │   │   ├── BQThumbnail.java
+│       │   │   ├── BQUtil.java
+│       │   │   ├── BQValue.java
+│       │   │   ├── BQVertex.java
+│       │   │   ├── BQXML.java
+│       │   │   ├── BQXMLObject.java
+│       │   │   ├── BQXMLParser.java
+│       │   │   ├── build.xml
+│       │   │   └── FileProducer.java
+│       │   ├── BQJavaLibNew
+│       │   │   ├── BQAuthorization.java
+│       │   │   ├── BQClientService.java
+│       │   │   ├── BQDataService.java
+│       │   │   ├── BQDataset.java
+│       │   │   ├── BQError.java
+│       │   │   ├── BQFactory.java
+│       │   │   ├── BQGObject.java
+│       │   │   ├── BQImage.java
+│       │   │   ├── BQImagePixels.java
+│       │   │   ├── BQImagePlane.java
+│       │   │   ├── BQInstall.m
+│       │   │   ├── BQ.java
+│       │   │   ├── BQMatlab.java
+│       │   │   ├── BQMatlabOK.m
+│       │   │   ├── BQMatlabStart2.m
+│       │   │   ├── BQMatlabStart.m
+│       │   │   ├── BQMatlabTEST.m
+│       │   │   ├── BQMex.java
+│       │   │   ├── BQM.java
+│       │   │   ├── BQModuleService.java
+│       │   │   ├── BQObject.java
+│       │   │   ├── BQResource.java
+│       │   │   ├── BQTag.java
+│       │   │   ├── BQTest.java
+│       │   │   ├── BQThumbnail.java
+│       │   │   ├── BQUtil.java
+│       │   │   ├── BQValue.java
+│       │   │   ├── BQVertex.java
+│       │   │   ├── BQXML.java
+│       │   │   ├── BQXMLObject.java
+│       │   │   ├── BQXMLParser.java
+│       │   │   ├── BQXMLService.java
+│       │   │   ├── build.xml
+│       │   │   └── classpath.txt
+│       │   └── BQMatlabToolbox
+│       │       └── BQMatlabToolbox.m
+│       └── perftools
+│           ├── makehttperf.py
+│           └── readme.txt
+├── sources.list
+├── start-bisque.sh
+├── tutorials
+│   ├── bqapi_file_download.ipynb
+│   ├── bqapi_file_upload.ipynb
+│   ├── bq-infra-background.png
+│   ├── discourse-bq.png
+│   ├── discourse-bq.webp
+│   ├── edited-nph-720.mov
+│   └── README.md
+└── virtualenv.sh
+
+723 directories, 3918 files
