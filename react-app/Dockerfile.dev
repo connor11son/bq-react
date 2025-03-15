@@ -2,13 +2,16 @@ FROM node:18-alpine
 
 WORKDIR /app
 
+# Copy package files
 COPY package*.json ./
 
-RUN npm install
+# Install dependencies
+RUN npm ci || npm install
 
+# Copy the rest of the code
 COPY . .
 
-# Expose the port for development server
+# Expose the default React development port
 EXPOSE 3000
 
 # Start the development server

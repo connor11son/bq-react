@@ -1,6 +1,6 @@
 // src/hooks/useBisque.js
 import { useState, useEffect, useContext, createContext } from 'react';
-import BisqueAPI from '../services/bisqueApi';
+import BisqueAPI from '../services/bisqueAPI';
 
 // Create a context for the Bisque API
 const BisqueContext = createContext(null);

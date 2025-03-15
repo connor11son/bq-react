@@ -118,7 +118,10 @@ export default class BisqueAPI {
      * @returns {Promise<Object>} - JSON response
      */
     async fetchJSON(uri, options = {}) {
-      const url = `${this.baseUrl}${uri}`;
+        const url = process.env.NODE_ENV === 'development' 
+        ? uri  // Just use the path when in development with proxy
+        : `${this.baseUrl}${uri}`;  // Use full URL in production
+      
       
       const defaultOptions = {
         headers: {
